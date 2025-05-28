@@ -1,139 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JS-Romumetalli | Metal Recycling & Demolition</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;800&display=swap');
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Barlow', sans-serif;
-      background-color: #f8f7f4;
-      color: #222;
-      line-height: 1.6;
-    }
-
-    header {
-      background: url('https://images.unsplash.com/photo-1581091215367-7b7e6e62d380?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-      height: 100vh;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-    }
-
-    nav {
-      width: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(10px);
-    }
-
-    nav .logo {
-      font-size: 24px;
-      font-weight: 800;
-      color: #2f2f2f;
-    }
-
-    nav ul {
-      display: flex;
-      gap: 30px;
-      list-style: none;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      font-weight: 600;
-      color: #333;
-      transition: 0.3s;
-    }
-
-    nav ul li a:hover {
-      color: #4a773c;
-    }
-
-    .hero-text {
-      text-align: center;
-      max-width: 700px;
-      padding: 20px;
-      background-color: rgba(255,255,255,0.1);
-    }
-
-    .hero-text h1 {
-      font-size: 60px;
-      font-weight: 800;
-      letter-spacing: -1px;
-      margin-bottom: 20px;
-    }
-
-    .hero-text p {
-      font-size: 20px;
-      max-width: 600px;
-      margin: auto;
-    }
-
-    .btn {
-      margin-top: 30px;
-      padding: 12px 28px;
-      background: #4a773c;
-      color: white;
-      font-weight: 600;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background: #3a5d2f;
-    }
-
-    @media(max-width: 768px) {
-      .hero-text h1 {
-        font-size: 40px;
-      }
-
-      nav ul {
-        display: none;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JS-Romumetalli</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <nav>
-      <div class="logo">JS-Romumetalli</div>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#vision">Vision</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#steps">Process</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="hero-text">
-      <h1>Metal Recycling & Demolition Experts</h1>
-      <p>We provide high-quality metal removal and demolition services across Finland. Safe. Sustainable. Professional.</p>
-      <a href="#about" class="btn">Learn More</a>
+    <div class="container">
+      <h1>JS-Romumetalli</h1>
+      <p>Профессиональный демонтаж и переработка металлолома в Финляндии</p>
     </div>
   </header>
+
+  <nav>
+    <ul>
+      <li><a href="#about">О нас</a></li>
+      <li><a href="#services">Услуги</a></li>
+      <li><a href="#projects">Проекты</a></li>
+      <li><a href="#contact">Контакты</a></li>
+    </ul>
+  </nav>
+
+  <section id="about">
+    <div class="container">
+      <h2>О нас</h2>
+      <p>JS-Romumetalli — это команда профессионалов, специализирующихся на демонтаже зданий и переработке металлолома. Мы стремимся к экологически чистым и эффективным решениям для наших клиентов.</p>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <h2>Услуги</h2>
+      <ul>
+        <li>Демонтаж зданий</li>
+        <li>Переработка металлолома</li>
+        <li>Вывоз строительных отходов</li>
+        <li>Консультации по утилизации</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2>Наши проекты</h2>
+      <p>Здесь будет галерея выполненных работ.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>Контакты</h2>
+      <p>Адрес: Kokemäentie 247B, 27710 Köyliö, Финляндия</p>
+      <p>Телефон: +358 44 338 7395</p>
+      <div id="map"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 JS-Romumetalli. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script>
+    function initMap() {
+      var location = { lat: 61.1139, lng: 22.3056 }; // Координаты Kokemäentie 247B
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 15,
+        center: location
+      });
+      var marker = new google.maps.Marker({
+        position: location,
+        map: map
+      });
+    }
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
 </body>
 </html>
