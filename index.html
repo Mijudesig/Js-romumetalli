@@ -1,82 +1,71 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>JS-Romumetalli</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JS-romumetalli ja purkutyöt Oy</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
 </head>
 <body>
   <header>
-    <div class="container">
-      <h1>JS-Romumetalli</h1>
-      <p>Профессиональный демонтаж и переработка металлолома в Финляндии</p>
+    <div class="language-switcher">
+      <button onclick="setLanguage('fi')">🇫🇮</button>
+      <button onclick="setLanguage('en')">🇬🇧</button>
     </div>
+    <h1 data-en="JS-romumetalli ja purkutyöt Oy" data-fi="JS-romumetalli ja purkutyöt Oy">
+      JS-romumetalli ja purkutyöt Oy
+    </h1>
+    <p data-en="Professional demolition and metal recycling services in Finland"
+       data-fi="Ammattimaiset purkutyöt ja metallinkierrätys Suomessa">
+       Professional demolition and metal recycling services in Finland
+    </p>
   </header>
 
   <nav>
     <ul>
-      <li><a href="#about">О нас</a></li>
-      <li><a href="#services">Услуги</a></li>
-      <li><a href="#projects">Проекты</a></li>
-      <li><a href="#contact">Контакты</a></li>
+      <li><a href="#about" data-en="About Us" data-fi="Tietoa meistä">About Us</a></li>
+      <li><a href="#services" data-en="Services" data-fi="Palvelut">Services</a></li>
+      <li><a href="#projects" data-en="Projects" data-fi="Projektit">Projects</a></li>
+      <li><a href="#contact" data-en="Contact" data-fi="Yhteystiedot">Contact</a></li>
     </ul>
   </nav>
 
   <section id="about">
-    <div class="container">
-      <h2>О нас</h2>
-      <p>JS-Romumetalli — это команда профессионалов, специализирующихся на демонтаже зданий и переработке металлолома. Мы стремимся к экологически чистым и эффективным решениям для наших клиентов.</p>
-    </div>
+    <h2 data-en="About Us" data-fi="Tietoa meistä">About Us</h2>
+    <p data-en="We specialize in environmentally conscious demolition and recycling of metal materials."
+       data-fi="Olemme erikoistuneet ympäristöystävällisiin purkutöihin ja metallien kierrätykseen.">
+       We specialize in environmentally conscious demolition and recycling of metal materials.
+    </p>
   </section>
 
   <section id="services">
-    <div class="container">
-      <h2>Услуги</h2>
-      <ul>
-        <li>Демонтаж зданий</li>
-        <li>Переработка металлолома</li>
-        <li>Вывоз строительных отходов</li>
-        <li>Консультации по утилизации</li>
-      </ul>
-    </div>
+    <h2 data-en="Services" data-fi="Palvelut">Services</h2>
+    <ul>
+      <li data-en="Building Demolition" data-fi="Rakennusten purku">Building Demolition</li>
+      <li data-en="Scrap Metal Recycling" data-fi="Romumetallin kierrätys">Scrap Metal Recycling</li>
+      <li data-en="Waste Disposal" data-fi="Jätteen käsittely">Waste Disposal</li>
+      <li data-en="Consulting" data-fi="Konsultointi">Consulting</li>
+    </ul>
   </section>
 
   <section id="projects">
-    <div class="container">
-      <h2>Наши проекты</h2>
-      <p>Здесь будет галерея выполненных работ.</p>
-    </div>
+    <h2 data-en="Projects" data-fi="Projektit">Projects</h2>
+    <p data-en="Gallery coming soon..." data-fi="Galleria tulossa pian...">Gallery coming soon...</p>
   </section>
 
   <section id="contact">
-    <div class="container">
-      <h2>Контакты</h2>
-      <p>Адрес: Kokemäentie 247B, 27710 Köyliö, Финляндия</p>
-      <p>Телефон: +358 44 338 7395</p>
-      <div id="map"></div>
-    </div>
+    <h2 data-en="Contact" data-fi="Yhteystiedot">Contact</h2>
+    <p data-en="Address: Kokemäentie 247B, Köyliö, Finland" data-fi="Osoite: Kokemäentie 247B, Köyliö, Suomi">
+      Address: Kokemäentie 247B, Köyliö, Finland
+    </p>
+    <div id="map"></div>
   </section>
 
   <footer>
-    <div class="container">
-      <p>&copy; 2025 JS-Romumetalli. Все права защищены.</p>
-    </div>
+    <p>&copy; 2025 JS-romumetalli ja purkutyöt Oy</p>
   </footer>
 
-  <script>
-    function initMap() {
-      var location = { lat: 61.1139, lng: 22.3056 }; // Координаты Kokemäentie 247B
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 15,
-        center: location
-      });
-      var marker = new google.maps.Marker({
-        position: location,
-        map: map
-      });
-    }
-  </script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
 </body>
 </html>
