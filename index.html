@@ -8,20 +8,19 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
+      color: #fff;
       background: url('https://i.imgur.com/wLVVark.png') no-repeat center center fixed;
       background-size: cover;
-      color: white;
+      overflow-x: hidden;
     }
 
     header {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(20, 20, 20, 0.9);
-      padding: 15px 30px;
-      position: sticky;
-      top: 0;
-      z-index: 999;
+      box-shadow: 0 0 15px #000;
     }
 
     header img {
@@ -30,157 +29,191 @@
 
     nav {
       display: flex;
-      gap: 20px;
+      gap: 15px;
     }
 
     nav button {
-      background: none;
-      border: 2px solid #FFD94A;
-      color: white;
-      padding: 8px 16px;
+      background-color: #ffd95c;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
       cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(255, 217, 92, 0.3);
       transition: all 0.3s ease;
     }
 
     nav button:hover {
-      background-color: #FFD94A;
-      color: #111;
+      background-color: #fff3aa;
+      box-shadow: 0 6px 20px rgba(255, 217, 92, 0.6);
     }
 
     .hero {
       text-align: center;
       padding: 100px 20px;
-      background: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.6);
     }
 
     .hero h1 {
       font-size: 48px;
       margin-bottom: 20px;
-      color: #FFD94A;
+      color: #ffd95c;
+      text-shadow: 2px 2px 10px #000;
     }
 
     .hero p {
       font-size: 20px;
-      max-width: 700px;
+      max-width: 800px;
       margin: auto;
     }
 
     .section {
-      padding: 80px 30px;
-      background: rgba(0, 0, 0, 0.7);
+      padding: 80px 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      margin: 40px 0;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     }
 
     .section h2 {
-      font-size: 36px;
-      margin-bottom: 20px;
-      color: #FFD94A;
+      text-align: center;
+      margin-bottom: 30px;
+      color: #ffd95c;
     }
 
-    .info-flex {
+    .info-photo {
       display: flex;
-      gap: 30px;
       flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      justify-content: center;
     }
 
-    .info-flex img {
-      width: 400px;
-      max-width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 0 10px black;
+    .info-photo img {
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #000;
     }
 
     .info-text {
-      flex: 1;
-      min-width: 280px;
-    }
-
-    .info-text p {
-      font-size: 18px;
-      line-height: 1.7;
+      max-width: 600px;
     }
 
     .map {
-      width: 100%;
-      height: 400px;
-      border: none;
+      text-align: center;
       margin-top: 40px;
     }
 
-    .footer {
-      background: #111;
+    iframe {
+      width: 90%;
+      max-width: 900px;
+      height: 400px;
+      border-radius: 10px;
+      border: none;
+      box-shadow: 0 0 15px #000;
+    }
+
+    footer {
+      background-color: rgba(0, 0, 0, 0.9);
       padding: 40px 20px;
       text-align: center;
-      color: #ccc;
+      color: #999;
+      font-size: 14px;
     }
 
-    .lang-switch {
-      margin-top: 20px;
+    .lang-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
     }
 
-    .lang-switch button {
-      background: #FFD94A;
-      color: #111;
+    .lang-toggle button {
+      background: #ffd95c;
       border: none;
-      padding: 10px 20px;
-      margin: 0 10px;
-      cursor: pointer;
+      border-radius: 50px;
+      padding: 8px 16px;
       font-weight: bold;
+      cursor: pointer;
+      margin-left: 5px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
 
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 32px; }
-      .section h2 { font-size: 28px; }
-      .info-flex { flex-direction: column; align-items: center; }
+    .card {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 30px;
+      margin: 20px auto;
+      max-width: 1000px;
+      text-align: left;
+      color: #fff;
+      box-shadow: 0 0 20px rgba(255, 217, 92, 0.3);
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="https://i.imgur.com/r6OggID.png" alt="JS-Romumetalli Logo">
+    <img src="https://i.imgur.com/r6OggID.png" alt="JS-Romumetalli Logo" />
     <nav>
       <button onclick="scrollToSection('about')">About</button>
+      <button onclick="scrollToSection('services')">Services</button>
       <button onclick="scrollToSection('contact')">Contact</button>
-      <button onclick="scrollToSection('map')">Location</button>
     </nav>
   </header>
 
+  <div class="lang-toggle">
+    <button onclick="setLang('en')">EN</button>
+    <button onclick="setLang('fi')">FI</button>
+  </div>
+
   <section class="hero">
-    <h1>JS-Romumetalli Oy</h1>
-    <p>High-quality metal recycling and transport services across Finland. Reliable, fast, and customer-focused.</p>
-    <div class="lang-switch">
-      <button onclick="setLang('en')">English</button>
-      <button onclick="setLang('fi')">Suomi</button>
-    </div>
+    <h1 id="title">Premium Scrap Metal Services</h1>
+    <p id="subtitle">We provide fast, reliable and responsible scrap metal collection and recycling throughout Köyliö and surrounding regions.</p>
   </section>
 
   <section class="section" id="about">
-    <h2 data-en="About Us" data-fi="Tietoa meistä">About Us</h2>
-    <div class="info-flex">
-      <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Truck">
+    <h2 id="aboutTitle">About JS-Romumetalli Oy</h2>
+    <div class="info-photo">
       <div class="info-text">
-        <p data-en="We offer top-tier scrap metal collection and recycling services. Based in Kokemäki, we serve all over Satakunta and nearby regions. Our modern equipment and experienced team ensure efficient processing and reliable service." data-fi="Tarjoamme ensiluokkaisia romumetallin keräys- ja kierrätyspalveluja. Toimipisteemme sijaitsee Kokemäellä, ja palvelemme koko Satakunnan ja lähialueiden asiakkaita. Moderni kalusto ja kokenut tiimi takaavat tehokkaan käsittelyn ja luotettavan palvelun.">
+        <p id="aboutText">
+          JS-Romumetalli Oy is a professional metal recycling company located in Köyliö. We specialize in buying and transporting all types of scrap metal, offering fast and reliable service with modern equipment. Whether you're a business or individual, we ensure environmentally responsible recycling solutions.
         </p>
       </div>
+      <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Team photo" />
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <h2 id="servicesTitle">Our Services</h2>
+    <div class="card">
+      <ul id="servicesList">
+        <li>✅ Scrap metal collection and pickup</li>
+        <li>✅ Car removal and recycling</li>
+        <li>✅ Industrial metal waste solutions</li>
+        <li>✅ Environmentally friendly operations</li>
+        <li>✅ Fast response and professional staff</li>
+      </ul>
     </div>
   </section>
 
   <section class="section" id="contact">
-    <h2 data-en="Contact Information" data-fi="Yhteystiedot">Contact Information</h2>
-    <p>Email: <a href="mailto:info@js-romumetalli.fi" style="color: #FFD94A;">info@js-romumetalli.fi</a></p>
-    <p>Phone: <a href="tel:+358401234567" style="color: #FFD94A;">+358 40 123 4567</a></p>
+    <h2 id="contactTitle">Contact Us</h2>
+    <div class="card">
+      <p><strong>Email:</strong> info@js-romumetalli.fi</p>
+      <p><strong>Phone:</strong> +358 40 123 4567</p>
+      <p><strong>Address:</strong> Kokemäentie 247b, 32730 Köyliö, Finland</p>
+    </div>
+    <div class="map">
+      <iframe
+        src="https://www.google.com/maps?q=Kokem%C3%A4entie+247b,+K%C3%B6yli%C3%B6,+Finland&output=embed"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
+    </div>
   </section>
 
-  <section class="section" id="map">
-    <h2 data-en="Location" data-fi="Sijainti">Location</h2>
-    <iframe
-      class="map"
-      src="https://www.google.com/maps?q=Kokemäentie+247b,+Finland&output=embed"
-      allowfullscreen
-    ></iframe>
-  </section>
-
-  <footer class="footer">
-    &copy; 2025 JS-Romumetalli Oy. All rights reserved.
+  <footer>
+    © 2025 JS-Romumetalli Oy. All rights reserved.
   </footer>
 
   <script>
@@ -189,13 +222,44 @@
     }
 
     function setLang(lang) {
-      document.querySelectorAll('[data-en]').forEach(el => {
-        el.textContent = lang === 'fi' ? el.getAttribute('data-fi') : el.getAttribute('data-en');
-      });
+      const texts = {
+        en: {
+          title: "Premium Scrap Metal Services",
+          subtitle: "We provide fast, reliable and responsible scrap metal collection and recycling throughout Köyliö and surrounding regions.",
+          aboutTitle: "About JS-Romumetalli Oy",
+          aboutText: "JS-Romumetalli Oy is a professional metal recycling company located in Köyliö. We specialize in buying and transporting all types of scrap metal, offering fast and reliable service with modern equipment. Whether you're a business or individual, we ensure environmentally responsible recycling solutions.",
+          servicesTitle: "Our Services",
+          contactTitle: "Contact Us",
+          servicesList: `
+            <li>✅ Scrap metal collection and pickup</li>
+            <li>✅ Car removal and recycling</li>
+            <li>✅ Industrial metal waste solutions</li>
+            <li>✅ Environmentally friendly operations</li>
+            <li>✅ Fast response and professional staff</li>`
+        },
+        fi: {
+          title: "Ensiluokkaiset romumetallipalvelut",
+          subtitle: "Tarjoamme nopeaa, luotettavaa ja vastuullista romumetallin keräystä ja kierrätystä Köyliössä ja lähialueilla.",
+          aboutTitle: "Tietoa JS-Romumetalli Oy:stä",
+          aboutText: "JS-Romumetalli Oy on ammattimainen metallinkierrätysyritys Köyliössä. Olemme erikoistuneet kaikenlaisen romumetallin ostoon ja kuljetukseen, ja tarjoamme nopeaa ja luotettavaa palvelua modernilla kalustolla. Yritykset ja yksityishenkilöt voivat luottaa ympäristöystävällisiin ratkaisuihimme.",
+          servicesTitle: "Palvelumme",
+          contactTitle: "Yhteystiedot",
+          servicesList: `
+            <li>✅ Romumetallin nouto ja kuljetus</li>
+            <li>✅ Autojen poisto ja kierrätys</li>
+            <li>✅ Teollisuuden metallijätepalvelut</li>
+            <li>✅ Ympäristöystävälliset toimintatavat</li>
+            <li>✅ Nopea vaste ja ammattitaitoinen henkilökunta</li>`
+        }
+      };
+      document.getElementById("title").innerText = texts[lang].title;
+      document.getElementById("subtitle").innerText = texts[lang].subtitle;
+      document.getElementById("aboutTitle").innerText = texts[lang].aboutTitle;
+      document.getElementById("aboutText").innerText = texts[lang].aboutText;
+      document.getElementById("servicesTitle").innerText = texts[lang].servicesTitle;
+      document.getElementById("contactTitle").innerText = texts[lang].contactTitle;
+      document.getElementById("servicesList").innerHTML = texts[lang].servicesList;
     }
-
-    // Default language
-    setLang('en');
   </script>
 </body>
 </html>
