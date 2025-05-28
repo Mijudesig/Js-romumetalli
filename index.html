@@ -1,217 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JS-Romumetalli Oy</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;700&display=swap');
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS-Romumetalli Oy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0e0e0e;
+            color: #f5f5f5;
+        }
 
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #0a0a0a;
-      color: #f5f5f5;
-    }
+        header {
+            background-color: #111;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid gold;
+        }
 
-    header {
-      position: relative;
-      height: 100vh;
-      background: url('https://cdn.pixabay.com/photo/2020/04/21/10/07/black-5070490_1280.jpg') center/cover no-repeat;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      z-index: 1;
-    }
+        .logo {
+            font-size: 1.5em;
+            font-weight: 800;
+            color: gold;
+        }
 
-    header::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 0;
-    }
+        nav a {
+            color: gold;
+            margin-left: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
 
-    header h1 {
-      z-index: 1;
-      font-family: 'Anton', sans-serif;
-      font-size: 4rem;
-      color: gold;
-    }
+        nav a:hover {
+            color: #ffffff;
+        }
 
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background-color: #111;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
+        .language-switcher {
+            display: flex;
+            gap: 10px;
+            margin-left: auto;
+        }
 
-    .nav a {
-      color: gold;
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://i.imgur.com/Vkq69AU.jpeg') center/cover no-repeat;
+            color: gold;
+        }
 
-    .nav a:hover {
-      color: white;
-      text-shadow: 0 0 10px gold;
-    }
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
 
-    .lang-toggle {
-      cursor: pointer;
-      color: gold;
-      border: 1px solid gold;
-      padding: 5px 10px;
-      border-radius: 5px;
-    }
+        .hero p {
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: auto;
+        }
 
-    .section {
-      padding: 4rem 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
+        section {
+            padding: 60px 40px;
+            border-bottom: 1px solid #333;
+        }
 
-    h2 {
-      color: gold;
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-    }
+        h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: gold;
+        }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1rem;
-    }
+        .contact {
+            background: #111;
+            color: #f5f5f5;
+        }
 
-    .gallery img {
-      width: 100%;
-      border: 3px solid gold;
-      border-radius: 10px;
-      transition: transform 0.3s;
-    }
+        .contact p {
+            font-size: 1.1em;
+        }
 
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
+        footer {
+            padding: 30px 40px;
+            text-align: center;
+            background: #000;
+            color: gold;
+        }
 
-    .contact-info {
-      text-align: center;
-      margin-top: 2rem;
-    }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
 
-    footer {
-      background: #111;
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #888;
-    }
-
-    button {
-      background: none;
-      border: 2px solid gold;
-      padding: 0.5rem 1rem;
-      color: gold;
-      font-weight: bold;
-      border-radius: 5px;
-      cursor: pointer;
-      margin: 1rem auto;
-      display: block;
-      transition: all 0.3s;
-    }
-
-    button:hover {
-      background: gold;
-      color: black;
-    }
-
-    /* Map & Sound */
-    iframe {
-      width: 100%;
-      border: none;
-      height: 300px;
-      border-radius: 10px;
-      margin-top: 2rem;
-    }
-  </style>
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border: 2px solid gold;
+        }
+    </style>
 </head>
 <body>
-  <div class="nav">
-    <div>
-      <a href="#about" data-en="About" data-fi="Meistä">About</a>
-      <a href="#gallery" data-en="Gallery" data-fi="Galleria">Gallery</a>
-      <a href="#contact" data-en="Contact" data-fi="Yhteystiedot">Contact</a>
+
+<header>
+    <div class="logo">JS-Romumetalli Oy</div>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <div class="language-switcher">
+        <button onclick="switchLang('en')">EN</button>
+        <button onclick="switchLang('fi')">FI</button>
     </div>
-    <div class="lang-toggle" onclick="toggleLang()">FI</div>
-  </div>
+</header>
 
-  <header>
-    <h1 data-en="JS-Romumetalli Oy" data-fi="JS-Romumetalli Oy">JS-Romumetalli Oy</h1>
-  </header>
-
-  <section id="about" class="section">
-    <h2 data-en="About Us" data-fi="Meistä">About Us</h2>
-    <p data-en="We are a premium metal recycling company located in Kokemäki, Finland. Quality, speed, and service are our core values."
-       data-fi="Olemme korkealaatuinen romumetalliyritys Kokemäellä. Laatu, nopeus ja palvelu ovat ydinarvojamme.">
-       We are a premium metal recycling company located in Kokemäki, Finland. Quality, speed, and service are our core values.
+<section class="hero">
+    <h1 id="title">Premium Scrap Metal Services</h1>
+    <p id="subtitle">We are your reliable partner for professional scrap metal recycling in Finland.</p>
+</section>
+<section id="about">
+    <h2 id="aboutTitle">About Us</h2>
+    <p id="aboutText">
+        JS-Romumetalli Oy is a professional scrap metal company located in Kokemäki, Finland. We offer reliable services in metal recycling, transportation, and machinery dismantling. With years of experience and a modern approach, we guarantee efficient and environmentally friendly solutions.
     </p>
-  </section>
+</section>
 
-  <section id="gallery" class="section">
-    <h2 data-en="Gallery" data-fi="Galleria">Gallery</h2>
+<section id="gallery">
+    <h2>Gallery</h2>
     <div class="gallery">
-      <img src="image1.png" alt="Truck">
-      <img src="image2.png" alt="Scrap metal">
-      <img src="image3.png" alt="Machines">
-      <img src="image4.jpeg" alt="Facility">
+        <img src="https://i.imgur.com/Vkq69AU.jpeg" alt="Truck 1">
+        <img src="https://i.imgur.com/v2LsX1r.png" alt="Metal Work">
+        <img src="https://i.imgur.com/r6OggID.png" alt="Industrial Site">
+        <img src="/mnt/data/89A03A00-1042-4FA8-BD04-35CA467E3308.png" alt="Uploaded 1">
+        <img src="/mnt/data/10A1EC31-F51C-480F-9379-4955612A8C5C.png" alt="Uploaded 2">
+        <img src="/mnt/data/9E2A7FDD-7A45-4B60-91B8-3B43CF1BBA2B.png" alt="Uploaded 3">
     </div>
-  </section>
+</section>
 
-  <section id="contact" class="section">
-    <h2 data-en="Contact" data-fi="Yhteystiedot">Contact</h2>
-    <div class="contact-info">
-      <p><strong data-en="Phone" data-fi="Puhelin">Phone</strong>: <a href="tel:+358400790622">+358 400 790 622</a></p>
-      <p><strong data-en="Email" data-fi="Sähköposti">Email</strong>: <a href="mailto:info@js-romumetalli.fi">info@js-romumetalli.fi</a></p>
-      <button onclick="window.open('mailto:info@js-romumetalli.fi')"
-              data-en="Send Email" data-fi="Lähetä sähköposti">Send Email</button>
+<section class="contact" id="contact">
+    <h2 id="contactTitle">Contact Us</h2>
+    <p><strong>Address:</strong> Kokemäentie 247b, 32800 Kokemäki</p>
+    <p><strong>Email:</strong> <a href="mailto:info@js-romumetalli.fi">info@js-romumetalli.fi</a></p>
+    <p><strong>Phone:</strong> <a href="tel:+358443342255">+358 44 334 2255</a></p>
+    <div style="margin-top: 20px;">
+        <iframe src="https://www.google.com/maps?q=Kokem%C3%A4entie+247b,+32800+Kokem%C3%A4ki,+Finland&output=embed" width="100%" height="300" style="border:2px solid gold;" allowfullscreen="" loading="lazy"></iframe>
     </div>
-    <iframe 
-      src="https://www.google.com/maps?q=Kokemäentie+247b,+Finland&output=embed"
-      allowfullscreen>
-    </iframe>
-  </section>
+</section>
 
-  <footer>
+<footer>
     &copy; 2025 JS-Romumetalli Oy. All rights reserved.
-  </footer>
+</footer>
 
-  <audio id="hoverSound" src="https://www.soundjay.com/transportation/car-door-close-1.mp3" preload="auto"></audio>
+<script>
+    const translations = {
+        fi: {
+            title: "Romumetallipalvelut ammattitaidolla",
+            subtitle: "Luotettava kumppanisi romumetallin kierrätykseen Suomessa.",
+            aboutTitle: "Meistä",
+            aboutText: "JS-Romumetalli Oy on ammattimainen romumetalliyritys Kokemäellä. Tarjoamme luotettavia palveluita metallin kierrätyksessä, kuljetuksessa ja koneiden purkamisessa. Kokemuksen ja nykyaikaisen lähestymistavan ansiosta takaamme tehokkaat ja ympäristöystävälliset ratkaisut.",
+            contactTitle: "Ota yhteyttä"
+        },
+        en: {
+            title: "Premium Scrap Metal Services",
+            subtitle: "We are your reliable partner for professional scrap metal recycling in Finland.",
+            aboutTitle: "About Us",
+            aboutText: "JS-Romumetalli Oy is a professional scrap metal company located in Kokemäki, Finland. We offer reliable services in metal recycling, transportation, and machinery dismantling. With years of experience and a modern approach, we guarantee efficient and environmentally friendly solutions.",
+            contactTitle: "Contact Us"
+        }
+    };
 
-  <script>
-    function toggleLang() {
-      const toggle = document.querySelector('.lang-toggle');
-      const isFi = toggle.textContent === 'FI';
-      toggle.textContent = isFi ? 'EN' : 'FI';
-
-      document.querySelectorAll('[data-en]').forEach(el => {
-        el.textContent = isFi ? el.dataset.fi : el.dataset.en;
-      });
+    function switchLang(lang) {
+        const t = translations[lang];
+        document.getElementById('title').innerText = t.title;
+        document.getElementById('subtitle').innerText = t.subtitle;
+        document.getElementById('aboutTitle').innerText = t.aboutTitle;
+        document.getElementById('aboutText').innerText = t.aboutText;
+        document.getElementById('contactTitle').innerText = t.contactTitle;
     }
+</script>
 
-    // Hover sound on buttons
-    document.querySelectorAll("button, a").forEach(el => {
-      el.addEventListener("mouseenter", () => {
-        document.getElementById("hoverSound").play();
-      });
-    });
-  </script>
 </body>
 </html>
