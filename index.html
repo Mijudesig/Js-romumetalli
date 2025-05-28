@@ -1,221 +1,208 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>JS-Romumetalli Oy</title>
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #0e0e0e;
-      color: #fefefe;
-      overflow-x: hidden;
+      padding: 0;
+      box-sizing: border-box;
     }
-
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      color: #f1f1f1;
+      scroll-behavior: smooth;
+    }
     header {
-      background-color: #0e0e0e;
+      background: #1c1c1c;
       padding: 20px;
-      text-align: center;
-      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
-
-    .logo {
-      font-size: 2rem;
-      color: #f8d66d;
+    header h1 {
+      color: #ffd700;
+      font-size: 24px;
+    }
+    nav a {
+      margin: 0 15px;
+      color: #ccc;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #ffd700;
+    }
+    .lang-switch {
+      margin-left: auto;
+      display: flex;
+      gap: 10px;
+    }
+    .lang-switch button {
+      background: #ffd700;
+      border: none;
+      color: #000;
       font-weight: bold;
-      animation: fadeInDown 1s ease-out;
-    }
-
-    .lang-switcher {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-    }
-
-    .lang-btn {
-      background: none;
-      border: 2px solid #f8d66d;
-      color: #f8d66d;
       padding: 5px 10px;
-      margin: 0 5px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: bold;
+      border-radius: 4px;
     }
-
-    .lang-btn:hover {
-      background: #f8d66d;
-      color: #0e0e0e;
-    }
-
     .hero {
       position: relative;
-      height: 100vh;
-      background: url('background.mp4') no-repeat center center/cover;
+      height: 80vh;
+      background: url('/mnt/data/BD2AC31C-D481-4E57-8C45-AAEB8D51AF7E.jpeg') no-repeat center center/cover;
       display: flex;
-      align-items: center;
       justify-content: center;
-      overflow: hidden;
+      align-items: center;
     }
-
-    .hero video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-
-    .truck-img {
-      position: absolute;
-      bottom: 0;
-      right: 5%;
-      width: 50vw;
-      max-width: 800px;
-      animation: slideInRight 2s ease-out forwards;
-      z-index: 3;
-    }
-
-    .content {
+    .hero-text {
+      background: rgba(0,0,0,0.7);
+      padding: 40px;
+      border-radius: 8px;
       text-align: center;
-      z-index: 2;
-      max-width: 800px;
-      margin: 0 auto;
-      animation: fadeInUp 1.5s ease;
     }
-
-    .content h1 {
-      font-size: 3rem;
-      color: #f8d66d;
+    .hero-text h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #ffd700;
     }
-
-    .content p {
-      font-size: 1.2rem;
-      color: #ccc;
+    .hero-text p {
+      font-size: 18px;
+      margin-bottom: 20px;
     }
-
-    .buttons {
-      margin-top: 30px;
-    }
-
-    .buttons a {
-      background: #f8d66d;
-      color: #0e0e0e;
+    .hero-text button {
+      background: #ffd700;
+      color: #000;
+      border: none;
       padding: 12px 24px;
-      text-decoration: none;
-      margin: 10px;
-      display: inline-block;
-      font-weight: bold;
-      transition: transform 0.3s ease, background 0.3s;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: 0.3s;
     }
-
-    .buttons a:hover {
-      transform: scale(1.05);
-      background: #ffeaa7;
+    .hero-text button:hover {
+      background: #e6c200;
     }
-
-    @keyframes fadeInDown {
-      0% { opacity: 0; transform: translateY(-20px); }
-      100% { opacity: 1; transform: translateY(0); }
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
     }
-
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
+    .about, .contact {
+      background: #1e1e1e;
+      border-radius: 12px;
+      padding: 40px;
     }
-
-    @keyframes slideInRight {
-      0% { opacity: 0; transform: translateX(100%); }
-      100% { opacity: 1; transform: translateX(0); }
-    }
-
-    /* Modal styles */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 99;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(14, 14, 14, 0.9);
-    }
-
-    .modal-content {
-      background-color: #1a1a1a;
-      margin: 10% auto;
-      padding: 20px;
-      border: 1px solid #f8d66d;
-      width: 80%;
-      max-width: 500px;
-      text-align: center;
-    }
-
-    .close {
-      color: #f8d66d;
-      float: right;
+    .about h3, .contact h3 {
+      color: #ffd700;
+      margin-bottom: 20px;
       font-size: 28px;
+    }
+    .about p, .contact p {
+      line-height: 1.6;
+      font-size: 18px;
+    }
+    .contact form {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .contact input, .contact textarea {
+      padding: 12px;
+      border-radius: 6px;
+      border: none;
+      font-size: 16px;
+    }
+    .contact button {
+      background: #ffd700;
+      color: #000;
+      border: none;
+      padding: 12px;
       font-weight: bold;
       cursor: pointer;
+      border-radius: 6px;
     }
-
-    .close:hover {
-      color: #fff;
+    footer {
+      background: #111;
+      padding: 30px 20px;
+      text-align: center;
+      color: #888;
+      font-size: 14px;
+    }
+    .fade-in {
+      animation: fadeIn 1s ease-in forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">JS-Romumetalli Oy</div>
-    <div class="lang-switcher">
-      <button class="lang-btn" onclick="switchLang('en')">EN</button>
-      <button class="lang-btn" onclick="switchLang('fi')">FI</button>
+    <h1>JS-Romumetalli Oy</h1>
+    <nav>
+      <a href="#about" class="nav-link">Tietoa meistä</a>
+      <a href="#contact" class="nav-link">Yhteystiedot</a>
+    </nav>
+    <div class="lang-switch">
+      <button onclick="setLang('fi')">FI</button>
+      <button onclick="setLang('en')">EN</button>
     </div>
   </header>
 
-  <div class="hero">
-    <video autoplay muted loop>
-      <source src="background.mp4" type="video/mp4" />
-    </video>
-    <img src="https://i.imgur.com/WwKxiE9.jpeg" alt="Truck" class="truck-img" />
-    <div class="content">
-      <h1 data-en="Premium Scrap Services" data-fi="Laadukas Romutuspalvelu">Premium Scrap Services</h1>
-      <p data-en="Serving Finland with reliable vehicle and metal recycling." data-fi="Luotettava auto- ja metallinkierrätys koko Suomessa.">Serving Finland with reliable vehicle and metal recycling.</p>
-      <div class="buttons">
-        <a href="#contact" data-en="Contact Us" data-fi="Ota Yhteyttä">Contact Us</a>
-        <a href="#services" data-en="Our Services" data-fi="Palvelut">Our Services</a>
-        <a href="#map" data-en="Find Us" data-fi="Sijainti">Find Us</a>
-      </div>
+  <section class="hero">
+    <div class="hero-text fade-in">
+      <h2 data-fi="Luotettava purkutyön kumppani" data-en="Your Reliable Metal Recycling Partner">Luotettava purkutyön kumppani</h2>
+      <p data-fi="Erikoistunut romumetallin ja purkutöiden alaan Etelä-Suomessa." data-en="Specialized in scrap metal and demolition services in Southern Finland.">
+        Erikoistunut romumetallin ja purkutöiden alaan Etelä-Suomessa.
+      </p>
+      <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+        <span data-fi="Ota yhteyttä" data-en="Contact Us">Ota yhteyttä</span>
+      </button>
     </div>
-  </div>
+  </section>
 
-  <!-- Modal -->
-  <div id="truckModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="document.getElementById('truckModal').style.display='none'">&times;</span>
-      <h2 data-en="Scrap Truck Ready" data-fi="Romuauto Valmiina">Scrap Truck Ready</h2>
-      <p data-en="Our fleet is available 24/7 across Finland." data-fi="Meidän kalusto on käytettävissä 24/7 koko Suomessa.">Our fleet is available 24/7 across Finland.</p>
-    </div>
-  </div>
+  <section id="about" class="about fade-in">
+    <h3 data-fi="Tietoa meistä" data-en="About Us">Tietoa meistä</h3>
+    <p data-fi="JS-Romumetalli Oy on suomalainen perheyritys, joka on erikoistunut metallinkierrätykseen, purkutöihin ja romumetallin käsittelyyn. Yli 20 vuoden kokemuksella palvelemme sekä yrityksiä että yksityishenkilöitä koko Etelä-Suomen alueella." 
+       data-en="JS-Romumetalli Oy is a Finnish family-owned company specializing in metal recycling, demolition, and scrap metal processing. With over 20 years of experience, we serve both businesses and individuals across Southern Finland.">
+      JS-Romumetalli Oy on suomalainen perheyritys, joka on erikoistunut metallinkierrätykseen, purkutöihin ja romumetallin käsittelyyn. Yli 20 vuoden kokemuksella palvelemme sekä yrityksiä että yksityishenkilöitä koko Etelä-Suomen alueella.
+    </p>
+  </section>
+
+  <section id="contact" class="contact fade-in">
+    <h3 data-fi="Yhteystiedot" data-en="Contact Us">Yhteystiedot</h3>
+    <p data-fi="Sähköposti: info@js-romumetalli.fi | Puhelin: +358 40 123 4567"
+       data-en="Email: info@js-romumetalli.fi | Phone: +358 40 123 4567">
+      Sähköposti: info@js-romumetalli.fi | Puhelin: +358 40 123 4567
+    </p>
+    <form>
+      <input type="text" placeholder="Nimi / Name" required>
+      <input type="email" placeholder="Sähköposti / Email" required>
+      <textarea rows="4" placeholder="Viesti / Message" required></textarea>
+      <button type="submit">Lähetä / Send</button>
+    </form>
+  </section>
+
+  <footer>
+    © 2025 JS-Romumetalli Oy. Kaikki oikeudet pidätetään.
+  </footer>
 
   <script>
-    function switchLang(lang) {
-      const elements = document.querySelectorAll('[data-en]');
-      elements.forEach(el => {
-        el.innerText = el.getAttribute('data-' + lang);
+    function setLang(lang) {
+      document.querySelectorAll('[data-fi]').forEach(el => {
+        el.textContent = el.getAttribute(`data-${lang}`);
       });
     }
-
-    // Show modal after 5 seconds
-    window.onload = () => {
-      setTimeout(() => {
-        document.getElementById('truckModal').style.display = 'block';
-      }, 5000);
-    };
   </script>
 </body>
 </html>
