@@ -1,232 +1,194 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>JS-Romumetalli Oy</title>
   <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0; padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: 'Arial', sans-serif;
-      background: url('https://i.imgur.com/wLVVark.png') no-repeat center center fixed;
-      background-size: cover;
-      backdrop-filter: blur(6px);
-      color: #f8f8f8;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #111;
+      color: #fff;
       overflow-x: hidden;
     }
 
     header {
-      background: rgba(0, 0, 0, 0.6);
+      background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+                  url('https://i.imgur.com/wLVVark.png') no-repeat center center/cover;
+      height: 100vh;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: space-between;
-      padding: 20px 50px;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
-
-    header img {
-      height: 60px;
-    }
-
-    nav button {
-      font-family: 'Anton', sans-serif;
-      margin-left: 15px;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 30px;
-      background: #FFD966;
-      color: #000;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    }
-
-    nav button:hover {
-      background: #FFC000;
-      transform: scale(1.05);
-    }
-
-    .hero {
-      padding: 100px 50px 50px;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.4);
-      animation: fadeIn 2s ease-in-out;
-    }
-
-    .hero h1 {
-      font-family: 'Anton', sans-serif;
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .content {
-      display: flex;
-      flex-wrap: wrap;
-      padding: 50px;
-      gap: 30px;
-      justify-content: center;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.07);
-      border-radius: 16px;
       padding: 30px;
-      max-width: 400px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
-      transition: transform 0.3s ease;
-      backdrop-filter: blur(4px);
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-    }
-
-    .card img {
-      width: 100%;
-      border-radius: 8px;
-      margin-bottom: 15px;
-    }
-
-    .card h2 {
-      font-family: 'Anton', sans-serif;
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    .contact, .map {
-      padding: 50px;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.6);
-    }
-
-    .contact h2, .map h2 {
-      font-family: 'Anton', sans-serif;
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-
-    .contact p {
-      font-size: 16px;
-      margin: 5px 0;
-    }
-
-    iframe {
-      width: 100%;
-      height: 300px;
-      border: none;
-      border-radius: 12px;
-      margin-top: 20px;
+      text-shadow: 0 0 10px #000;
+      animation: fadeIn 1.5s ease-in;
     }
 
     @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
+      from { opacity: 0 }
+      to { opacity: 1 }
     }
 
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        padding: 20px;
-      }
-
-      nav {
-        margin-top: 10px;
-      }
-
-      .content {
-        padding: 30px 20px;
-      }
-
-      .card {
-        width: 100%;
-      }
+    .logo {
+      max-width: 160px;
+      filter: drop-shadow(0 0 5px #000);
     }
+
+    .lang-switch {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      z-index: 1000;
+    }
+
+    .lang-switch button {
+      border: none;
+      background: #ffd369;
+      color: #000;
+      padding: 10px 18px;
+      margin-left: 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 0 10px rgba(255, 211, 105, 0.4);
+      transition: transform 0.2s, box-shadow 0.3s;
+    }
+
+    .lang-switch button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 211, 105, 0.7);
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    h1, h2 {
+      font-family: 'Anton', sans-serif;
+      color: #ffd369;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin-top: 40px;
+      border-bottom: 2px solid #ffd369;
+      padding-bottom: 10px;
+      display: inline-block;
+    }
+
+    p {
+      line-height: 1.6;
+      font-size: 17px;
+      margin-bottom: 20px;
+    }
+
+    .section {
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 40px;
+      margin-bottom: 40px;
+      box-shadow: 0 0 30px rgba(255, 211, 105, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .section:hover {
+      transform: translateY(-5px);
+    }
+
+    .contact {
+      background: #222;
+      padding: 30px;
+      border-top: 3px solid #ffd369;
+      box-shadow: 0 0 10px rgba(255, 211, 105, 0.2);
+    }
+
+    .photo-box {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .photo-box img {
+      max-width: 300px;
+      border: 4px solid #ffd369;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 211, 105, 0.4);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #ccc;
+    }
+
   </style>
 </head>
 <body>
 
-<header>
-  <img src="https://i.imgur.com/r6OggID.png" alt="JS Romumetalli logo">
-  <nav>
-    <button onclick="setLang('fi')">FI</button>
-    <button onclick="setLang('en')">EN</button>
-  </nav>
-</header>
-
-<section class="hero">
-  <h1>JS-Romumetalli Oy</h1>
-  <p id="tagline">Nopeat noudot, hyvät hinnat, ammattitaitoista palvelua Satakunnassa.</p>
-</section>
-
-<section class="content">
-  <div class="card">
-    <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Romuauto">
-    <h2>Romut ja noudot</h2>
-    <p>
-      Noudamme nopeasti ja tehokkaasti kaikenlaiset romut: autot, koneet, metallit. Tarjoamme hyvät hinnat ja luotettavat noudot suoraan asiakkaalta Satakunnan alueella.
-    </p>
+  <div class="lang-switch">
+    <button onclick="setLanguage('fi')">FI</button>
+    <button onclick="setLanguage('en')">EN</button>
   </div>
-  <div class="card">
-    <img src="https://i.imgur.com/DSfZuV3.jpeg" alt="Purkutyöt">
-    <h2>Purkutyöt</h2>
-    <p>
-      Suoritamme purkutöitä ammattitaidolla — rakennuksista konehalleihin. Avaimet käteen -palvelumme sisältää kaiken: purkamisen, kuljetuksen ja lajittelun.
-    </p>
+
+  <header>
+    <img src="https://i.imgur.com/r6OggID.png" alt="JS-Romumetalli Oy Logo" class="logo">
+    <div style="max-width: 700px;">
+      <h1>JS-Romumetalli Oy</h1>
+      <p style="font-size: 20px; color: #ddd;">Luotettavat metalliromun noudot ja purkutyöt Satakunnan alueella</p>
+    </div>
+  </header>
+
+  <div class="content">
+
+    <div class="section">
+      <h2>Noudamme metalliromut nopeasti</h2>
+      <p>
+        Olemme erikoistuneet erilaisten metalliromujen keräämiseen ja purkutöiden tekemiseen. Noudamme ja kierrätämme kaiken kuparista alumiinikaapeleihin ja rakennusten purkujätteisiin. Kaikki romu ostetaan hyvään hintaan ja noudetaan sopimuksen mukaan. Haemme autot, työkoneet, puimurit, linja-autot, kuorma-autot ja muut metalliromut.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Suuret ja pienet purkutyöt</h2>
+      <p>
+        Saat meiltä avaimet käteen -palveluna sekä puu- että metallirakennusten purkutyöt. Puramme talot, ladot, autotallit ja muut rakennukset. Käytämme kahmaria tai kaivinkonetta tarpeen mukaan ja hoidamme purkujätteen lajittelun ja kierrätyksen lainmukaisesti.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Romuautot kiertoon ekologisesti</h2>
+      <p>
+        Romuautojen kierrätys on helppoa. Tilaa nouto, me haemme auton ja toimitamme sen metallinkierrätykseen. Auto poistetaan TraFi-rekisteristä ja saat virallisen romutustodistuksen. Tarvitset vain valtakirjan.
+      </p>
+    </div>
+
+    <div class="photo-box">
+      <img src="https://i.imgur.com/zvbBW84.jpeg" alt="JS-Romumetalli Action Photo">
+    </div>
+
+    <div class="contact">
+      <h2>Yhteystiedot</h2>
+      <p><strong>Osoite:</strong> Kokemäentie 247b, Köyliö</p>
+      <p><strong>Puhelin:</strong> <a href="tel:+358443387395" style="color:#ffd369;">044 338 7395</a></p>
+      <p><strong>Sähköposti:</strong> <a href="mailto:js-romumetalli@js-romumetalli.fi" style="color:#ffd369;">js-romumetalli@js-romumetalli.fi</a></p>
+      <p><strong>Toimimme koko Satakunnan alueella.</strong></p>
+      <p>Ota yhteyttä sähköpostitse tai soita – palvelemme nopeasti ja luotettavasti!</p>
+    </div>
+
   </div>
-  <div class="card">
-    <img src="https://i.imgur.com/KjFiOZO.png" alt="Kierrätys">
-    <h2>Romuautojen kierrätys</h2>
-    <p>
-      Helppoa ja ekologista: haemme romuautosi, hoidamme paperityöt ja varmistamme, että auto päätyy turvallisesti kierrätykseen. Saat virallisen romutustodistuksen.
-    </p>
-  </div>
-</section>
 
-<section class="contact">
-  <h2>Yhteystiedot</h2>
-  <p>Puhelin: <a href="tel:+358443387395">044 338 7395</a></p>
-  <p>Sähköposti: <a href="mailto:jsromumetalli@gmail.com">jsromumetalli@gmail.com</a></p>
-</section>
+  <footer>
+    &copy; 2025 JS-Romumetalli Oy — Kaikki oikeudet pidätetään.
+  </footer>
 
-<section class="map">
-  <h2>Sijainti</h2>
-  <p>Kokemäentie 247b, Köyliö</p>
-  <iframe src="https://www.google.com/maps?q=Kokemäentie+247b,+Köyliö&output=embed"></iframe>
-</section>
-
-<script>
-  const langTexts = {
-    fi: {
-      tagline: "Nopeat noudot, hyvät hinnat, ammattitaitoista palvelua Satakunnassa.",
-    },
-    en: {
-      tagline: "Fast pickups, fair prices, professional service in Satakunta.",
+  <script>
+    function setLanguage(lang) {
+      alert("Tämä on esikatselukoodi. Kielen vaihto ei vielä ole aktiivinen.");
     }
-  };
-
-  function setLang(lang) {
-    document.getElementById('tagline').innerText = langTexts[lang].tagline;
-  }
-</script>
+  </script>
 
 </body>
 </html>
