@@ -1,383 +1,283 @@
 <!DOCTYPE html>
-<html lang="fi">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>JS-Romumetalli Oy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet"/>
   <style>
     * {
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
-
     body {
-      font-family: 'Arial', sans-serif;
-      background: url('https://i.imgur.com/wLVVark.png') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
-      overflow-x: hidden;
+      font-family: 'Anton', sans-serif;
+      background: #1b1b1b;
+      color: #fff;
+      scroll-behavior: smooth;
     }
-
-    .overlay {
-      backdrop-filter: blur(6px);
-      background-color: rgba(0, 0, 0, 0.6);
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 0;
-    }
-
-    .container {
-      position: relative;
-      z-index: 2;
-      padding: 40px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
     header {
+      background: rgba(0,0,0,0.85);
+      padding: 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-bottom: 20px;
-      border-bottom: 2px solid #ffc70044;
+      border-bottom: 2px solid #ffd70033;
     }
-
-    header img {
-      max-height: 70px;
+    header h1 {
+      font-size: 28px;
+      color: #ffd700;
     }
-
-    .lang-switch {
-      display: flex;
-      gap: 10px;
-    }
-
-    .lang-switch button {
-      background: none;
-      border: 2px solid #ffc70088;
+    nav a {
       color: white;
-      padding: 6px 12px;
-      cursor: pointer;
-      border-radius: 8px;
-      font-weight: bold;
+      margin: 0 15px;
+      text-decoration: none;
+      position: relative;
+    }
+    nav a::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #ffd700;
       transition: 0.3s;
     }
-
-    .lang-switch button:hover {
-      background: #ffc700;
-      color: black;
+    nav a:hover::after {
+      width: 100%;
     }
-
-    h1, h2 {
-      font-family: 'Anton', sans-serif;
-      margin: 20px 0 10px;
-    }
-
-    h1 {
-      font-size: 42px;
-    }
-
-    h2 {
-      font-size: 30px;
-    }
-
-    .section {
-      margin-top: 50px;
-    }
-
-    .buttons {
+    .hero {
+      background: url('https://i.imgur.com/wLVVark.png') center/cover no-repeat;
+      height: 100vh;
       display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+    .hero h2 {
+      font-size: 64px;
+      color: #ffd700;
+      text-shadow: 0 0 10px #000;
+    }
+    .hero p {
+      font-size: 20px;
       margin-top: 20px;
+      color: #eee;
     }
-
-    .button {
-      padding: 12px 20px;
-      border-radius: 12px;
-      border: none;
-      background-color: #ffc700;
-      color: black;
-      font-weight: bold;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
-      cursor: pointer;
-    }
-
-    .button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(255,199,0,0.6);
-    }
-
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #ffd700;
+      color: #000;
+      border-radius: 8px;
       margin-top: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #ffd70088;
     }
-
+    .btn:hover {
+      background: #fff;
+      color: #000;
+      box-shadow: 0 0 20px #ffd700cc;
+    }
+    section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    h3 {
+      color: #ffd700;
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
     .card {
-      background-color: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 16px;
+      background: #262626;
       padding: 20px;
-      flex: 1 1 300px;
-      transition: 0.3s ease;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    }
-
-    .card:hover {
-      background-color: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    }
-
-    .card img {
-      max-width: 100%;
       border-radius: 12px;
+      box-shadow: 0 0 10px #000;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px #ffd70077;
+    }
+    .card h4 {
+      color: #fff;
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+    .card p {
+      color: #bbb;
+      font-size: 16px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #000;
+      transition: 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px #ffd70055;
+    }
+    .lang-switcher {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+    }
+    .lang-switcher button {
+      background: #ffd700;
+      border: none;
+      padding: 10px;
+      margin-left: 5px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .contact {
+      background: #111;
+      padding: 40px 20px;
+      border-top: 2px solid #ffd70033;
+    }
+    .contact h4 {
+      color: #ffd700;
+      font-size: 24px;
       margin-bottom: 15px;
     }
-
-    footer {
-      margin-top: 60px;
-      padding-top: 40px;
-      border-top: 2px solid #ffc70044;
-      font-size: 14px;
+    .contact p {
+      font-size: 16px;
+      color: #ccc;
+      margin-bottom: 8px;
     }
-
-    .map {
+    iframe {
       width: 100%;
       height: 300px;
-      border-radius: 12px;
+      border: none;
+      border-radius: 10px;
       margin-top: 20px;
     }
-
-    @media (max-width: 768px) {
-      .cards {
-        flex-direction: column;
-      }
-
-      h1 {
-        font-size: 32px;
-      }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #000;
+      color: #888;
     }
   </style>
 </head>
 <body>
-<div class="overlay"></div>
-<div class="container">
+
   <header>
-    <img src="https://i.imgur.com/r6OggID.png" alt="JS-Romumetalli Logo" />
-    <div class="lang-switch">
-      <button onclick="switchLang('fi')">🇫🇮</button>
-      <button onclick="switchLang('en')">🇬🇧</button>
-    </div>
+    <h1>JS-Romumetalli Oy</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
-    <main>
-    <section class="section" id="about">
-      <h1 id="title">JS-Romumetalli Oy</h1>
-      <p id="description">
-        JS-Romumetalli Oy tarjoaa metalliromun noutoa ja kierrätyspalveluita nopeasti ja luotettavasti. Toimimme Köyliössä ja lähialueilla.
-      </p>
-      <div class="buttons">
-        <button class="button" onclick="scrollToSection('services')">Palvelut</button>
-        <button class="button" onclick="scrollToSection('contact')">Ota yhteyttä</button>
-      </div>
-    </section>
 
-    <section class="section" id="services">
-      <h2 id="servicesTitle">Palvelumme</h2>
-      <div class="cards">
-        <div class="card">
-          <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Noutopalvelu">
-          <h3 id="card1Title">Romun nouto</h3>
-          <p id="card1Text">Tarjoamme nopeaa ja maksutonta romun noutoa alueellasi.</p>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/WwKxiE9.jpeg" alt="Kierrätys">
-          <h3 id="card2Title">Kierrätys</h3>
-          <p id="card2Text">Romumetallin vastuullinen käsittely ja kierrätys ympäristöä ajatellen.</p>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/wLVVark.png" alt="Konsultointi">
-          <h3 id="card3Title">Konsultointi</h3>
-          <p id="card3Text">Neuvomme oikeanlaisen romun lajittelussa ja käsittelyssä.</p>
-        </div>
-      </div>
-    </section>
+  <div class="hero">
+    <div>
+      <h2>Reliable Metal Recycling in Köyliö</h2>
+      <p>Your trusted partner in sustainable scrap metal solutions.</p>
+      <a href="#contact" class="btn">Get in Touch</a>
+    </div>
+  </div>
 
-    <section class="section" id="contact">
-      <h2 id="contactTitle">Yhteystiedot</h2>
-      <p><strong>Email:</strong> <a href="mailto:info@js-romumetalli.fi" style="color: #ffc700;">info@js-romumetalli.fi</a></p>
-      <p><strong>Puhelin:</strong> <a href="tel:+358401234567" style="color: #ffc700;">+358 40 123 4567</a></p>
-      <p><strong>Osoite:</strong> Kokemäentie 247b, Köyliö, Suomi</p>
-      <iframe class="map"
-        src="https://www.google.com/maps?q=Kokem%C3%A4entie+247b,+K%C3%B6yli%C3%B6,+Finland&output=embed"
-        frameborder="0"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </section>
-  </main>
+  <section id="about">
+    <h3>About Us</h3>
+    <p>
+      JS-Romumetalli Oy is a modern scrap metal collection and recycling company located in Köyliö. We are dedicated to responsible recycling, offering services to both individuals and businesses. Our goal is to ensure efficient, ecological and customer-oriented service every step of the way.
+    </p>
+    <p>
+      With years of industry experience and reliable logistics, we ensure transparent pricing and professional service across Satakunta and beyond.
+    </p>
+  </section>
+
+  <section id="services">
+    <h3>Our Services</h3>
+    <div class="card-grid">
+      <div class="card">
+        <h4>Metal Collection</h4>
+        <p>We collect various types of scrap metal from construction sites, households, and industrial facilities.</p>
+      </div>
+      <div class="card">
+        <h4>Scrap Yard</h4>
+        <p>Our Köyliö-based scrap yard accepts all types of ferrous and non-ferrous metals.</p>
+      </div>
+      <div class="card">
+        <h4>Container Rental</h4>
+        <p>We provide rental containers for metal waste, with delivery and pickup at your location.</p>
+      </div>
+      <div class="card">
+        <h4>Vehicle Recycling</h4>
+        <p>We responsibly dispose of and recycle end-of-life vehicles with proper documentation.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <h3>Gallery</h3>
+    <div class="card-grid gallery">
+      <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Work site 1"/>
+      <img src="https://i.imgur.com/Vy2XQAi.jpeg" alt="Work site 2"/>
+      <img src="https://i.imgur.com/ZRABmET.jpeg" alt="Work site 3"/>
+      <img src="https://i.imgur.com/wLVVark.png" alt="Truck"/>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h3>Contact Information</h3>
+    <p><strong>Address:</strong> Kokemäentie 247b, 32800 Köyliö, Finland</p>
+    <p><strong>Phone:</strong> +358 40 123 4567</p>
+    <p><strong>Email:</strong> info@js-romumetalli.fi</p>
+    <p><strong>Open:</strong> Mon–Fri: 08:00–17:00</p>
+    <iframe src="https://maps.google.com/maps?q=Kokem%C3%A4entie%20247b,%20K%C3%B6yli%C3%B6&t=&z=14&ie=UTF8&iwloc=&output=embed"></iframe>
+  </section>
 
   <footer>
-    <p>© 2025 JS-Romumetalli Oy – Kaikki oikeudet pidätetään.</p>
+    &copy; 2025 JS-Romumetalli Oy — All rights reserved.
   </footer>
-</div>
-<script>
-  const translations = {
-    fi: {
-      title: "JS-Romumetalli Oy",
-      description: "JS-Romumetalli Oy tarjoaa metalliromun noutoa ja kierrätyspalveluita nopeasti ja luotettavasti. Toimimme Köyliössä ja lähialueilla.",
-      servicesTitle: "Palvelumme",
-      card1Title: "Romun nouto",
-      card1Text: "Tarjoamme nopeaa ja maksutonta romun noutoa alueellasi.",
-      card2Title: "Kierrätys",
-      card2Text: "Romumetallin vastuullinen käsittely ja kierrätys ympäristöä ajatellen.",
-      card3Title: "Konsultointi",
-      card3Text: "Neuvomme oikeanlaisen romun lajittelussa ja käsittelyssä.",
-      contactTitle: "Yhteystiedot"
-    },
-    en: {
-      title: "JS-Romumetalli Oy",
-      description: "JS-Romumetalli Oy offers fast and reliable scrap metal pickup and recycling services. We operate in Köyliö and surrounding areas.",
-      servicesTitle: "Our Services",
-      card1Title: "Scrap Pickup",
-      card1Text: "We offer fast and free scrap metal pickup in your area.",
-      card2Title: "Recycling",
-      card2Text: "Responsible scrap metal handling and recycling with care for the environment.",
-      card3Title: "Consulting",
-      card3Text: "We advise on sorting and processing your scrap correctly.",
-      contactTitle: "Contact"
-    }
-  };
 
-  function switchLang(lang) {
-    const t = translations[lang];
-    for (const key in t) {
-      const el = document.getElementById(key);
-      if (el) el.innerText = t[key];
-    }
-  }
+  <div class="lang-switcher">
+    <button onclick="setLang('en')">EN</button>
+    <button onclick="setLang('fi')">FI</button>
+  </div>
 
-  function scrollToSection(id) {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  }
-</script>
+  <script>
+    const translations = {
+      en: {
+        about: 'About Us',
+        services: 'Our Services',
+        gallery: 'Gallery',
+        contact: 'Contact Information',
+      },
+      fi: {
+        about: 'Tietoa Meistä',
+        services: 'Palvelumme',
+        gallery: 'Galleria',
+        contact: 'Yhteystiedot',
+      }
+    };
+
+    function setLang(lang) {
+      document.querySelector("#about h3").textContent = translations[lang].about;
+      document.querySelector("#services h3").textContent = translations[lang].services;
+      document.querySelector("#gallery h3").textContent = translations[lang].gallery;
+      document.querySelector("#contact h3").textContent = translations[lang].contact;
+    }
+  </script>
+
 </body>
 </html>
-<!-- Фоновое видео с затемнением -->
-<video autoplay muted loop id="bgVideo">
-  <source src="your-video.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-
-<style>
-  #bgVideo {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    z-index: -2;
-    filter: blur(6px) brightness(0.6);
-    object-fit: cover;
-  }
-</style>
-
-<!-- Звуковой эффект при клике -->
-<audio id="clickSound" src="https://actions.google.com/sounds/v1/cartoon/pop.ogg" preload="auto"></audio>
-<script>
-  const sound = document.getElementById("clickSound");
-  document.querySelectorAll(".button").forEach(btn => {
-    btn.addEventListener("click", () => {
-      sound.currentTime = 0;
-      sound.play();
-    });
-  });
-</script>
-
-<!-- Всплывающее окно при старте -->
-<div id="popup" class="popup">
-  <div class="popup-content">
-    <img src="https://i.imgur.com/WwKxiE9.jpeg" alt="Truck">
-    <button class="close-btn" onclick="closePopup()">×</button>
-    <h2>Tervetuloa!</h2>
-    <p>JS-Romumetalli Oy – Romun keräyksen asiantuntija Köyliössä.</p>
-  </div>
-</div>
-
-<style>
-  .popup {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex; justify-content: center; align-items: center;
-    z-index: 9999;
-  }
-  .popup-content {
-    background: #222;
-    padding: 2rem;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 0 15px #ffc70055;
-    position: relative;
-    max-width: 90%;
-  }
-  .popup-content img {
-    width: 300px;
-    border-radius: 10px;
-    margin-bottom: 1rem;
-  }
-  .close-btn {
-    position: absolute;
-    top: 10px; right: 15px;
-    background: transparent;
-    border: none;
-    color: #fff;
-    font-size: 2rem;
-    cursor: pointer;
-  }
-</style>
-
-<script>
-  function closePopup() {
-    document.getElementById("popup").style.display = "none";
-  }
-
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      document.getElementById("popup").style.display = "flex";
-    }, 500);
-  });
-</script>
-
-<!-- Анимации при прокрутке -->
-<script>
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-      }
-    });
-  });
-
-  document.querySelectorAll('.section, .card').forEach(el => {
-    observer.observe(el);
-  });
-</script>
-
-<style>
-  .section, .card {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.6s ease-out;
-  }
-  .section.show, .card.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-</style>
