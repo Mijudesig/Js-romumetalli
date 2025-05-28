@@ -2,74 +2,145 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="JS-Romumetalli Oy – professional vehicle metal recycling and dismantling services in Finland.">
   <title>JS-Romumetalli Oy</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Видео фон -->
+  <div class="video-background">
+    <video autoplay muted loop>
+      <source src="your-video-file.mp4" type="video/mp4" />
+    </video>
+    <div class="overlay"></div>
+  </div>
 
-  <header class="header">
-    <div class="logo">JS-Romumetalli Oy</div>
-    <nav class="navbar" id="navbar">
-      <ul>
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  <!-- Навигация -->
+  <header class="main-header">
+    <div class="container">
+      <div class="logo">JS-Romumetalli Oy</div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li class="lang-switch">
+            <button onclick="switchLang('en')">EN</button>
+            <button onclick="switchLang('fi')">FI</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <section class="hero" id="hero">
-    <video autoplay muted loop id="bg-video">
-      <source src="metal-video.mp4" type="video/mp4" />
-    </video>
-    <div class="hero-content">
-      <h1>Drive Into the Future</h1>
-      <p>Scrap. Demolish. Recycle. We bring metal to life again.</p>
-      <a href="#services" class="cta-button">Explore Services</a>
+  <!-- Главная секция -->
+  <section class="hero-section">
+    <div class="container">
+      <h1 class="hero-title">WE TURN METAL INTO POWER</h1>
+      <p class="hero-subtitle">Professional vehicle dismantling & recycling in Finland</p>
+      <a href="#contact" class="btn-primary">Contact Us</a>
     </div>
   </section>
 
-  <section class="section" id="services">
-    <h2 class="fade-in">Our Services</h2>
-    <div class="services-grid">
-      <div class="service-card fade-in">🔧 Metal Recycling</div>
-      <div class="service-card fade-in">🏗 Demolition</div>
-      <div class="service-card fade-in">🚛 Pickup Service</div>
+  <!-- О компании -->
+  <section id="about" class="section about-section">
+    <div class="container">
+      <h2>About JS-Romumetalli</h2>
+      <p>JS-Romumetalli Oy is a Finnish company specializing in the recycling and dismantling of old vehicles and scrap metal. With years of experience and a strong commitment to sustainability, we provide efficient, eco-friendly, and professional services across Finland.</p>
+      <div class="about-columns">
+        <div>
+          <h3>Our Mission</h3>
+          <p>To promote sustainable solutions in metal recycling while delivering high-quality service to our clients and partners.</p>
+        </div>
+        <div>
+          <h3>Why Choose Us?</h3>
+          <ul>
+            <li>✔️ Fast vehicle removal</li>
+            <li>✔️ Environmentally responsible processing</li>
+            <li>✔️ Competitive pricing</li>
+            <li>✔️ Trusted by hundreds of customers</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section" id="projects">
-    <h2 class="fade-in">Our Projects</h2>
-    <div class="project-gallery">
-      <img src="https://i.imgur.com/Ishg8nu.jpeg" alt="Truck on Road" class="fade-in" />
-      <img src="https://i.imgur.com/gtDk3t1.jpeg" alt="Scrapyard" class="fade-in" />
-      <img src="https://www.js-romumetalli.fi/wp-content/uploads/2020/09/slider_2-2.jpg" alt="Slider Scrap" class="fade-in" />
+  <!-- Услуги -->
+  <section id="services" class="section services-section">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="services-grid">
+        <div class="service-box">
+          <h3>Vehicle Dismantling</h3>
+          <p>We dismantle and recycle end-of-life vehicles in compliance with Finnish regulations.</p>
+        </div>
+        <div class="service-box">
+          <h3>Scrap Metal Collection</h3>
+          <p>We pick up and process all types of scrap metal quickly and efficiently.</p>
+        </div>
+        <div class="service-box">
+          <h3>Eco-Friendly Processing</h3>
+          <p>We follow strict environmental guidelines to minimize waste and pollution.</p>
+        </div>
+        <div class="service-box">
+          <h3>On-site Pick-Up</h3>
+          <p>We offer fast pick-up service for vehicles and scrap metal — anywhere in Finland.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section" id="contact">
-    <h2 class="fade-in">Contact Us</h2>
-    <form class="fade-in">
-      <input type="text" placeholder="Name" required />
-      <input type="email" placeholder="Email" required />
-      <textarea rows="4" placeholder="Your Message" required></textarea>
-      <button type="submit">Send</button>
-    </form>
+  <!-- Галерея -->
+  <section id="gallery" class="section gallery-section">
+    <div class="container">
+      <h2>Gallery</h2>
+      <div class="gallery-grid">
+        <img src="img1.jpeg" alt="Truck and metal pile">
+        <img src="img2.jpeg" alt="Vehicle dismantling site">
+        <img src="img3.jpeg" alt="JS-Romumetalli truck">
+        <img src="img4.jpeg" alt="Scrap metal collection">
+      </div>
+    </div>
   </section>
 
-  <footer class="footer">
-    <p>© 2025 JS-Romumetalli Oy. All rights reserved.</p>
+  <!-- Контакты -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>Feel free to reach out for any questions or service requests.</p>
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit" class="btn-primary">Send Message</button>
+      </form>
+      <div class="contact-info">
+        <p><strong>Address:</strong> Salo, Finland</p>
+        <p><strong>Email:</strong> <a href="mailto:info@js-romumetalli.fi">info@js-romumetalli.fi</a></p>
+        <p><strong>Phone:</strong> +358 40 123 4567</p>
+        <p><a href="https://www.instagram.com/mijudesig?igsh=MTZ1dGg2bzFjZnQzZw==" target="_blank">Instagram</a> |
+           <a href="https://www.behance.net/milanajunolai" target="_blank">Behance</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Футер -->
+  <footer class="main-footer">
+    <div class="container">
+      <p>&copy; 2025 JS-Romumetalli Oy. All rights reserved.</p>
+    </div>
   </footer>
 
+  <!-- Скрипты -->
   <script>
-    function toggleMenu() {
-      document.getElementById('navbar').classList.toggle('open');
+    function switchLang(lang) {
+      alert("Language switching is under development.");
     }
   </script>
-
 </body>
 </html>
