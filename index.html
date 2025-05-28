@@ -1,243 +1,212 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>JS-Romumetalli Oy</title>
   <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --dark: #1a1a1a;
-      --semi-dark: #2a2a2a;
-      --soft-yellow: #f5d76e;
-      --white: #ffffff;
-      --shadow: rgba(0, 0, 0, 0.4);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
+      margin: 0;
       font-family: 'Anton', sans-serif;
-      background: var(--dark);
-      color: var(--white);
+      background: #1a1a1a;
+      color: #fff;
       overflow-x: hidden;
     }
 
     header {
-      background-image: url('https://i.imgur.com/wLVVark.png');
-      background-size: cover;
-      background-position: center;
-      filter: blur(0px);
-      position: relative;
-      height: 90vh;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px 40px;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 2rem;
-      text-align: center;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 0 15px #000;
     }
 
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.65);
-      backdrop-filter: blur(5px);
-      z-index: 1;
-    }
-
-    header h1, header p {
-      position: relative;
-      z-index: 2;
-    }
-
-    header h1 {
-      font-size: 3.5rem;
-      color: var(--soft-yellow);
-      margin-bottom: 1rem;
-      text-shadow: 0 0 10px var(--soft-yellow);
-    }
-
-    header p {
-      font-size: 1.2rem;
-      color: #ddd;
-    }
-
-    .logo {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      width: 120px;
-      z-index: 10;
+    header img {
+      height: 50px;
     }
 
     .lang-switch {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      z-index: 10;
+      display: flex;
+      gap: 10px;
     }
 
     .lang-switch button {
-      background: var(--semi-dark);
-      color: var(--soft-yellow);
-      border: 1px solid var(--soft-yellow);
-      padding: 0.5rem 1rem;
-      margin-left: 0.5rem;
-      border-radius: 5px;
+      background: #ffcc00;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
       cursor: pointer;
-      font-family: 'Anton', sans-serif;
-      box-shadow: 0 0 5px var(--soft-yellow);
-      transition: 0.3s;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
     }
 
     .lang-switch button:hover {
-      background: var(--soft-yellow);
-      color: var(--dark);
+      background: #ffd633;
+      box-shadow: 0 6px 14px rgba(255,255,255,0.3);
     }
 
-    section {
-      padding: 4rem 2rem;
-      background: var(--semi-dark);
-      margin: 2rem;
-      border-radius: 20px;
-      box-shadow: 0 8px 30px var(--shadow);
+    .hero {
+      background: url('https://i.imgur.com/wLVVark.png') center/cover no-repeat;
+      filter: blur(2px);
+      height: 500px;
+      position: relative;
     }
 
-    h2.section-title {
-      font-size: 2.5rem;
-      color: var(--soft-yellow);
-      margin-bottom: 2rem;
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 500px;
+      background: rgba(0,0,0,0.4);
+    }
+
+    .intro-text {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       text-align: center;
+      z-index: 10;
     }
 
-    .services-grid, .gallery {
+    .intro-text h1 {
+      font-size: 60px;
+      color: #ffcc00;
+      text-shadow: 2px 2px 10px #000;
+      animation: fadeInDown 1.5s ease-out;
+    }
+
+    .section {
+      padding: 60px 40px;
+      background: #222;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.05);
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .card {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-    }
-
-    .service-card, .gallery-item {
-      background: var(--dark);
-      border-radius: 15px;
-      padding: 2rem;
-      max-width: 300px;
-      min-width: 250px;
-      box-shadow: 0 6px 20px var(--shadow);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .service-card:hover, .gallery-item:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 30px var(--shadow);
-    }
-
-    .service-card img {
-      width: 60px;
-      margin-bottom: 1rem;
-      filter: drop-shadow(0 0 5px var(--soft-yellow));
-    }
-
-    .service-card h3 {
-      color: var(--white);
-      margin-bottom: 1rem;
-    }
-
-    .service-card p {
-      color: #eee;
-      font-size: 0.95rem;
-    }
-
-    .gallery-item img {
-      width: 100%;
+      background: #333;
       border-radius: 10px;
-      box-shadow: 0 0 10px var(--shadow);
+      overflow: hidden;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    .card img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .card .info {
+      flex: 1;
+      padding: 20px;
+      color: #ffefb3;
     }
 
     footer {
       background: #111;
+      padding: 30px 40px;
       color: #aaa;
-      padding: 2rem;
+      font-size: 14px;
+      border-top: 2px solid #333;
       text-align: center;
     }
 
-    iframe {
-      width: 100%;
-      height: 300px;
-      border-radius: 15px;
-      margin-top: 2rem;
-      box-shadow: 0 5px 15px var(--shadow);
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .contact-info {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      text-align: center;
-      margin-top: 1rem;
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <img class="logo" src="https://i.imgur.com/r6OggID.png" alt="JS-Romumetalli Logo" />
-    <div class="lang-switch">
-      <button onclick="alert('Switched to Finnish')">FI</button>
-      <button onclick="alert('Switched to English')">EN</button>
-    </div>
-    <h1>JS-Romumetalli Oy</h1>
-    <p>Scrap Metal Collection & Recycling – Fast, Reliable, Eco-Friendly</p>
-  </header>
+<header>
+  <img src="https://i.imgur.com/r6OggID.png" alt="JS-Romumetalli logo"/>
+  <div class="lang-switch">
+    <button onclick="switchLang('fi')">FI</button>
+    <button onclick="switchLang('en')">EN</button>
+  </div>
+</header>
 
-  <section>
-    <h2 class="section-title">Our Services</h2>
-    <div class="services-grid">
-      <div class="service-card">
-        <img src="https://img.icons8.com/ios-filled/100/FFD700/truck.png" alt="Pickup">
-        <h3>Pickup Service</h3>
-        <p>Fast and free scrap metal pickup from your location. Serving homes & businesses.</p>
+<div class="hero"></div>
+<div class="overlay"></div>
+<div class="intro-text">
+  <h1>JS-Romumetalli Oy</h1>
+</div>
+
+<main>
+  <section class="section" id="content-fi">
+    <div class="card">
+      <img src="https://i.imgur.com/DSfZuV3.jpeg" alt="Auto 1" />
+      <div class="info">
+        <h2>NOUDAMME RAUTAROMUT NURKISTA NOPEASTI</h2>
+        <p>Olemme erikoistuneet erilaisten metalliromujen keräämiseen ja purkutöiden tekemiseen. Noudamme ja kierrätämme monenlaiset metalliromut kuparista alumiinikaapelelihin ja sähkömoottoreista rakennusten metallipurkujätteeseen.</p>
       </div>
-      <div class="service-card">
-        <img src="https://img.icons8.com/ios-filled/100/FFD700/recycle.png" alt="Recycling">
-        <h3>Eco-Friendly</h3>
-        <p>Environmentally responsible recycling. Clean, efficient, sustainable.</p>
+    </div>
+    <div class="card">
+      <img src="https://i.imgur.com/KjFiOZO.png" alt="Auto 2" />
+      <div class="info">
+        <h2>SUURET JA PIENET PURKUTYÖT</h2>
+        <p>Tarjoamme puu- ja metallirakennusten purkutyöt ammattitaidolla. Hoidamme purkujätteen poisviennin ja lajittelun lain vaatimusten mukaan. Tee tilaus!</p>
       </div>
-      <div class="service-card">
-        <img src="https://img.icons8.com/ios-filled/100/FFD700/handshake.png" alt="Partnership">
-        <h3>Partnership</h3>
-        <p>We offer long-term partnerships and consistent service for companies.</p>
+    </div>
+    <div class="card">
+      <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Auto 3" />
+      <div class="info">
+        <h2>ROMUAUTOT KIERTOON EKOLOGISESTI</h2>
+        <p>Tilaa romuautosi nouto meiltä ja hoidamme kaiken puolestasi, mukaan lukien romutustodistuksen ja rekisteristä poistamisen.</p>
       </div>
     </div>
   </section>
 
-  <section>
-    <h2 class="section-title">Gallery</h2>
-    <div class="gallery">
-      <div class="gallery-item"><img src="https://i.imgur.com/zvbBW84.jpeg" alt="Work photo 1"/></div>
-      <div class="gallery-item"><img src="https://i.imgur.com/BPCr7VW.jpg" alt="Work photo 2"/></div>
-      <div class="gallery-item"><img src="https://i.imgur.com/f8dEnLM.jpg" alt="Work photo 3"/></div>
-    </div>
+  <section class="section">
+    <h2>Yhteystiedot</h2>
+    <p>Osoite: Kokemäentie 247b, Köyliö</p>
+    <p>Puhelin: <a href="tel:+358443387395" style="color:#ffcc00;">044 338 7395</a></p>
+    <p>Sähköposti: <a href="mailto:js-romumetalli@outlook.com" style="color:#ffcc00;">js-romumetalli@outlook.com</a></p>
   </section>
+</main>
 
-  <section>
-    <h2 class="section-title">Yhteystiedot / Contact Info</h2>
-    <div class="contact-info">
-      <p><strong>Osoite / Address:</strong> Kokemäentie 247b, 32800 Köyliö, Finland</p>
-      <p><strong>Sähköposti / Email:</strong> info@js-romumetalli.fi</p>
-      <p><strong>Puhelin / Phone:</strong> +358 40 123 4567</p>
-    </div>
-    <iframe src="https://www.google.com/maps?q=Kokemäentie+247b,+Köyliö,+Finland&output=embed"></iframe>
-  </section>
+<footer>
+  © 2025 JS-Romumetalli Oy – Romumetallien nouto & purkutyöt Satakunnassa
+</footer>
 
-  <footer>
-    &copy; 2025 JS-Romumetalli Oy. All rights reserved.
-  </footer>
+<script>
+  function switchLang(lang) {
+    document.getElementById('content-fi').style.display = lang === 'fi' ? 'block' : 'none';
+    // Для английского можно добавить 'content-en', если потребуется.
+  }
+
+  // Установка финского по умолчанию
+  switchLang('fi');
+</script>
 
 </body>
 </html>
