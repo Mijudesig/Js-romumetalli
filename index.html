@@ -1,82 +1,237 @@
 <!DOCTYPE html>
-<html lang="fi">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JS-Romumetalli ja purkutyöt Oy</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script src="script.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JS-Romumetalli Oy</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background-color: #1a1a1a;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: #111;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid gold;
+    }
+
+    header img {
+      height: 60px;
+    }
+
+    nav a {
+      color: gold;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      background: radial-gradient(circle at center, #333 0%, #111 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .truck {
+      position: absolute;
+      width: 600px;
+      animation: slideTruck 2s ease-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes slideTruck {
+      0% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .hero h1 {
+      z-index: 1;
+      font-size: 48px;
+      text-align: center;
+      color: gold;
+    }
+
+    section {
+      padding: 80px 40px;
+    }
+
+    .about, .services, .contact {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      color: gold;
+      margin-bottom: 20px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .service-card {
+      background: #222;
+      padding: 20px;
+      border: 1px solid gold;
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover {
+      transform: scale(1.05);
+    }
+
+    .map {
+      width: 100%;
+      height: 400px;
+      margin-top: 30px;
+      border: 2px solid gold;
+    }
+
+    footer {
+      background: #111;
+      color: #aaa;
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 2px solid gold;
+    }
+
+    button {
+      background: gold;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: white;
+      color: black;
+    }
+
+    .lang-toggle {
+      margin-top: 10px;
+    }
+
+    .lang-toggle button {
+      margin-right: 10px;
+    }
+
+    .truck-front {
+      max-width: 100%;
+      margin-top: 40px;
+    }
+
+  </style>
 </head>
 <body>
+
   <header>
-    <div class="logo">
-      <img src="https://i.imgur.com/r6OggID.png" alt="JS-Romumetalli Logo" />
-    </div>
+    <img src="https://i.imgur.com/r6OggID.png" alt="JS-Romumetalli Logo" />
     <nav>
-      <ul>
-        <li><a href="#about" data-i18n="nav_about">Tietoa meistä</a></li>
-        <li><a href="#services" data-i18n="nav_services">Palvelut</a></li>
-        <li><a href="#gallery" data-i18n="nav_gallery">Galleria</a></li>
-        <li><a href="#contact" data-i18n="nav_contact">Yhteystiedot</a></li>
-      </ul>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <div class="language-switcher">
-      <button onclick="setLanguage('fi')">FI</button>
-      <button onclick="setLanguage('en')">EN</button>
-    </div>
   </header>
 
   <section class="hero">
-    <h1 data-i18n="hero_title">Romumetallin kierrätys ja purkutyöt</h1>
-    <p data-i18n="hero_subtitle">Luotettava kumppanisi metallin kierrätyksessä</p>
+    <h1>Welcome to JS-Romumetalli Oy</h1>
+    <img src="https://i.imgur.com/wLVVark.png" alt="Truck" class="truck" />
   </section>
 
-  <section id="about">
-    <h2 data-i18n="about_title">Tietoa meistä</h2>
-    <p data-i18n="about_text">
-      JS-Romumetalli ja purkutyöt Oy on erikoistunut metallin kierrätykseen ja purkutöihin. Tarjoamme palveluita yksityisille ja yrityksille.
+  <section class="about" id="about">
+    <h2>About Us</h2>
+    <p>
+      JS-Romumetalli Oy is a leading scrap metal recycling and logistics company based in Kokemäki, Finland. We provide high-quality metal collection, processing, and transport services with a strong focus on sustainability and efficiency.
     </p>
-  </section>
-
-  <section id="services">
-    <h2 data-i18n="services_title">Palvelut</h2>
-    <ul>
-      <li data-i18n="service1">Romumetallin keräys ja osto</li>
-      <li data-i18n="service2">Ajoneuvojen romutus</li>
-      <li data-i18n="service3">Rakennusten purkutyöt</li>
-      <li data-i18n="service4">Kuparin ja alumiinin osto</li>
-    </ul>
-  </section>
-
-  <section id="gallery">
-    <h2 data-i18n="gallery_title">Galleria</h2>
-    <div class="gallery">
-      <img src="https://i.imgur.com/WwKxiE9.jpeg" alt="Gallery Image 1" />
-      <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Gallery Image 2" />
-      <img src="https://i.imgur.com/wLVVark.png" alt="Gallery Image 3" />
+    <div class="lang-toggle">
+      <button onclick="translate('en')">English</button>
+      <button onclick="translate('fi')">Suomi</button>
     </div>
   </section>
 
-  <section id="contact">
-    <h2 data-i18n="contact_title">Yhteystiedot</h2>
-    <p><strong data-i18n="address_label">Osoite:</strong> Kokemäentie 247 B, 27710 Köyliö</p>
-    <p><strong data-i18n="phone_label">Puhelin:</strong> <a href="tel:+358443387395">+358 44 338 7395</a></p>
-    <p><strong data-i18n="email_label">Sähköposti:</strong> <a href="mailto:info@js-romumetalli.fi">info@js-romumetalli.fi</a></p>
+  <section class="services" id="services">
+    <h2>Our Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Scrap Collection</h3>
+        <p>Fast and reliable scrap metal pickup from businesses and private clients.</p>
+      </div>
+      <div class="service-card">
+        <h3>Transport Services</h3>
+        <p>Modern trucks for large-scale transportation across Finland.</p>
+      </div>
+      <div class="service-card">
+        <h3>Metal Recycling</h3>
+        <p>Eco-friendly processing and reuse of all metal types.</p>
+      </div>
+      <div class="service-card">
+        <h3>Industrial Dismantling</h3>
+        <p>Professional dismantling of machinery, buildings, and structures.</p>
+      </div>
+    </div>
+    <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Fleet" class="truck-front" />
+    <img src="https://i.imgur.com/WwKxiE9.jpeg" alt="Yard" class="truck-front" />
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p><strong>Address:</strong> Kokemäentie 247b, 32800 Kokemäki</p>
+    <p><strong>Email:</strong> info@js-romumetalli.fi</p>
+    <p><strong>Phone:</strong> +358 40 123 4567</p>
+
     <div class="map">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1996.123456789!2d22.27756!3d61.194258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x468f1b1c2d3e4f5%3A0xabcdef1234567890!2sKokemäentie%20247%20B%2C%2027710%20Köyliö%2C%20Finland!5e0!3m2!1sen!2sfi!4v1610000000000!5m2!1sen!2sfi"
-        width="600"
-        height="450"
-        style="border:0;"
-        allowfullscreen=""
-        loading="lazy"
-      ></iframe>
+      <iframe src="https://www.google.com/maps?q=Kokemäentie+247b,+Kokemäki,+Finland&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>
     </div>
   </section>
 
   <footer>
-    <p>&copy; 2025 JS-Romumetalli ja purkutyöt Oy</p>
+    &copy; 2025 JS-Romumetalli Oy. All rights reserved.
   </footer>
+
+  <script>
+    const content = {
+      en: {
+        about: "JS-Romumetalli Oy is a leading scrap metal recycling and logistics company based in Kokemäki, Finland. We provide high-quality metal collection, processing, and transport services with a strong focus on sustainability and efficiency.",
+      },
+      fi: {
+        about: "JS-Romumetalli Oy on johtava romumetallin kierrätys- ja logistiikkayritys Kokemäellä. Tarjoamme korkealaatuisia metallin keräys-, käsittely- ja kuljetuspalveluita painottaen kestävyyttä ja tehokkuutta.",
+      },
+    };
+
+    function translate(lang) {
+      document.querySelector(".about p").textContent = content[lang].about;
+    }
+  </script>
+
 </body>
 </html>
-
