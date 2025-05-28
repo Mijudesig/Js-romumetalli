@@ -4,68 +4,95 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JS-romumetalli ja purkutyöt Oy</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <div class="language-switcher">
-      <button onclick="setLanguage('fi')">🇫🇮</button>
-      <button onclick="setLanguage('en')">🇬🇧</button>
-    </div>
-    <h1 data-en="JS-romumetalli ja purkutyöt Oy" data-fi="JS-romumetalli ja purkutyöt Oy">
-      JS-romumetalli ja purkutyöt Oy
-    </h1>
-    <p data-en="Professional demolition and metal recycling services in Finland"
-       data-fi="Ammattimaiset purkutyöt ja metallinkierrätys Suomessa">
-       Professional demolition and metal recycling services in Finland
-    </p>
+  <!-- Language Switch -->
+  <div class="language-switcher">
+    <button onclick="setLanguage('en')">EN</button>
+    <button onclick="setLanguage('fi')">FI</button>
+  </div>
+
+  <!-- Navigation -->
+  <header class="main-header">
+    <h1 class="brand-name">JS-romumetalli ja purkutyöt Oy</h1>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <nav>
-    <ul>
-      <li><a href="#about" data-en="About Us" data-fi="Tietoa meistä">About Us</a></li>
-      <li><a href="#services" data-en="Services" data-fi="Palvelut">Services</a></li>
-      <li><a href="#projects" data-en="Projects" data-fi="Projektit">Projects</a></li>
-      <li><a href="#contact" data-en="Contact" data-fi="Yhteystiedot">Contact</a></li>
-    </ul>
-  </nav>
-
-  <section id="about">
-    <h2 data-en="About Us" data-fi="Tietoa meistä">About Us</h2>
-    <p data-en="We specialize in environmentally conscious demolition and recycling of metal materials."
-       data-fi="Olemme erikoistuneet ympäristöystävällisiin purkutöihin ja metallien kierrätykseen.">
-       We specialize in environmentally conscious demolition and recycling of metal materials.
-    </p>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h2>Efficient Demolition & Metal Recycling</h2>
+    <p>Your reliable partner in sustainable demolition and metal recovery.</p>
   </section>
 
-  <section id="services">
-    <h2 data-en="Services" data-fi="Palvelut">Services</h2>
-    <ul>
-      <li data-en="Building Demolition" data-fi="Rakennusten purku">Building Demolition</li>
-      <li data-en="Scrap Metal Recycling" data-fi="Romumetallin kierrätys">Scrap Metal Recycling</li>
-      <li data-en="Waste Disposal" data-fi="Jätteen käsittely">Waste Disposal</li>
-      <li data-en="Consulting" data-fi="Konsultointi">Consulting</li>
-    </ul>
+  <!-- About -->
+  <section id="about" class="about">
+    <div class="text-block">
+      <h3>About Us</h3>
+      <p>We are professionals in demolition and scrap metal management based in Finland. Our goal is sustainability and clean execution, backed by years of experience and heavy equipment ready for any scale.</p>
+    </div>
+    <div class="about-images">
+      <!-- AI/photo images will go here -->
+    </div>
   </section>
 
-  <section id="projects">
-    <h2 data-en="Projects" data-fi="Projektit">Projects</h2>
-    <p data-en="Gallery coming soon..." data-fi="Galleria tulossa pian...">Gallery coming soon...</p>
+  <!-- Services -->
+  <section id="services" class="services">
+    <h3>Our Services</h3>
+    <div class="service-grid">
+      <div class="service-card">
+        <h4>Demolition</h4>
+        <p>Safe and precise demolition of buildings and industrial structures.</p>
+      </div>
+      <div class="service-card">
+        <h4>Scrap Metal Pickup</h4>
+        <p>On-site pickup of all types of metal scrap using heavy vehicles.</p>
+      </div>
+      <div class="service-card">
+        <h4>Recycling Consulting</h4>
+        <p>Advisory for efficient and eco-conscious recycling planning.</p>
+      </div>
+    </div>
   </section>
 
-  <section id="contact">
-    <h2 data-en="Contact" data-fi="Yhteystiedot">Contact</h2>
-    <p data-en="Address: Kokemäentie 247B, Köyliö, Finland" data-fi="Osoite: Kokemäentie 247B, Köyliö, Suomi">
-      Address: Kokemäentie 247B, Köyliö, Finland
-    </p>
-    <div id="map"></div>
+  <!-- Projects -->
+  <section id="projects" class="projects">
+    <h3>Recent Projects</h3>
+    <div class="project-gallery">
+      <!-- Image and text for each project -->
+    </div>
   </section>
 
-  <footer>
-    <p>&copy; 2025 JS-romumetalli ja purkutyöt Oy</p>
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <h3>Get in Touch</h3>
+    <p>Email us, call us, or visit our headquarters.</p>
+    <div class="contact-info">
+      <p><strong>Address:</strong> Kokemäentie 247B, Finland</p>
+      <p><strong>Email:</strong> info@jsromumetalli.fi</p>
+      <p><strong>Phone:</strong> +358 50 123 4567</p>
+    </div>
+    <div class="map">
+      <iframe src="https://www.google.com/maps?q=Kokemäentie+247B&output=embed"></iframe>
+    </div>
+  </section>
+
+  <footer class="main-footer">
+    <p>&copy; 2025 JS-romumetalli ja purkutyöt Oy. All rights reserved.</p>
   </footer>
 
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+  <script>
+    function setLanguage(lang) {
+      // Будет добавлена поддержка языков позже
+      alert("Language switch to " + lang + " coming soon!");
+    }
+  </script>
 </body>
 </html>
