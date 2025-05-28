@@ -4,16 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JS-Romumetalli Oy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background: #121212 url('https://i.imgur.com/wLVVark.png') no-repeat center center fixed;
+      font-family: 'Poppins', sans-serif;
+      background: url('https://i.imgur.com/wLVVark.png') no-repeat center center fixed;
       background-size: cover;
       color: #f4f4f4;
       overflow-x: hidden;
     }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(8px);
+      z-index: -1;
+    }
+
     header {
       background: rgba(0,0,0,0.7);
       display: flex;
@@ -24,52 +34,60 @@
       top: 0;
       z-index: 10;
     }
+
     header img {
       height: 60px;
     }
+
     nav a {
       margin: 0 1rem;
       text-decoration: none;
       color: #f4f4f4;
       font-weight: bold;
+      font-size: 1.1rem;
       padding: 0.5rem 1rem;
       border-radius: 25px;
       transition: all 0.3s ease;
     }
+
     nav a:hover {
       background-color: #ffdd57;
       color: #000;
       box-shadow: 0 0 15px #ffdd57;
     }
+
     .hero {
       text-align: center;
-      padding: 10rem 2rem 5rem;
-      background: rgba(0,0,0,0.5);
-      backdrop-filter: blur(3px);
+      padding: 8rem 2rem 5rem;
     }
+
     .hero h1 {
-      font-size: 3rem;
-      color: #ffdd57;
-      animation: fadeInUp 2s ease;
-    }
-    .hero p {
-      font-size: 1.3rem;
-      max-width: 800px;
-      margin: 1rem auto;
-      animation: fadeInUp 2.5s ease;
-    }
-    section {
-      padding: 4rem 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-    h2 {
-      font-size: 2rem;
+      font-size: 4rem;
       color: #ffdd57;
       margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.7rem;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #ddd;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      color: #ffdd57;
+      margin-bottom: 1.5rem;
       border-bottom: 2px solid #ffdd57;
       display: inline-block;
     }
+
     .card {
       background: rgba(255,255,255,0.05);
       padding: 2rem;
@@ -77,31 +95,65 @@
       border-radius: 15px;
       box-shadow: 0 0 10px rgba(255,255,255,0.1);
       transition: all 0.3s ease;
-      animation: fadeInUp 1.5s ease;
     }
+
     .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 0 25px rgba(255,255,255,0.2);
     }
+
     .card img {
-      max-width: 100%;
+      max-width: 60%;
+      height: auto;
       border-radius: 10px;
-      margin-bottom: 1rem;
+      margin: 1rem 0;
+      display: block;
     }
+
+    .card h3 {
+      font-size: 1.8rem;
+      color: #ffdd57;
+    }
+
+    .card p {
+      font-size: 1.25rem;
+      line-height: 1.6;
+    }
+
     .contact {
       text-align: center;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
+
+    .contact a {
+      color: #ffdd57;
+      text-decoration: none;
+    }
+
     footer {
       background: #000;
       padding: 2rem;
       text-align: center;
-      font-size: 0.9rem;
+      font-size: 1rem;
       color: #aaa;
     }
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(40px); }
-      100% { opacity: 1; transform: translateY(0); }
+
+    @media screen and (max-width: 768px) {
+      .card img {
+        max-width: 100%;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+      }
+
+      nav a {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -127,30 +179,24 @@
   <div class="card">
     <h3>NOUDAMME RAUTAROMUT NURKISTA NOPEASTI</h3>
     <p>
-      Olemme erikoistuneet erilaisten metalliromujen keräämiseen ja purkutöiden tekemiseen.
-      Noudamme ja kierrätämme monenlaiset metalliromut kuparista alumiinikaapelelihin ja sähkömoottoreista rakennusten metallipurkujätteeseen.
+      Olemme erikoistuneet erilaisten metalliromujen keräämiseen ja purkutöiden tekemiseen. Noudamme ja kierrätämme monenlaiset metalliromut kuparista alumiinikaapelelihin ja sähkömoottoreista rakennusten metallipurkujätteeseen.
     </p>
-    <p>
-      Haemme mm. autot, työkoneet, puimurit, linja-autot, kuorma-autoja ja maatalousromut.
-    </p>
+    <p>Haemme mm. autot, työkoneet, puimurit, linja-autot, kuorma-autoja ja maatalousromut.</p>
     <img src="https://i.imgur.com/DSfZuV3.jpeg" alt="Romuauto" />
   </div>
 
   <div class="card">
     <h3>SUURET JA PIENET PURKUTYÖT AMMATTITAIDOLLA</h3>
-    <p>
-      Puramme mm. talot, ladot, autotallit, ja muut rakennukset. Toimitamme purkujätteen pois tontiltasi ja hoidamme lajittelun ja kierrätyksen.
-    </p>
+    <p>Puramme mm. talot, ladot, autotallit, ja muut rakennukset. Toimitamme purkujätteen pois tontiltasi ja hoidamme lajittelun ja kierrätyksen lain mukaan.</p>
     <img src="https://i.imgur.com/KjFiOZO.png" alt="Työkone" />
   </div>
 
   <div class="card">
     <h3>ROMUAUTOT KIERTOON EKOLOGISESTI</h3>
-    <p>
-      Soitat vain meille ja tilaat autollesi maksuttoman noudon. Saat romutustodistuksen ja ajoneuvo poistetaan virallisesti rekisteristä.
-    </p>
+    <p>Tilaa maksuton nouto — me hoidamme loput. Saat virallisen romutustodistuksen ja kaikki hoidetaan vastuullisesti & ekologisesti.</p>
     <img src="https://i.imgur.com/wLVVark.png" alt="Auto taustalla" />
   </div>
+
 </section>
 
 <section class="contact" id="contact">
