@@ -11,6 +11,7 @@
       background: url('https://i.imgur.com/wLVVark.png') no-repeat center center fixed;
       background-size: cover;
       color: #fff;
+      overflow-x: hidden;
     }
 
     header {
@@ -22,6 +23,7 @@
       flex-wrap: wrap;
       border-bottom: 2px solid #ffd70050;
       box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+      animation: fadeDown 1s ease-out forwards;
     }
 
     header img {
@@ -62,6 +64,9 @@
       color: #ffd700;
       text-shadow: 1px 1px 3px #000;
       margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s ease-out forwards;
     }
 
     .info-block {
@@ -71,6 +76,8 @@
       margin-top: 30px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.6);
       position: relative;
+      opacity: 0;
+      animation: fadeIn 1.3s ease forwards;
     }
 
     .info-image {
@@ -95,6 +102,8 @@
       border-radius: 20px;
       padding: 30px;
       box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+      animation: fadeIn 1.4s ease forwards;
+      opacity: 0;
     }
 
     .contact p {
@@ -114,6 +123,17 @@
       text-decoration: underline;
     }
 
+    .map-container {
+      margin: 50px auto;
+      max-width: 1000px;
+      border: 4px solid #ffd70070;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      animation: fadeIn 1.5s ease forwards;
+      opacity: 0;
+    }
+
     footer {
       background: rgba(0,0,0,0.8);
       text-align: center;
@@ -130,6 +150,22 @@
         display: block;
         margin: 20px auto;
       }
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      0% {opacity: 0; transform: translateY(20px);}
+      100% {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes fadeDown {
+      0% {opacity: 0; transform: translateY(-20px);}
+      100% {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes fadeIn {
+      0% {opacity: 0;}
+      100% {opacity: 1;}
     }
   </style>
 </head>
@@ -160,6 +196,18 @@
       <p data-fi="Puhelin: " data-en="Phone: ">Puhelin:</p>
       <a href="tel:+358401234567">+358 40 123 4567</a>
       <p data-fi="Osoite: Kokemäentie 247b, Köyliö" data-en="Address: Kokemäentie 247b, Köyliö">Osoite: Kokemäentie 247b, Köyliö</p>
+    </div>
+
+    <div class="map-container">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18407.867064067773!2d22.2689261!3d61.1190591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x468e627db9b4761f%3A0x6858f4dcbebf265e!2sK%C3%B6yli%C3%B6%2C%20Finland!5e0!3m2!1sen!2sfi!4v1716918650000!5m2!1sen!2sfi" 
+        width="100%" 
+        height="400" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
     </div>
   </div>
 
