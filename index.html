@@ -4,81 +4,94 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>JS-Romumetalli Oy</title>
-  <link rel="stylesheet" href="styles.css"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preload" as="audio" href="car-sound.mp3">
 </head>
 <body>
-  <header class="hero">
-    <div class="overlay"></div>
-    <div class="hero-content">
-      <h1>JS-ROMUMETALLI OY</h1>
-      <p>Metal recycling and demolition services in Finland</p>
-      <a href="#services" class="btn">Explore Services</a>
-    </div>
+  <header class="header">
+    <div class="logo">JS-ROMUMETALLI OY</div>
+    <nav class="navbar">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="menu-btn">&#9776;</div>
   </header>
 
-  <nav class="navbar">
-    <ul>
-      <li><a href="#about" data-i18n="nav.about">About</a></li>
-      <li><a href="#services" data-i18n="nav.services">Services</a></li>
-      <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
-      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
-    </ul>
-    <div class="lang-switch">
-      <button onclick="setLanguage('en')">EN</button>
-      <button onclick="setLanguage('fi')">FI</button>
-    </div>
-  </nav>
-
-  <section id="about" class="section dark">
-    <div class="container">
-      <h2 data-i18n="about.title">About Us</h2>
-      <p data-i18n="about.text">
-        JS-Romumetalli Oy provides professional scrap metal collection and demolition services throughout Finland.
-      </p>
-      <img src="truck.jpg" alt="JS-Romumetalli truck" class="image-wide"/>
+  <section class="hero">
+    <video autoplay muted loop id="bg-video">
+      <source src="metal-video.mp4" type="video/mp4" />
+      Your browser does not support HTML5 video.
+    </video>
+    <div class="hero-content">
+      <h1>Power in Metal</h1>
+      <p>Demolition, Scrap & Transport — Premium Quality</p>
+      <a href="#services" class="cta-button">Explore Services</a>
     </div>
   </section>
 
-  <section id="services" class="section light">
-    <div class="container">
-      <h2 data-i18n="services.title">Our Services</h2>
-      <ul class="service-list">
-        <li data-i18n="services.collecting">Scrap Metal Collecting</li>
-        <li data-i18n="services.demolition">Demolition Works</li>
-        <li data-i18n="services.transport">Heavy Transport</li>
-      </ul>
-    </div>
+  <section id="about" class="section fade-in">
+    <h2>About Us</h2>
+    <p>JS-Romumetalli Oy is a Finnish company specializing in scrap metal recycling, demolition services and industrial transport with full reliability and modern equipment.</p>
   </section>
 
-  <section id="projects" class="section dark">
-    <div class="container">
-      <h2 data-i18n="projects.title">Project Highlights</h2>
-      <div class="project-gallery">
-        <img src="junkyard.jpg" alt="Junkyard" class="image-gallery"/>
-        <img src="truck.jpg" alt="JS Truck" class="image-gallery"/>
+  <section id="services" class="section slide-in">
+    <h2>Our Services</h2>
+    <div class="services-grid">
+      <div class="service-card" onmouseover="playSound()">
+        <h3>Scrap Metal Collection</h3>
+        <p>We collect all types of metals, from light scrap to industrial steel.</p>
+      </div>
+      <div class="service-card" onmouseover="playSound()">
+        <h3>Demolition Works</h3>
+        <p>Heavy demolition and dismantling of factories, halls, and structures.</p>
+      </div>
+      <div class="service-card" onmouseover="playSound()">
+        <h3>Heavy Transport</h3>
+        <p>Transportation of metal waste and large machinery across Finland.</p>
       </div>
     </div>
   </section>
 
-  <section id="contact" class="section light">
-    <div class="container">
-      <h2 data-i18n="contact.title">Contact Us</h2>
-      <p>Email: <a href="mailto:info@js-romumetalli.fi">info@js-romumetalli.fi</a></p>
-      <p>Phone: <a href="tel:+358503387395">+358 50 338 7395</a></p>
-      <p>Address: Kokemäentie 247B, 29250 Nakkila</p>
-      <div class="map-wrapper">
-        <iframe src="https://maps.google.com/maps?q=Kokem%C3%A4entie%20247B,%20Nakkila&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen loading="lazy"></iframe>
-      </div>
+  <section id="projects" class="section fade-in">
+    <h2>Project Highlights</h2>
+    <div class="project-gallery">
+      <img src="truck.jpg" alt="Truck" />
+      <img src="junkyard.jpg.JPG" alt="Junkyard" />
     </div>
   </section>
 
-  <footer>
-    <p>&copy; 2025 JS-Romumetalli Oy. All rights reserved.</p>
+  <section id="contact" class="section slide-in">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Your Name" />
+      <input type="email" placeholder="Your Email" />
+      <textarea placeholder="Your Message"></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 JS-Romumetalli Oy. All rights reserved.</p>
   </footer>
 
-  <script src="i18n.js"></script>
+  <audio id="carSound" src="car-sound.mp3" preload="auto"></audio>
+
+  <script>
+    const menuBtn = document.querySelector('.menu-btn');
+    const navbar = document.querySelector('.navbar');
+    menuBtn.addEventListener('click', () => {
+      navbar.classList.toggle('open');
+    });
+
+    function playSound() {
+      const sound = document.getElementById("carSound");
+      sound.currentTime = 0;
+      sound.play();
+    }
+  </script>
 </body>
 </html>
