@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -10,56 +10,56 @@
       font-family: 'Segoe UI', sans-serif;
       background: url('https://i.imgur.com/2gVI8tH.jpeg') no-repeat center center fixed;
       background-size: cover;
-      color: #f2f2f2;
+      color: white;
       scroll-behavior: smooth;
     }
 
     header {
-      background: rgba(0,0,0,0.6);
-      padding: 20px;
+      background-color: rgba(0,0,0,0.7);
+      padding: 20px 40px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       position: sticky;
       top: 0;
-      z-index: 999;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
     }
 
     header img {
-      height: 50px;
+      height: 60px;
     }
 
     nav button {
-      background: #f5c842;
-      color: #111;
-      border: none;
-      margin: 0 5px;
+      background-color: #f0c841;
+      color: black;
       padding: 10px 20px;
-      border-radius: 25px;
-      font-weight: bold;
+      margin-left: 10px;
+      border: none;
+      border-radius: 20px;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
-      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: 0.3s ease;
     }
 
     nav button:hover {
-      background: #e1b830;
-      transform: translateY(-2px);
+      background-color: #ffd600;
     }
 
-    .section {
-      padding: 100px 30px;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(3px);
-      margin-bottom: 50px;
-      animation: fadeIn 2s ease forwards;
-      border-radius: 20px;
-      margin: 40px;
+    section {
+      padding: 80px 40px;
+      background-color: rgba(0,0,0,0.6);
+      margin: 20px;
+      border-radius: 12px;
+      animation: fadeIn 1.2s ease-in-out;
     }
 
-    .section h2 {
-      font-size: 2em;
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    h1, h2 {
+      color: #f0c841;
       margin-bottom: 20px;
     }
 
@@ -72,91 +72,99 @@
 
     .gallery img {
       width: 300px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.1);
-      transition: transform 0.3s ease;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     }
 
-    .gallery img:hover {
-      transform: scale(1.05);
+    .contact {
+      background-color: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 40px;
     }
 
-    .map iframe {
-      width: 100%;
-      height: 300px;
-      border-radius: 15px;
-      border: none;
+    .lang-toggle {
+      margin-top: 10px;
+    }
+
+    .map {
+      margin-top: 40px;
     }
 
     footer {
-      background: rgba(0,0,0,0.8);
-      padding: 30px;
       text-align: center;
-      font-size: 14px;
-      border-top: 1px solid #444;
+      padding: 20px;
+      background-color: rgba(0,0,0,0.8);
+      margin-top: 40px;
+      border-top: 2px solid #f0c841;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(50px); }
-      to { opacity: 1; transform: translateY(0); }
+    .highlight {
+      color: #f0c841;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="https://i.imgur.com/r6OggID.png" alt="Logo">
+    <img src="https://i.imgur.com/r6OggID.png" alt="Logo" />
     <nav>
       <button onclick="setLang('fi')">Suomi</button>
       <button onclick="setLang('en')">English</button>
     </nav>
   </header>
 
-  <div class="section" id="about">
-    <h2 data-fi="Tietoa yrityksestä" data-en="About Us">Tietoa yrityksestä</h2>
-    <p data-fi="JS-Romumetalli toimii Satakunnassa ja sen ympäristössä. Tarjoamme romumetallin keräystä ja kuljetusta luotettavasti ja nopeasti." data-en="JS-Romumetalli operates across Satakunta and surrounding regions. We provide reliable and fast scrap metal collection and transport.">
-      JS-Romumetalli toimii Satakunnassa ja sen ympäristössä. Tarjoamme romumetallin keräystä ja kuljetusta luotettavasti ja nopeasti.
+  <section>
+    <h1 data-fi="JS-Romumetalli Oy" data-en="JS-Romumetalli Oy">JS-Romumetalli Oy</h1>
+    <p data-fi="Noudamme romuja nopeasti ja tarjoamme purkupalveluita Satakunnan alueella." data-en="We quickly collect scrap and offer demolition services across Satakunta.">
+      Noudamme romuja nopeasti ja tarjoamme purkupalveluita Satakunnan alueella.
     </p>
-    <img src="https://i.imgur.com/zvbBW84.jpeg" alt="About Image" style="width: 100%; border-radius: 20px; margin-top: 20px; box-shadow: 0 0 10px rgba(255,255,255,0.1);">
-  </div>
+    <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Info Image" style="width:100%; max-width:600px; border-radius: 10px; border: 3px solid #f0c841; margin-top: 20px;" />
+  </section>
 
-  <div class="section" id="gallery">
-    <h2 data-fi="Galleria" data-en="Gallery">Galleria</h2>
-    <div class="gallery">
-      <img src="https://i.imgur.com/DSfZuV3.jpeg" alt="Janus car 1">
-      <img src="https://i.imgur.com/KjFiOZO.png" alt="Janus car 2">
-      <img src="https://i.imgur.com/WwKxiE9.jpeg" alt="Truck">
-    </div>
-  </div>
+  <section>
+    <h2 data-fi="Palvelumme" data-en="Our Services">Palvelumme</h2>
+    <p data-fi="Olemme erikoistuneet erilaisten metalliromujen keräämiseen ja purkutöiden tekemiseen. Noudamme ja kierrätämme metalliromuja kuten kuparia, alumiinikaapeleita, sähkömoottoreita ja rakennusten metallijätettä. Ostamme romumetallit hyvällä hinnalla ja noudamme ne asiakkaalta sopimuksen mukaan." 
+       data-en="We specialize in collecting various types of scrap metal and performing demolition work. We collect and recycle copper, aluminum cables, electric motors, and metal debris from buildings. We buy scrap at a good price and pick it up from the customer as agreed.">
+      ...
+    </p>
 
-  <div class="section" id="contact">
+    <h3 data-fi="Romuautojen kierrätys ekologisesti" data-en="Scrap Car Recycling Ecologically">Romuautojen kierrätys ekologisesti</h3>
+    <p data-fi="Romuautojen kierrätys on sinulle helppoa. Soita meille ja tilaamme maksuttoman noudon. Auto viedään turvallisesti kierrätykseen ja poistetaan TraFi-rekisteristä. Saat romutustodistuksen." 
+       data-en="Scrap car recycling is easy for you. Call us and we will arrange free pickup. The car is safely taken to recycling and removed from the register. You will receive a recycling certificate.">
+      ...
+    </p>
+  </section>
+
+  <section class="gallery">
+    <img src="https://i.imgur.com/DSfZuV3.jpeg" alt="Vehicle 1">
+    <img src="https://i.imgur.com/KjFiOZO.png" alt="Vehicle 2">
+    <img src="https://i.imgur.com/WwKxiE9.jpeg" alt="Truck">
+  </section>
+
+  <section class="contact">
     <h2 data-fi="Yhteystiedot" data-en="Contact Us">Yhteystiedot</h2>
-    <p><strong>Email:</strong> info@js-romumetalli.fi</p>
-    <p><strong>Phone:</strong> +358 40 1234567</p>
-    <p><strong data-fi="Osoite" data-en="Address">Osoite:</strong> Kokemäentie 247b, Köyliö</p>
-    <p data-fi="Ota yhteyttä sähköpostilla tai puhelimitse, vastaamme nopeasti!" data-en="Contact us via email or phone — we respond quickly!">
-      Ota yhteyttä sähköpostilla tai puhelimitse, vastaamme nopeasti!
+    <p><span class="highlight">Sähköposti:</span> jsromumetalli@gmail.com</p>
+    <p><span class="highlight">Puhelin:</span> 044 338 7395</p>
+    <p data-fi="Lähetä meille sähköpostia tai soita, niin sovitaan noudosta!" data-en="Send us an email or call us, and we'll schedule a pickup!">
+      Lähetä meille sähköpostia tai soita, niin sovitaan noudosta!
     </p>
-  </div>
-
-  <div class="section map">
-    <h2 data-fi="Kartta" data-en="Map">Kartta</h2>
-    <iframe src="https://www.google.com/maps?q=kokem%C3%A4entie%20247b%20K%C3%B6yli%C3%B6&output=embed"></iframe>
-  </div>
+    <div class="map">
+      <iframe src="https://www.google.com/maps?q=Kokemäentie+247b,+Köyliö,+Finland&output=embed" width="100%" height="300" style="border:0; border-radius: 12px;"></iframe>
+    </div>
+  </section>
 
   <footer>
-    <p>&copy; 2025 JS-Romumetalli Oy. All rights reserved.</p>
+    <p>© 2025 JS-Romumetalli Oy – <span data-fi="Luotettavasti & ammattitaidolla" data-en="Reliable & Professional">Luotettavasti & ammattitaidolla</span></p>
   </footer>
 
   <script>
     function setLang(lang) {
       document.querySelectorAll('[data-fi]').forEach(el => {
-        el.innerText = el.getAttribute(`data-${lang}`);
+        el.textContent = el.dataset[lang];
       });
     }
-
-    window.onload = () => {
-      setLang('fi');
-    };
   </script>
 </body>
 </html>
