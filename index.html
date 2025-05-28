@@ -3,16 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JS-Romumetalli</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <title>JS-Romumetalli | Metal Recycling & Demolition</title>
   <style>
-    :root {
-      --cream: #f6f1eb;
-      --caramel: #d2a679;
-      --sage: #a3b18a;
-      --olive: #6b705c;
-      --text-dark: #2f2f2f;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;800&display=swap');
 
     * {
       margin: 0;
@@ -21,161 +14,126 @@
     }
 
     body {
-      font-family: 'Roboto Mono', monospace;
-      background-color: var(--cream);
-      color: var(--text-dark);
-      scroll-behavior: smooth;
-    }
-
-    header {
-      background-color: var(--olive);
-      color: var(--cream);
-      text-align: center;
-      padding: 3rem 1rem;
-    }
-
-    header h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
-    }
-
-    nav {
-      background-color: var(--caramel);
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 1rem;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: var(--olive);
-    }
-
-    section {
-      padding: 4rem 2rem;
-      max-width: 1000px;
-      margin: auto;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease-out;
-    }
-
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    h2 {
-      color: var(--olive);
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .highlight-box {
-      background-color: var(--sage);
-      padding: 2rem;
-      border-left: 6px solid var(--caramel);
-      border-radius: 8px;
-      margin-bottom: 2rem;
-      color: #fff;
-      font-size: 1.1rem;
+      font-family: 'Barlow', sans-serif;
+      background-color: #f8f7f4;
+      color: #222;
       line-height: 1.6;
     }
 
-    .service-card {
-      background: #fff;
-      border-left: 4px solid var(--sage);
-      padding: 1.2rem 1.5rem;
-      margin: 1rem 0;
-      border-radius: 6px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease;
+    header {
+      background: url('https://images.unsplash.com/photo-1581091215367-7b7e6e62d380?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+      height: 100vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
 
-    .service-card:hover {
-      transform: scale(1.02);
+    nav {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
     }
 
-    footer {
-      background-color: var(--olive);
-      color: var(--cream);
+    nav .logo {
+      font-size: 24px;
+      font-weight: 800;
+      color: #2f2f2f;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #333;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #4a773c;
+    }
+
+    .hero-text {
       text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
+      max-width: 700px;
+      padding: 20px;
+      background-color: rgba(255,255,255,0.1);
+    }
+
+    .hero-text h1 {
+      font-size: 60px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+
+    .hero-text p {
+      font-size: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .btn {
+      margin-top: 30px;
+      padding: 12px 28px;
+      background: #4a773c;
+      color: white;
+      font-weight: 600;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #3a5d2f;
+    }
+
+    @media(max-width: 768px) {
+      .hero-text h1 {
+        font-size: 40px;
+      }
+
+      nav ul {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
-
-<header>
-  <h1>JS-Romumetalli</h1>
-  <p>Scrap Metal & Demolition Services</p>
-</header>
-
-<nav>
-  <a href="#about">About</a>
-  <a href="#services">Services</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-<section id="about">
-  <div class="highlight-box">
-    <h2>About Us</h2>
-    <p>JS-Romumetalli ja Purkutyöt Oy is a Finnish company founded in 2018, based in Köyliö. We specialize in collecting and recycling scrap metal, demolition of buildings, and environmentally responsible disposal of vehicles and construction waste. Our mission is to provide reliable and sustainable metal solutions for our community.</p>
-  </div>
-</section>
-
-<section id="services">
-  <h2>Our Services</h2>
-  <div class="service-card">• Scrap Metal Collection & Processing</div>
-  <div class="service-card">• Car Recycling & Deregistration</div>
-  <div class="service-card">• Demolition of Metal & Wooden Structures</div>
-  <div class="service-card">• Construction Waste Removal</div>
-  <div class="service-card">• Plasma Cutting & Metalwork Services</div>
-</section>
-
-<section id="contact">
-  <h2>Contact Us</h2>
-  <p>Phone: 044 338 7395<br>
-     Email: jaanus.seer@js-romumetalli.fi<br>
-     Address: Kokemäentie 247 B, 27710 Köyliö, Finland</p>
-</section>
-
-<footer>
-  &copy; 2025 JS-Romumetalli. All rights reserved.
-</footer>
-
-<script>
-  // Плавное появление секций при прокрутке
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, {
-    threshold: 0.1
-  });
-
-  document.querySelectorAll('section').forEach(section => {
-    observer.observe(section);
-  });
-</script>
-
+  <header>
+    <nav>
+      <div class="logo">JS-Romumetalli</div>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#vision">Vision</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#steps">Process</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hero-text">
+      <h1>Metal Recycling & Demolition Experts</h1>
+      <p>We provide high-quality metal removal and demolition services across Finland. Safe. Sustainable. Professional.</p>
+      <a href="#about" class="btn">Learn More</a>
+    </div>
+  </header>
 </body>
 </html>
