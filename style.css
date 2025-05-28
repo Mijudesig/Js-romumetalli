@@ -1,213 +1,255 @@
-* {
+/* === Fonts and Reset === */
+body, html {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Oswald', sans-serif;
-  background-color: #121212;
-  color: #f0f0f0;
-  line-height: 1.6;
+  font-family: 'Roboto', sans-serif;
+  scroll-behavior: smooth;
+  background-color: #111;
+  color: #eee;
   overflow-x: hidden;
 }
 
-/* Контейнер */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 60px 20px;
+h1, h2, h3 {
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 1px;
+  margin: 0 0 1rem 0;
 }
 
-/* Главная */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  transition: transform 0.5s ease;
+}
+
+/* === Hero Header === */
 .hero {
   position: relative;
-  background: linear-gradient(145deg, #1f1f1f, #0e0e0e);
-  color: #fff;
+  height: 100vh;
+  background: url("truck.jpg") center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  padding: 100px 20px;
   overflow: hidden;
 }
 
-.metal-gradient {
+.overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at center, #444, #111);
-  opacity: 0.2;
-  pointer-events: none;
-  z-index: 0;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), #111);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  animation: fadeInUp 1.5s ease forwards;
 }
 
 .hero h1 {
   font-size: 4rem;
-  text-transform: uppercase;
-  z-index: 1;
-  position: relative;
-  animation: glow 3s ease-in-out infinite alternate;
+  text-shadow: 0 0 10px rgba(255, 165, 0, 0.5);
 }
 
 .hero p {
-  margin-top: 20px;
-  font-size: 1.3rem;
-  color: #ccc;
-  z-index: 1;
-  position: relative;
+  font-size: 1.5rem;
+  margin: 1rem 0 2rem;
+  color: #ffcc80;
 }
 
-.lang-switch {
-  margin-top: 30px;
-  z-index: 1;
-  position: relative;
+/* === Button === */
+.btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: #ffa726;
+  color: #111;
+  font-weight: bold;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 15px #ffa726a8;
+  transition: all 0.4s ease;
 }
-.lang-switch button {
-  margin: 0 5px;
-  padding: 8px 18px;
-  border: 1px solid #888;
-  background: transparent;
+.btn:hover {
+  background: #ff6f00;
   color: #fff;
+  box-shadow: 0 0 25px #ff9800;
+  transform: scale(1.05);
+}
+
+/* === Navbar === */
+.navbar {
+  position: sticky;
+  top: 0;
+  background: rgba(17, 17, 17, 0.95);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 2rem;
+  backdrop-filter: blur(8px);
+  z-index: 999;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.navbar li {
+  transition: transform 0.3s ease;
+}
+.navbar li:hover {
+  transform: scale(1.1);
+}
+.navbar a:hover {
+  color: #ffa726;
+}
+
+.lang-switch button {
+  background: none;
+  border: 1px solid #444;
+  color: #ffa726;
+  margin-left: 0.5rem;
+  padding: 0.3rem 0.8rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  border-radius: 3px;
+  transition: background 0.3s ease;
 }
 .lang-switch button:hover {
-  background: #fff;
-  color: #000;
+  background: #ffa726;
+  color: #111;
 }
 
-/* Секции */
+/* === Sections === */
 .section {
-  padding: 80px 20px;
-  background: #1a1a1a;
-  border-top: 1px solid #333;
+  padding: 6rem 2rem;
 }
 
-.section:nth-child(even) {
-  background: #171717;
+.section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #ffa726;
+  animation: fadeIn 2s ease;
 }
 
-h2 {
-  font-size: 2.4rem;
-  margin-bottom: 40px;
-  text-transform: uppercase;
-  position: relative;
-  color: #fff;
-}
-h2::after {
-  content: "";
-  display: block;
-  width: 80px;
-  height: 4px;
-  background: #ff6f00;
-  margin-top: 10px;
+.section p, .section li {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  animation: fadeIn 2s ease;
 }
 
-/* Карточки */
-.cards {
+.section.light {
+  background: #f1f1f1;
+  color: #111;
+}
+.section.light h2 {
+  color: #ff6f00;
+}
+
+.section.dark {
+  background: #1b1b1b;
+}
+
+/* === Images === */
+.image-wide {
+  margin-top: 2rem;
+  width: 100%;
+  border: 2px solid #ffa726;
+  animation: zoomIn 2s ease;
+}
+.image-gallery {
+  width: 48%;
+  margin: 1%;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.image-gallery:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px #ff980080;
+}
+
+/* === Projects Gallery === */
+.project-gallery {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
   justify-content: center;
 }
 
-.service-card {
-  background: #262626;
-  padding: 30px;
-  border-radius: 12px;
-  text-align: center;
-  flex: 1 1 250px;
-  transition: transform 0.3s, box-shadow 0.3s;
-  border: 1px solid #444;
+/* === Service List === */
+.service-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem auto;
+  max-width: 600px;
 }
-.service-card img {
-  width: 60px;
-  margin-bottom: 20px;
-  filter: grayscale(100%) brightness(1.4);
+.service-list li {
+  padding: 1rem;
+  background: #222;
+  border-left: 5px solid #ffa726;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
 }
-.service-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 20px rgba(255, 111, 0, 0.3);
-}
-
-/* Проекты */
-.project-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+.service-list li:hover {
+  transform: translateX(10px);
+  background: #2c2c2c;
 }
 
-.project-card {
+/* === Map Wrapper === */
+.map-wrapper {
+  margin-top: 2rem;
+  border: 5px solid #ffa726;
+  border-radius: 8px;
   overflow: hidden;
-  border-radius: 10px;
-  position: relative;
-  border: 1px solid #444;
-  background: #202020;
-  box-shadow: inset 0 0 15px #000, 0 0 8px #000;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 2s ease;
 }
-.project-card img {
-  width: 100%;
-  height: auto;
-  display: block;
-  opacity: 0.9;
-  transition: all 0.3s ease;
-}
-.project-card .info {
-  padding: 20px;
-  background: #111;
-}
-.project-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 12px 20px rgba(255, 111, 0, 0.4);
-}
-.project-card:hover img {
-  opacity: 1;
-  filter: brightness(1.2);
-}
-
-/* Контакты */
-.contact p {
-  margin-bottom: 12px;
-  font-size: 1.1rem;
-}
-#map {
-  margin-top: 30px;
+.map-wrapper iframe {
   width: 100%;
   height: 300px;
-  background: #333;
-  border-radius: 8px;
+  border: none;
 }
 
-/* Футер */
+/* === Footer === */
 footer {
   background: #111;
   text-align: center;
-  padding: 30px 20px;
-  font-size: 0.95rem;
-  color: #888;
+  padding: 2rem;
+  font-size: 0.9rem;
+  color: #aaa;
+  border-top: 1px solid #333;
 }
 
-/* ЭФФЕКТЫ */
-@keyframes glow {
-  from {
-    text-shadow: 0 0 5px #ff6f00, 0 0 10px #ff6f00;
-  }
-  to {
-    text-shadow: 0 0 10px #ffa726, 0 0 20px #ff6f00;
-  }
+/* === Animations === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Адаптивность */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* === Responsive === */
 @media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2.6rem;
-  }
-  h2 {
-    font-size: 1.8rem;
-  }
-  .cards {
-    flex-direction: column;
-  }
+  .hero h1 { font-size: 2.5rem; }
+  .hero p { font-size: 1rem; }
+  .navbar ul { flex-direction: column; gap: 1rem; }
+  .project-gallery { flex-direction: column; }
+  .image-gallery { width: 100%; }
 }
-<link rel="stylesheet" href="style.css" />
