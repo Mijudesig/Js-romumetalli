@@ -1,188 +1,273 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JS-Romumetalli Oy</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            background-color: #0e0e0e;
-            color: #f5f5f5;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JS-Romumetalli Oy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        header {
-            background-color: #111;
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid gold;
-        }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #0a0a0a;
+      color: #ffffff;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
 
-        .logo {
-            font-size: 1.5em;
-            font-weight: 800;
-            color: gold;
-        }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #111;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-        nav a {
-            color: gold;
-            margin-left: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ffd700;
+    }
 
-        nav a:hover {
-            color: #ffffff;
-        }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
 
-        .language-switcher {
-            display: flex;
-            gap: 10px;
-            margin-left: auto;
-        }
+    .nav-links a {
+      color: #ffffff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
 
-        .hero {
-            text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://i.imgur.com/Vkq69AU.jpeg') center/cover no-repeat;
-            color: gold;
-        }
+    .nav-links a:hover {
+      color: #ffd700;
+    }
 
-        .hero h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
+    .language-toggle button {
+      background: none;
+      border: 1px solid #ffd700;
+      color: #ffd700;
+      padding: 0.4rem 0.8rem;
+      margin-left: 0.5rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
 
-        .hero p {
-            font-size: 1.2em;
-            max-width: 700px;
-            margin: auto;
-        }
+    .language-toggle button:hover {
+      background-color: #ffd700;
+      color: #000;
+    }
 
-        section {
-            padding: 60px 40px;
-            border-bottom: 1px solid #333;
-        }
+    .hero {
+      background: url('https://i.imgur.com/v2LsX1r.png') no-repeat center center / cover;
+      height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
 
-        h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-            color: gold;
-        }
+    .hero-overlay {
+      background-color: rgba(0, 0, 0, 0.75);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
 
-        .contact {
-            background: #111;
-            color: #f5f5f5;
-        }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      padding: 2rem;
+    }
 
-        .contact p {
-            font-size: 1.1em;
-        }
+    .hero-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
 
-        footer {
-            padding: 30px 40px;
-            text-align: center;
-            background: #000;
-            color: gold;
-        }
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: #e0e0e0;
+    }
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
+    .cta-button {
+      background-color: #ffd700;
+      color: #000;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+      text-transform: uppercase;
+    }
 
-        .gallery img {
-            width: 100%;
-            height: auto;
-            border: 2px solid gold;
-        }
-    </style>
+    .cta-button:hover {
+      background-color: #fff3a0;
+    }
+
+    .about-section {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 4rem 2rem;
+      background-color: #111;
+      gap: 2rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-image {
+      flex: 1 1 400px;
+      max-width: 600px;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .about-text {
+      flex: 1 1 400px;
+      max-width: 600px;
+    }
+
+    .about-text h2 {
+      font-size: 2rem;
+      color: #ffd700;
+      margin-bottom: 1rem;
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .map-section {
+      padding: 4rem 2rem;
+      background-color: #0a0a0a;
+    }
+
+    .map-section h2 {
+      text-align: center;
+      color: #ffd700;
+      margin-bottom: 1rem;
+    }
+
+    .map-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .map-container iframe {
+      border: 0;
+      width: 100%;
+      max-width: 800px;
+      height: 400px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+    }
+
+    .modal-content {
+      background-color: #111;
+      margin: 10% auto;
+      padding: 2rem;
+      border: 1px solid #ffd700;
+      width: 80%;
+      max-width: 600px;
+      position: relative;
+      border-radius: 10px;
+      animation: fadeIn 0.5s;
+    }
+
+    .modal-content img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .close {
+      color: #ffd700;
+      position: absolute;
+      top: 10px;
+      right: 25px;
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @media (max-width: 768px) {
+      .about-section {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<header>
-    <div class="logo">JS-Romumetalli Oy</div>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <div class="language-switcher">
-        <button onclick="switchLang('en')">EN</button>
-        <button onclick="switchLang('fi')">FI</button>
+  <nav>
+    <div class="logo">JS-Romumetalli</div>
+    <ul class="nav-links">
+      <li><a href="#services">Palvelut / Services</a></li>
+      <li><a href="#about">Tietoa / About</a></li>
+      <li><a href="#contact">Yhteystiedot / Contact</a></li>
+    </ul>
+    <div class="language-toggle">
+      <button id="lang-fi">FI</button>
+      <button id="lang-en">EN</button>
     </div>
-</header>
+  </nav>
 
-<section class="hero">
-    <h1 id="title">Premium Scrap Metal Services</h1>
-    <p id="subtitle">We are your reliable partner for professional scrap metal recycling in Finland.</p>
-</section>
-<section id="about">
-    <h2 id="aboutTitle">About Us</h2>
-    <p id="aboutText">
-        JS-Romumetalli Oy is a professional scrap metal company located in Kokemäki, Finland. We offer reliable services in metal recycling, transportation, and machinery dismantling. With years of experience and a modern approach, we guarantee efficient and environmentally friendly solutions.
-    </p>
-</section>
-
-<section id="gallery">
-    <h2>Gallery</h2>
-    <div class="gallery">
-        <img src="https://i.imgur.com/Vkq69AU.jpeg" alt="Truck 1">
-        <img src="https://i.imgur.com/v2LsX1r.png" alt="Metal Work">
-        <img src="https://i.imgur.com/r6OggID.png" alt="Industrial Site">
-        <img src="/mnt/data/89A03A00-1042-4FA8-BD04-35CA467E3308.png" alt="Uploaded 1">
-        <img src="/mnt/data/10A1EC31-F51C-480F-9379-4955612A8C5C.png" alt="Uploaded 2">
-        <img src="/mnt/data/9E2A7FDD-7A45-4B60-91B8-3B43CF1BBA2B.png" alt="Uploaded 3">
+  <header class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 data-fi="Ammatillista metallinkierrätystä Suomessa" data-en="Professional Metal Recycling in Finland">
+        Ammatillista metallinkierrätystä Suomessa
+      </h1>
+      <p data-fi="JS-Romumetalli Oy – Luotettava kumppanisi romumetallin ja purkutyön alalla."
+         data-en="JS-Romumetalli Oy – Your trusted partner in metal recycling and demolition.">
+        JS-Romumetalli Oy – Luotettava kumppanisi romumetallin ja purkutyön alalla.
+      </p>
+      <a href="#contact" class="cta-button">Ota yhteyttä / Contact Us</a>
     </div>
-</section>
+  </header>
 
-<section class="contact" id="contact">
-    <h2 id="contactTitle">Contact Us</h2>
-    <p><strong>Address:</strong> Kokemäentie 247b, 32800 Kokemäki</p>
-    <p><strong>Email:</strong> <a href="mailto:info@js-romumetalli.fi">info@js-romumetalli.fi</a></p>
-    <p><strong>Phone:</strong> <a href="tel:+358443342255">+358 44 334 2255</a></p>
-    <div style="margin-top: 20px;">
-        <iframe src="https://www.google.com/maps?q=Kokem%C3%A4entie+247b,+32800+Kokem%C3%A4ki,+Finland&output=embed" width="100%" height="300" style="border:2px solid gold;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-</section>
-
-<footer>
-    &copy; 2025 JS-Romumetalli Oy. All rights reserved.
-</footer>
-
-<script>
-    const translations = {
-        fi: {
-            title: "Romumetallipalvelut ammattitaidolla",
-            subtitle: "Luotettava kumppanisi romumetallin kierrätykseen Suomessa.",
-            aboutTitle: "Meistä",
-            aboutText: "JS-Romumetalli Oy on ammattimainen romumetalliyritys Kokemäellä. Tarjoamme luotettavia palveluita metallin kierrätyksessä, kuljetuksessa ja koneiden purkamisessa. Kokemuksen ja nykyaikaisen lähestymistavan ansiosta takaamme tehokkaat ja ympäristöystävälliset ratkaisut.",
-            contactTitle: "Ota yhteyttä"
-        },
-        en: {
-            title: "Premium Scrap Metal Services",
-            subtitle: "We are your reliable partner for professional scrap metal recycling in Finland.",
-            aboutTitle: "About Us",
-            aboutText: "JS-Romumetalli Oy is a professional scrap metal company located in Kokemäki, Finland. We offer reliable services in metal recycling, transportation, and machinery dismantling. With years of experience and a modern approach, we guarantee efficient and environmentally friendly solutions.",
-            contactTitle: "Contact Us"
-        }
-    };
-
-    function switchLang(lang) {
-        const t = translations[lang];
-        document.getElementById('title').innerText = t.title;
-        document.getElementById('subtitle').innerText = t.subtitle;
-        document.getElementById('aboutTitle').innerText = t.aboutTitle;
-        document.getElementById('aboutText').innerText = t.aboutText;
-        document.getElementById('contactTitle').innerText = t.contactTitle;
-    }
-</script>
-
-</body>
-</html>
+  <section id="about" class="about-section">
