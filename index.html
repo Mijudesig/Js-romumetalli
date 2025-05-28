@@ -2,96 +2,72 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JS-Romumetalli Oy</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="preload" as="audio" href="car-sound.mp3">
 </head>
 <body>
+
   <header class="header">
-    <div class="logo">JS-ROMUMETALLI OY</div>
-    <nav class="navbar">
+    <div class="logo">JS-Romumetalli Oy</div>
+    <nav class="navbar" id="navbar">
       <ul>
-        <li><a href="#about">About</a></li>
+        <li><a href="#hero">Home</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-    <div class="menu-btn">&#9776;</div>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
   </header>
 
-  <section class="hero">
+  <section class="hero" id="hero">
     <video autoplay muted loop id="bg-video">
       <source src="metal-video.mp4" type="video/mp4" />
-      Your browser does not support HTML5 video.
     </video>
     <div class="hero-content">
-      <h1>Power in Metal</h1>
-      <p>Demolition, Scrap & Transport — Premium Quality</p>
+      <h1>Freedom of the Open Road</h1>
+      <p>Explore the freedom of movement with our reliable metal and demolition services</p>
       <a href="#services" class="cta-button">Explore Services</a>
     </div>
   </section>
 
-  <section id="about" class="section fade-in">
-    <h2>About Us</h2>
-    <p>JS-Romumetalli Oy is a Finnish company specializing in scrap metal recycling, demolition services and industrial transport with full reliability and modern equipment.</p>
-  </section>
-
-  <section id="services" class="section slide-in">
-    <h2>Our Services</h2>
+  <section class="section" id="services">
+    <h2 class="fade-in">Our Services</h2>
     <div class="services-grid">
-      <div class="service-card" onmouseover="playSound()">
-        <h3>Scrap Metal Collection</h3>
-        <p>We collect all types of metals, from light scrap to industrial steel.</p>
-      </div>
-      <div class="service-card" onmouseover="playSound()">
-        <h3>Demolition Works</h3>
-        <p>Heavy demolition and dismantling of factories, halls, and structures.</p>
-      </div>
-      <div class="service-card" onmouseover="playSound()">
-        <h3>Heavy Transport</h3>
-        <p>Transportation of metal waste and large machinery across Finland.</p>
-      </div>
+      <div class="service-card fade-in">Metal Recycling</div>
+      <div class="service-card fade-in">Demolition Works</div>
+      <div class="service-card fade-in">Scrap Pickup</div>
     </div>
   </section>
 
-  <section id="projects" class="section fade-in">
-    <h2>Project Highlights</h2>
+  <section class="section" id="projects">
+    <h2 class="fade-in">Our Projects</h2>
     <div class="project-gallery">
-      <img src="truck.jpg" alt="Truck" />
-      <img src="junkyard.jpg.JPG" alt="Junkyard" />
+      <img src="truck.jpg" alt="Truck" class="fade-in" />
+      <img src="junkyard.jpg.JPG" alt="Yard" class="fade-in" />
     </div>
   </section>
 
-  <section id="contact" class="section slide-in">
-    <h2>Contact Us</h2>
-    <form>
-      <input type="text" placeholder="Your Name" />
-      <input type="email" placeholder="Your Email" />
-      <textarea placeholder="Your Message"></textarea>
+  <section class="section" id="contact">
+    <h2 class="fade-in">Contact Us</h2>
+    <form class="fade-in">
+      <input type="text" placeholder="Name" required />
+      <input type="email" placeholder="Email" required />
+      <textarea rows="4" placeholder="Your Message" required></textarea>
       <button type="submit">Send</button>
     </form>
   </section>
 
   <footer class="footer">
-    <p>© 2025 JS-Romumetalli Oy. All rights reserved.</p>
+    © 2025 JS-Romumetalli Oy. All rights reserved.
   </footer>
 
-  <audio id="carSound" src="car-sound.mp3" preload="auto"></audio>
-
   <script>
-    const menuBtn = document.querySelector('.menu-btn');
-    const navbar = document.querySelector('.navbar');
-    menuBtn.addEventListener('click', () => {
-      navbar.classList.toggle('open');
-    });
-
-    function playSound() {
-      const sound = document.getElementById("carSound");
-      sound.currentTime = 0;
-      sound.play();
+    function toggleMenu() {
+      document.getElementById('navbar').classList.toggle('open');
     }
   </script>
+
 </body>
 </html>
