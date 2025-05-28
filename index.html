@@ -4,134 +4,165 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JS-Romumetalli Oy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #1e1e1e url('https://i.imgur.com/wLVVark.png') no-repeat center center fixed;
+      font-family: 'Montserrat', sans-serif;
+      background: #121212 url('https://i.imgur.com/wLVVark.png') no-repeat center center fixed;
       background-size: cover;
-      color: #f1f1f1;
-      scroll-behavior: smooth;
+      color: #f4f4f4;
+      overflow-x: hidden;
     }
     header {
+      background: rgba(0,0,0,0.7);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 40px;
-      background: rgba(0, 0, 0, 0.6);
-      box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+      padding: 1rem 2rem;
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 10;
     }
     header img {
       height: 60px;
     }
     nav a {
-      color: #ffe88d;
-      margin: 0 15px;
+      margin: 0 1rem;
       text-decoration: none;
+      color: #f4f4f4;
       font-weight: bold;
-      padding: 10px 20px;
-      border-radius: 30px;
-      transition: 0.3s ease;
-      background: rgba(255, 232, 141, 0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      transition: all 0.3s ease;
     }
     nav a:hover {
-      background: rgba(255, 232, 141, 0.3);
-      box-shadow: 0 0 10px #ffe88d;
+      background-color: #ffdd57;
+      color: #000;
+      box-shadow: 0 0 15px #ffdd57;
+    }
+    .hero {
+      text-align: center;
+      padding: 10rem 2rem 5rem;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(3px);
+    }
+    .hero h1 {
+      font-size: 3rem;
+      color: #ffdd57;
+      animation: fadeInUp 2s ease;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 1rem auto;
+      animation: fadeInUp 2.5s ease;
     }
     section {
-      padding: 80px 20px;
-      max-width: 1100px;
+      padding: 4rem 2rem;
+      max-width: 1200px;
       margin: auto;
     }
-    .photo {
-      max-width: 100%;
-      border-radius: 12px;
-      border: 2px solid #ffe88d;
-      margin: 30px 0;
-    }
-    h1, h2 {
-      color: #ffe88d;
-    }
-    .button {
-      background: #ffe88d;
-      color: #000;
-      padding: 12px 28px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
+    h2 {
+      font-size: 2rem;
+      color: #ffdd57;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #ffdd57;
       display: inline-block;
     }
-    .button:hover {
-      background: #fff6c4;
-      box-shadow: 0 0 10px #ffe88d;
+    .card {
+      background: rgba(255,255,255,0.05);
+      padding: 2rem;
+      margin: 2rem 0;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+      animation: fadeInUp 1.5s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(255,255,255,0.2);
+    }
+    .card img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 1rem;
     }
     .contact {
-      background: rgba(0,0,0,0.6);
-      padding: 40px;
-      border-radius: 12px;
-      margin-top: 40px;
+      text-align: center;
+      font-size: 1.2rem;
     }
-    iframe {
-      width: 100%;
-      height: 300px;
-      border: none;
-      border-radius: 12px;
-      margin-top: 30px;
+    footer {
+      background: #000;
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #aaa;
     }
-    .fade-in {
-      animation: fadeIn 1.5s ease-in;
-    }
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(30px); }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(40px); }
       100% { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="https://i.imgur.com/r6OggID.png" alt="JS-Romumetalli logo">
-    <nav>
-      <a href="#services">Palvelut</a>
-      <a href="#contact">Yhteystiedot</a>
-    </nav>
-  </header>
+<header>
+  <img src="https://i.imgur.com/r6OggID.png" alt="Logo" />
+  <nav>
+    <a href="#home">Etusivu</a>
+    <a href="#services">Palvelut</a>
+    <a href="#contact">Yhteystiedot</a>
+  </nav>
+</header>
 
-  <section class="fade-in" id="home">
-    <h1>Tervetuloa JS-Romumetalli Oy</h1>
-    <p>Luotettavaa romumetallin noutoa ja purkutöitä Satakunnassa.</p>
-    <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Kuva" class="photo">
-    <a href="#contact" class="button">Ota yhteyttä</a>
-  </section>
+<div class="hero" id="home">
+  <h1>JS-Romumetalli Oy</h1>
+  <p>Nopea ja luotettava romumetallin nouto & purkutyöt Satakunnassa</p>
+</div>
 
-  <section class="fade-in" id="services">
-    <h2>Palvelumme</h2>
-    <p><strong>NOUDAMME RAUTAROMUT NURKISTA NOPEASTI</strong><br>
-      Olemme erikoistuneet erilaisten metalliromujen keräämiseen ja purkutöiden tekemiseen. Noudamme ja kierrätämme monenlaiset metalliromut kuparista alumiinikaapelelihin ja sähkömoottoreista rakennusten metallipurkujätteeseen. Kaikki romumetalli ostetaan hyvää hintaan ja noudetaan sopimuksen mukaisesti asiakkaalta. Haemme mm. autot, työkoneet, puimurit, linja-autot, kuorma-autoja ja maatalosromut.</p>
+<section id="services">
+  <h2>Palvelut</h2>
 
-    <p><strong>SUURET JA PIENET PURKUTYÖT AMMATTITAIDOLLA</strong><br>
-      Saat meiltä Avaimet käteen -palveluna sekä puu- että metallirakennusten purkutyöt. Puramme mm. talot, ladot, autotallit, ja muut rakennukset. Työkohteissa noudatamme turva- ja laatumääräyksiä. Tee tilaus!</p>
+  <div class="card">
+    <h3>NOUDAMME RAUTAROMUT NURKISTA NOPEASTI</h3>
+    <p>
+      Olemme erikoistuneet erilaisten metalliromujen keräämiseen ja purkutöiden tekemiseen.
+      Noudamme ja kierrätämme monenlaiset metalliromut kuparista alumiinikaapelelihin ja sähkömoottoreista rakennusten metallipurkujätteeseen.
+    </p>
+    <p>
+      Haemme mm. autot, työkoneet, puimurit, linja-autot, kuorma-autoja ja maatalousromut.
+    </p>
+    <img src="https://i.imgur.com/DSfZuV3.jpeg" alt="Romuauto" />
+  </div>
 
-    <p><strong>ROMUAUTOT KIERTOON EKOLOGISESTI</strong><br>
-      Soitat vain meille ja tilaat autollesi maksuttoman noudon. Toimitamme autonromun metallinkierrätykseen ja poistamme sen TraFi-rekisteristä. Saat romutustodistuksen. Tarvitsemme valtakirjan.</p>
+  <div class="card">
+    <h3>SUURET JA PIENET PURKUTYÖT AMMATTITAIDOLLA</h3>
+    <p>
+      Puramme mm. talot, ladot, autotallit, ja muut rakennukset. Toimitamme purkujätteen pois tontiltasi ja hoidamme lajittelun ja kierrätyksen.
+    </p>
+    <img src="https://i.imgur.com/KjFiOZO.png" alt="Työkone" />
+  </div>
 
-    <p>Romumetallien nouto • Purkutyöt • Romuautojen kierrätys Satakunnassa</p>
-  </section>
+  <div class="card">
+    <h3>ROMUAUTOT KIERTOON EKOLOGISESTI</h3>
+    <p>
+      Soitat vain meille ja tilaat autollesi maksuttoman noudon. Saat romutustodistuksen ja ajoneuvo poistetaan virallisesti rekisteristä.
+    </p>
+    <img src="https://i.imgur.com/wLVVark.png" alt="Auto taustalla" />
+  </div>
+</section>
 
-  <section class="fade-in" id="contact">
-    <h2>Yhteystiedot</h2>
-    <div class="contact">
-      <p><strong>JS-Romumetalli Oy</strong><br>
-      Sijainti: Köyliö, Kokemäentie 247b<br>
-      Sähköposti: <a href="mailto:jsromumetalli@gmail.com" style="color:#ffe88d">jsromumetalli@gmail.com</a><br>
-      Puhelin: <a href="tel:+358443387395" style="color:#ffe88d">044 338 7395</a></p>
-    </div>
-    <iframe src="https://www.google.com/maps?q=Kokemäentie+247b,+Köyliö,+Finland&output=embed"></iframe>
-  </section>
+<section class="contact" id="contact">
+  <h2>Ota Yhteyttä</h2>
+  <p>Sähköposti: <a href="mailto:jsromumetalli@gmail.com">jsromumetalli@gmail.com</a></p>
+  <p>Puhelin: <a href="tel:+358443387395">044 338 7395</a></p>
+  <p>Osoite: Kokemäentie 247b, Köyliö</p>
+</section>
+
+<footer>
+  © 2025 JS-Romumetalli Oy – Satakunta | Romumetalli, Purkutyöt, Romuautot
+</footer>
 
 </body>
 </html>
