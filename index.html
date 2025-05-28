@@ -5,145 +5,211 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JS-Romumetalli Oy</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;700&display=swap');
 
-    body, html {
+    body {
       margin: 0;
-      padding: 0;
-      font-family: 'Orbitron', sans-serif;
-      background-color: #000;
-      color: #FFD700;
-      overflow-x: hidden;
-    }
-
-    video#bgvid {
-      position: fixed;
-      top: 0; left: 0;
-      min-width: 100%;
-      min-height: 100%;
-      object-fit: cover;
-      z-index: -1;
+      font-family: 'Inter', sans-serif;
+      background-color: #0a0a0a;
+      color: #f5f5f5;
     }
 
     header {
-      background: rgba(0, 0, 0, 0.85);
-      padding: 20px;
+      position: relative;
+      height: 100vh;
+      background: url('https://cdn.pixabay.com/photo/2020/04/21/10/07/black-5070490_1280.jpg') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 1;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+
+    header h1 {
+      z-index: 1;
+      font-family: 'Anton', sans-serif;
+      font-size: 4rem;
+      color: gold;
+    }
+
+    .nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: relative;
+      padding: 1rem 2rem;
+      background-color: #111;
+      position: sticky;
+      top: 0;
+      z-index: 999;
     }
 
-    .logo {
-      font-size: 2rem;
-      letter-spacing: 2px;
+    .nav a {
+      color: gold;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .nav a:hover {
+      color: white;
+      text-shadow: 0 0 10px gold;
     }
 
     .lang-toggle {
       cursor: pointer;
-      background: none;
-      border: 2px solid #FFD700;
-      color: #FFD700;
+      color: gold;
+      border: 1px solid gold;
       padding: 5px 10px;
-      font-weight: bold;
-      transition: 0.3s ease;
+      border-radius: 5px;
     }
 
-    .lang-toggle:hover {
-      background: #FFD700;
-      color: black;
+    .section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      color: gold;
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
     }
 
     .gallery {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
-      gap: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
     }
 
-    .slide {
-      max-width: 800px;
-      text-align: center;
-      animation: fadeIn 1s ease forwards;
-    }
-
-    .slide img {
+    .gallery img {
       width: 100%;
-      border: 4px solid #FFD700;
+      border: 3px solid gold;
       border-radius: 10px;
-      box-shadow: 0 0 20px #FFD70055;
+      transition: transform 0.3s;
     }
 
-    .caption {
-      margin-top: 10px;
-      font-size: 1.2rem;
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .contact-info {
+      text-align: center;
+      margin-top: 2rem;
     }
 
     footer {
+      background: #111;
       text-align: center;
-      padding: 20px;
-      background: rgba(0,0,0,0.85);
+      padding: 2rem;
       font-size: 0.9rem;
+      color: #888;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    button {
+      background: none;
+      border: 2px solid gold;
+      padding: 0.5rem 1rem;
+      color: gold;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 1rem auto;
+      display: block;
+      transition: all 0.3s;
+    }
+
+    button:hover {
+      background: gold;
+      color: black;
+    }
+
+    /* Map & Sound */
+    iframe {
+      width: 100%;
+      border: none;
+      height: 300px;
+      border-radius: 10px;
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
-
-  <video autoplay muted loop id="bgvid">
-    <source src="https://cdn.coverr.co/videos/coverr-car-driving-on-a-sunny-road-7116/1080p.mp4" type="video/mp4">
-    Your browser does not support HTML5 video.
-  </video>
+  <div class="nav">
+    <div>
+      <a href="#about" data-en="About" data-fi="Meistä">About</a>
+      <a href="#gallery" data-en="Gallery" data-fi="Galleria">Gallery</a>
+      <a href="#contact" data-en="Contact" data-fi="Yhteystiedot">Contact</a>
+    </div>
+    <div class="lang-toggle" onclick="toggleLang()">FI</div>
+  </div>
 
   <header>
-    <div class="logo">JS-Romumetalli Oy</div>
-    <button class="lang-toggle" onclick="toggleLanguage()">FI / EN</button>
+    <h1 data-en="JS-Romumetalli Oy" data-fi="JS-Romumetalli Oy">JS-Romumetalli Oy</h1>
   </header>
 
-  <main class="gallery">
-    <div class="slide">
-      <img src="89A03A00-1042-4FA8-BD04-35CA467E3308.png" alt="Image 1">
-      <div class="caption" data-en="Metal scrap processing" data-fi="Romumetallin käsittely">Metal scrap processing</div>
+  <section id="about" class="section">
+    <h2 data-en="About Us" data-fi="Meistä">About Us</h2>
+    <p data-en="We are a premium metal recycling company located in Kokemäki, Finland. Quality, speed, and service are our core values."
+       data-fi="Olemme korkealaatuinen romumetalliyritys Kokemäellä. Laatu, nopeus ja palvelu ovat ydinarvojamme.">
+       We are a premium metal recycling company located in Kokemäki, Finland. Quality, speed, and service are our core values.
+    </p>
+  </section>
+
+  <section id="gallery" class="section">
+    <h2 data-en="Gallery" data-fi="Galleria">Gallery</h2>
+    <div class="gallery">
+      <img src="image1.png" alt="Truck">
+      <img src="image2.png" alt="Scrap metal">
+      <img src="image3.png" alt="Machines">
+      <img src="image4.jpeg" alt="Facility">
     </div>
-    <div class="slide">
-      <img src="10A1EC31-F51C-480F-9379-4955612A8C5C.png" alt="Image 2">
-      <div class="caption" data-en="High-capacity equipment" data-fi="Suuren kapasiteetin laitteet">High-capacity equipment</div>
+  </section>
+
+  <section id="contact" class="section">
+    <h2 data-en="Contact" data-fi="Yhteystiedot">Contact</h2>
+    <div class="contact-info">
+      <p><strong data-en="Phone" data-fi="Puhelin">Phone</strong>: <a href="tel:+358400790622">+358 400 790 622</a></p>
+      <p><strong data-en="Email" data-fi="Sähköposti">Email</strong>: <a href="mailto:info@js-romumetalli.fi">info@js-romumetalli.fi</a></p>
+      <button onclick="window.open('mailto:info@js-romumetalli.fi')"
+              data-en="Send Email" data-fi="Lähetä sähköposti">Send Email</button>
     </div>
-    <div class="slide">
-      <img src="9E2A7FDD-7A45-4B60-91B8-3B43CF1BBA2B.png" alt="Image 3">
-      <div class="caption" data-en="Certified recycling services" data-fi="Sertifioidut kierrätyspalvelut">Certified recycling services</div>
-    </div>
-    <div class="slide">
-      <img src="2CD24BCC-22B1-455C-B54B-72C4A2667B55.jpeg" alt="Image 4">
-      <div class="caption" data-en="Heavy-duty logistics" data-fi="Raskaslogistiikka">Heavy-duty logistics</div>
-    </div>
-  </main>
+    <iframe 
+      src="https://www.google.com/maps?q=Kokemäentie+247b,+Finland&output=embed"
+      allowfullscreen>
+    </iframe>
+  </section>
 
   <footer>
-    &copy; 2025 JS-Romumetalli Oy – All rights reserved.
+    &copy; 2025 JS-Romumetalli Oy. All rights reserved.
   </footer>
 
-  <audio id="hover-sound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_6789ecb2ee.mp3" preload="auto"></audio>
+  <audio id="hoverSound" src="https://www.soundjay.com/transportation/car-door-close-1.mp3" preload="auto"></audio>
 
   <script>
-    const captions = document.querySelectorAll('.caption');
-    let lang = 'en';
+    function toggleLang() {
+      const toggle = document.querySelector('.lang-toggle');
+      const isFi = toggle.textContent === 'FI';
+      toggle.textContent = isFi ? 'EN' : 'FI';
 
-    function toggleLanguage() {
-      lang = (lang === 'en') ? 'fi' : 'en';
-      captions.forEach(el => {
-        el.textContent = el.getAttribute(`data-${lang}`);
+      document.querySelectorAll('[data-en]').forEach(el => {
+        el.textContent = isFi ? el.dataset.fi : el.dataset.en;
       });
     }
 
-    document.querySelectorAll('.lang-toggle, .logo').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        document.getElementById('hover-sound').play();
+    // Hover sound on buttons
+    document.querySelectorAll("button, a").forEach(el => {
+      el.addEventListener("mouseenter", () => {
+        document.getElementById("hoverSound").play();
       });
     });
   </script>
