@@ -1,235 +1,189 @@
 <!DOCTYPE html>
-<html lang="fi">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>JS-Romumetalli Oy</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
+      margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background: url('https://i.imgur.com/wLVVark.png') no-repeat center center fixed;
       background-size: cover;
-      color: white;
+      color: #fff;
     }
 
     header {
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 20px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      padding: 30px;
+      background-color: rgba(0, 0, 0, 0.6);
     }
 
     header img {
       height: 60px;
     }
 
-    nav {
-      display: flex;
-      gap: 20px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      border-radius: 30px;
+    nav button {
+      margin: 0 10px;
       padding: 10px 20px;
-      background-color: #f5c844;
-      box-shadow: 0 4px 12px rgba(245, 200, 68, 0.4);
-      transition: all 0.3s ease;
-    }
-
-    nav a:hover {
-      background-color: #ffe17b;
-      color: black;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(255, 225, 123, 0.6);
-    }
-
-    .lang-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 1000;
-      padding: 10px 20px;
-      background-color: #f5c844;
-      color: black;
-      font-weight: bold;
       border: none;
-      border-radius: 30px;
+      border-radius: 20px;
+      background: #f4c542;
+      color: #000;
+      font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(245, 200, 68, 0.4);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
       transition: all 0.3s ease;
     }
 
-    .lang-toggle:hover {
-      background-color: #ffe17b;
-      transform: translateY(-2px);
+    nav button:hover {
+      background: #ffe07e;
     }
 
-    .content {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
-      background-color: rgba(0, 0, 0, 0.6);
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    }
-
-    h1, h2 {
+    .hero {
       text-align: center;
+      padding: 100px 20px 50px;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero h1 {
+      font-size: 48px;
       margin-bottom: 20px;
     }
 
-    .info {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      margin-top: 40px;
-      flex-wrap: wrap;
-      justify-content: center;
+    .hero p {
+      font-size: 22px;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
-    .info img {
-      max-width: 300px;
+    .about {
+      padding: 60px 20px;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .about img {
+      width: 300px;
+      border-radius: 12px;
+      border: 5px solid #f4c542;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      margin-top: 20px;
+    }
+
+    .about h2 {
+      font-size: 32px;
+    }
+
+    .about p {
+      font-size: 18px;
+      max-width: 800px;
+      margin: 20px auto;
+    }
+
+    .contact {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+
+    .contact p {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    .contact a {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 25px;
+      background: #f4c542;
+      color: #000;
+      font-weight: bold;
       border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .contact a:hover {
+      background: #ffe07e;
     }
 
     footer {
       text-align: center;
       padding: 30px;
+      background: rgba(0, 0, 0, 0.5);
       font-size: 14px;
-      background-color: rgba(0, 0, 0, 0.7);
-      margin-top: 40px;
-    }
-
-    .button-group {
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    .button-group button {
-      margin: 10px;
-    }
-
-    .map {
-      margin-top: 30px;
-      text-align: center;
-    }
-
-    iframe {
-      width: 100%;
-      height: 300px;
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
     }
   </style>
 </head>
 <body>
 
-  <button class="lang-toggle" onclick="toggleLang()">EN</button>
-
   <header>
-    <img src="https://i.imgur.com/r6OggID.png" alt="JS-Romumetalli Oy Logo" />
+    <img src="https://i.imgur.com/r6OggID.png" alt="JS-Romumetalli Oy logo">
     <nav>
-      <a href="#about" class="tr">Tietoa</a>
-      <a href="#services" class="tr">Palvelut</a>
-      <a href="#contact" class="tr">Yhteystiedot</a>
+      <button onclick="setLanguage('en')">English</button>
+      <button onclick="setLanguage('fi')">Suomi</button>
     </nav>
   </header>
 
-  <div class="content">
-    <section id="about">
-      <h1 class="tr">JS-Romumetalli Oy</h1>
-      <p class="tr">JS-Romumetalli Oy toimii Köyliössä ja tarjoaa monipuolisia metallinkierrätyspalveluita. Yrityksemme on keskittynyt luotettavaan ja nopeaan romumetallin käsittelyyn sekä kuljetukseen.</p>
-    </section>
+  <section class="hero">
+    <h1 id="main-title">JS-Romumetalli Oy</h1>
+    <p id="main-desc">Reliable metal recycling and scrap metal services in Satakunta.</p>
+  </section>
 
-    <section id="services" class="info">
-      <div>
-        <h2 class="tr">Palvelumme</h2>
-        <ul>
-          <li class="tr">Romumetallin nouto ja kierrätys</li>
-          <li class="tr">Yrityksille ja yksityisille</li>
-          <li class="tr">Luotettava asiakaspalvelu</li>
-        </ul>
-      </div>
-      <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Truck" />
-    </section>
+  <section class="about">
+    <h2 id="about-title">About Us</h2>
+    <p id="about-desc">
+      We operate across the Satakunta region, buying and collecting all types of scrap metal — from private customers and companies. We guarantee fast and flexible service. Our mission is to keep the environment clean by recycling metals efficiently.
+    </p>
+    <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Our truck">
+  </section>
 
-    <section id="contact">
-      <h2 class="tr">Yhteystiedot</h2>
-      <p>Email: <a href="mailto:info@js-romumetalli.fi">info@js-romumetalli.fi</a></p>
-      <p>Puhelin: <a href="tel:+358401234567">+358 40 123 4567</a></p>
-      <p class="tr">Osoite: Kokemäentie 247b, Köyliö</p>
-
-      <div class="map">
-        <iframe src="https://www.google.com/maps?q=Kokemäentie+247b,+Köyliö,+Finland&output=embed"></iframe>
-      </div>
-    </section>
-
-    <div class="button-group">
-      <button class="tr">Ota yhteyttä</button>
-      <button class="tr">Pyydä tarjous</button>
-    </div>
-  </div>
+  <section class="contact">
+    <h2 id="contact-title">Contact Us</h2>
+    <p>Email: <a href="mailto:info@js-romumetalli.fi">info@js-romumetalli.fi</a></p>
+    <p>Phone: <a href="tel:+358401234567">+358 40 123 4567</a></p>
+    <p id="contact-desc">Write us anytime. We'll get back to you quickly!</p>
+    <a href="mailto:info@js-romumetalli.fi">Send Email</a>
+  </section>
 
   <footer>
-    <p>&copy; 2025 JS-Romumetalli Oy. All rights reserved.</p>
+    &copy; 2025 JS-Romumetalli Oy — Köyliö, Satakunta
   </footer>
 
   <script>
     const translations = {
-      fi: {
-        'Tietoa': 'Tietoa',
-        'Palvelut': 'Palvelut',
-        'Yhteystiedot': 'Yhteystiedot',
-        'JS-Romumetalli Oy': 'JS-Romumetalli Oy',
-        'JS-Romumetalli Oy toimii Köyliössä ja tarjoaa monipuolisia metallinkierrätyspalveluita. Yrityksemme on keskittynyt luotettavaan ja nopeaan romumetallin käsittelyyn sekä kuljetukseen.': 'JS-Romumetalli Oy toimii Köyliössä ja tarjoaa monipuolisia metallinkierrätyspalveluita. Yrityksemme on keskittynyt luotettavaan ja nopeaan romumetallin käsittelyyn sekä kuljetukseen.',
-        'Palvelumme': 'Palvelumme',
-        'Romumetallin nouto ja kierrätys': 'Romumetallin nouto ja kierrätys',
-        'Yrityksille ja yksityisille': 'Yrityksille ja yksityisille',
-        'Luotettava asiakaspalvelu': 'Luotettava asiakaspalvelu',
-        'Osoite: Kokemäentie 247b, Köyliö': 'Osoite: Kokemäentie 247b, Köyliö',
-        'Ota yhteyttä': 'Ota yhteyttä',
-        'Pyydä tarjous': 'Pyydä tarjous',
-      },
       en: {
-        'Tietoa': 'About',
-        'Palvelut': 'Services',
-        'Yhteystiedot': 'Contact',
-        'JS-Romumetalli Oy': 'JS-Romumetalli Oy',
-        'JS-Romumetalli Oy toimii Köyliössä ja tarjoaa monipuolisia metallinkierrätyspalveluita. Yrityksemme on keskittynyt luotettavaan ja nopeaan romumetallin käsittelyyn sekä kuljetukseen.': 'JS-Romumetalli Oy operates in Köyliö and offers a wide range of metal recycling services. Our company focuses on reliable and fast scrap metal handling and transportation.',
-        'Palvelumme': 'Our Services',
-        'Romumetallin nouto ja kierrätys': 'Scrap metal pickup and recycling',
-        'Yrityksille ja yksityisille': 'For businesses and individuals',
-        'Luotettava asiakaspalvelu': 'Reliable customer service',
-        'Osoite: Kokemäentie 247b, Köyliö': 'Address: Kokemäentie 247b, Köyliö',
-        'Ota yhteyttä': 'Contact us',
-        'Pyydä tarjous': 'Request a quote',
+        'main-title': "JS-Romumetalli Oy",
+        'main-desc': "Reliable metal recycling and scrap metal services in Satakunta.",
+        'about-title': "About Us",
+        'about-desc': "We operate across the Satakunta region, buying and collecting all types of scrap metal — from private customers and companies. We guarantee fast and flexible service. Our mission is to keep the environment clean by recycling metals efficiently.",
+        'contact-title': "Contact Us",
+        'contact-desc': "Write us anytime. We'll get back to you quickly!",
+      },
+      fi: {
+        'main-title': "JS-Romumetalli Oy",
+        'main-desc': "Luotettavaa metallinkierrätystä ja romun noutoa Satakunnassa.",
+        'about-title': "Meistä",
+        'about-desc': "Toimimme koko Satakunnan alueella, ostamme ja noudamme kaikenlaista romumetallia — yksityisiltä ja yrityksiltä. Tarjoamme nopeaa ja joustavaa palvelua. Tavoitteenamme on pitää ympäristö puhtaana tehokkaan kierrätyksen avulla.",
+        'contact-title': "Ota yhteyttä",
+        'contact-desc': "Kirjoita meille milloin tahansa. Vastaamme nopeasti!",
       }
     };
 
-    let currentLang = 'fi';
-    function toggleLang() {
-      const newLang = currentLang === 'fi' ? 'en' : 'fi';
-      document.querySelectorAll('.tr').forEach(el => {
-        const text = el.innerText.trim();
-        if (translations[currentLang][text]) {
-          el.innerText = translations[newLang][translations[currentLang][text]];
-        }
-      });
-      currentLang = newLang;
-      document.querySelector('.lang-toggle').innerText = newLang.toUpperCase();
+    function setLanguage(lang) {
+      for (const id in translations[lang]) {
+        document.getElementById(id).innerText = translations[lang][id];
+      }
     }
   </script>
+
 </body>
 </html>
