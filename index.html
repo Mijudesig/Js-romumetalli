@@ -1,220 +1,212 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>JS-Romumetalli Oy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Anton', sans-serif;
-      background: #1a1a1a;
-      color: white;
-      overflow-x: hidden;
+      background: url('https://i.imgur.com/wLVVark.png') center/cover no-repeat fixed;
+      backdrop-filter: blur(10px);
+      color: #f3f3f3;
     }
-
     header {
-      background: #111;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
-    }
-
-    header h1 {
-      color: #FFD700;
-      margin: 0;
-      text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
-    }
-
-    nav {
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 20px 40px;
       display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 10px;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
-
+    .logo {
+      height: 60px;
+    }
     nav a {
-      color: #fff;
+      margin-left: 30px;
+      color: #ffdf60;
       text-decoration: none;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 10px 20px;
-      border-radius: 8px;
-      transition: background 0.3s ease, box-shadow 0.3s ease;
+      font-size: 18px;
+      transition: color 0.3s;
     }
-
     nav a:hover {
-      background: #FFD700;
-      color: #000;
-      box-shadow: 0 0 10px #FFD700;
+      color: #ffffff;
     }
-
     .hero {
-      background: url('https://i.imgur.com/lJVTrKa.jpeg') no-repeat center center / cover;
-      height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-    }
-
-    .hero h2 {
-      color: #FFD700;
-      font-size: 4rem;
-      z-index: 2;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-    }
-
-    section {
-      padding: 80px 20px;
-    }
-
-    .section-title {
       text-align: center;
-      font-size: 3rem;
-      margin-bottom: 50px;
-      color: #FFD700;
-      text-shadow: 0 0 6px rgba(255, 215, 0, 0.3);
+      padding: 100px 30px 60px;
+      background: rgba(0, 0, 0, 0.6);
     }
-
-    /* Services Cards */
-    .cards-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-      align-items: center;
+    .hero h1 {
+      font-size: 56px;
+      color: #ffdf60;
+      text-shadow: 0 0 10px #000;
     }
-
-    .service-card {
-      display: flex;
-      flex-direction: row;
-      background-color: rgba(255, 255, 255, 0.03);
+    .hero p {
+      font-size: 22px;
+      color: #eee;
+      max-width: 700px;
+      margin: 20px auto;
+    }
+    .lang-switch {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      z-index: 100;
+    }
+    .lang-switch button {
+      background-color: #ffdf60;
+      color: #111;
+      border: none;
+      padding: 8px 16px;
+      margin-left: 10px;
+      cursor: pointer;
+      font-family: 'Anton';
+      border-radius: 4px;
+      box-shadow: 0 0 10px #000;
+    }
+    .section {
+      padding: 60px 20px;
+      background-color: rgba(20, 20, 20, 0.85);
+      margin: 40px auto;
       border-radius: 12px;
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+      max-width: 1200px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.4);
+    }
+    .section h2 {
+      text-align: center;
+      color: #ffdf60;
+      margin-bottom: 30px;
+      font-size: 36px;
+    }
+    .card {
+      display: flex;
+      margin: 20px 0;
+      background: #1a1a1a;
+      border-radius: 12px;
       overflow: hidden;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      max-width: 900px;
-      width: 100%;
+      box-shadow: 0 0 20px rgba(0,0,0,0.7);
     }
-
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 40px rgba(255, 215, 0, 0.2);
-    }
-
-    .service-img {
+    .card img {
       width: 300px;
-      height: 100%;
+      height: auto;
       object-fit: cover;
     }
-
-    .service-content {
-      padding: 30px;
-      color: white;
+    .card-info {
+      padding: 20px;
+      flex: 1;
     }
-
-    .service-content h3 {
-      font-size: 2em;
-      margin-bottom: 15px;
-      color: #FFD700;
-      text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+    .card-info h3 {
+      font-size: 28px;
+      margin-top: 0;
+      color: #ffdf60;
     }
-
-    .service-content p {
-      font-size: 1.1em;
-      line-height: 1.5;
-      color: #eee;
+    .card-info p {
+      font-size: 16px;
+      line-height: 1.6;
     }
-
-    @media (max-width: 768px) {
-      .service-card {
-        flex-direction: column;
-      }
-
-      .service-img {
-        width: 100%;
-        height: auto;
-      }
-    }
-
-    footer {
-      background: #111;
-      color: #aaa;
+    .contact, .map {
+      margin-top: 40px;
       text-align: center;
-      padding: 40px 20px;
-      font-size: 0.9rem;
+    }
+    .contact p {
+      font-size: 18px;
+      margin: 5px 0;
+    }
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      margin-top: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
     }
   </style>
 </head>
 <body>
-
+  <div class="lang-switch">
+    <button onclick="switchLang('fi')">FI</button>
+    <button onclick="switchLang('en')">EN</button>
+  </div>
   <header>
-    <h1>JS-Romumetalli Oy</h1>
+    <img src="https://i.imgur.com/r6OggID.png" alt="JS-Romumetalli Logo" class="logo" />
     <nav>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-      <a href="#map">Location</a>
+      <a href="#about">Tietoa</a>
+      <a href="#services">Palvelut</a>
+      <a href="#contact">Yhteystiedot</a>
     </nav>
   </header>
 
-  <div class="hero">
-    <h2>Metal Recycling & Scrap Solutions</h2>
-  </div>
+  <section class="hero">
+    <h1>JS-Romumetalli Oy</h1>
+    <p>Ostamme romumetallia ja teollisuuden metalliromua kilpailukykyisellä hinnalla Köyliössä ja lähialueilla.</p>
+  </section>
 
-  <section id="services">
-    <h2 class="section-title">Our Services</h2>
-    <div class="cards-wrapper">
-      <!-- Truck Card -->
-      <div class="service-card">
-        <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Truck" class="service-img">
-        <div class="service-content">
-          <h3>Heavy Vehicle Scrap</h3>
-          <p>We collect and dismantle heavy vehicles with full safety and recycling procedures.</p>
-        </div>
-      </div>
-
-      <!-- Tractor Card -->
-      <div class="service-card">
-        <img src="https://i.imgur.com/UGYl1w2.jpeg" alt="Tractor" class="service-img">
-        <div class="service-content">
-          <h3>Agricultural Machinery</h3>
-          <p>Disposal and transport of agricultural scrap including tractors, loaders and more.</p>
-        </div>
-      </div>
-
-      <!-- Red Car Card -->
-      <div class="service-card">
-        <img src="https://i.imgur.com/Fuw60yz.jpeg" alt="Red Car" class="service-img">
-        <div class="service-content">
-          <h3>Cars and Vans</h3>
-          <p>Quick and reliable scrap service for personal vehicles, including towing on request.</p>
-        </div>
+  <section class="section" id="about">
+    <h2>Tietoa meistä</h2>
+    <div class="card">
+      <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Factory" />
+      <div class="card-info">
+        <h3>Romumetallin asiantuntijat</h3>
+        <p>JS-Romumetalli Oy toimii Köyliössä. Tarjoamme luotettavaa romumetallin keräystä, lajittelua ja toimitusta. Olemme tehokas ja ammattimainen yhteistyökumppani teollisuudelle ja yksityisasiakkaille.</p>
       </div>
     </div>
   </section>
 
-  <section id="contact">
-    <h2 class="section-title">Contact</h2>
-    <p style="text-align:center;">Email: info@js-romumetalli.fi<br>Phone: +358 40 123 4567</p>
-  </section>
+  <!-- ПРОДОЛЖЕНИЕ В СЛЕДУЮЩЕМ СООБЩЕНИИ (ВТОРАЯ ЧАСТЬ) -->
+    <section class="section" id="services">
+    <h2>Palvelumme</h2>
 
-  <section id="map">
-    <h2 class="section-title">Location</h2>
-    <div style="display:flex; justify-content:center;">
-      <iframe src="https://www.google.com/maps?q=Kokemäentie+247b,+Köyliö,+Finland&output=embed" width="80%" height="400" style="border:0;"></iframe>
+    <div class="card">
+      <img src="https://i.imgur.com/Yp5NE3W.jpeg" alt="Truck" />
+      <div class="card-info">
+        <h3>Romuraudan keräys</h3>
+        <p>Keräämme kaikenlaista metalliromua, mukaan lukien rautaromut, koneet, laitteet ja ajoneuvot. Noudamme ne nopeasti ja turvallisesti.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://i.imgur.com/4q2cdmU.jpeg" alt="Excavator" />
+      <div class="card-info">
+        <h3>Purkupalvelut</h3>
+        <p>Tarjoamme rakennusten, koneiden ja muiden rakenteiden purku- ja metallin kierrätyspalvelut ammattilaisilta tehokkaasti.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://i.imgur.com/Ha8WROp.jpeg" alt="Red Car" />
+      <div class="card-info">
+        <h3>Ajoneuvojen kierrätys</h3>
+        <p>Otamme vastaan vanhoja autoja, traktoreita ja muita kulkuneuvoja kierrätykseen. Meiltä saat romutustodistuksen ja asianmukaisen käsittelyn.</p>
+      </div>
     </div>
   </section>
 
-  <footer>
-    &copy; 2025 JS-Romumetalli Oy. All rights reserved.
+  <section class="section contact" id="contact">
+    <h2>Yhteystiedot</h2>
+    <p><strong>Osoite:</strong> Kokemäentie 247b, Köyliö, Suomi</p>
+    <p><strong>Sähköposti:</strong> <a href="mailto:info@js-romumetalli.fi" style="color:#ffdf60;">info@js-romumetalli.fi</a></p>
+    <p><strong>Puhelin:</strong> <a href="tel:+358451234567" style="color:#ffdf60;">+358 45 123 4567</a></p>
+
+    <div class="map">
+      <iframe src="https://www.google.com/maps?q=Kokemäentie+247b,+Köyliö,+Suomi&output=embed"></iframe>
+    </div>
+  </section>
+
+  <footer style="text-align:center; padding:30px; background:#111; color:#aaa; font-size:14px;">
+    &copy; 2025 JS-Romumetalli Oy — Kaikki oikeudet pidätetään.
   </footer>
 
+  <script>
+    function switchLang(lang) {
+      if (lang === 'fi') {
+        location.href = '?lang=fi';
+      } else {
+        location.href = '?lang=en';
+      }
+    }
+  </script>
 </body>
 </html>
