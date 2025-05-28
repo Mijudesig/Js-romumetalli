@@ -1,235 +1,152 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JS-Romumetalli Oy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background: #111;
-      color: #eee;
-      overflow-x: hidden;
+      font-family: 'Anton', sans-serif;
+      background: #1a1a1a url('https://i.imgur.com/wLVVark.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #f5f5f5;
     }
 
     header {
-      position: relative;
-      background: url('https://i.imgur.com/wLVVark.png') center/cover no-repeat;
-      height: 100vh;
       display: flex;
-      flex-direction: column;
       justify-content: space-between;
-      filter: blur(0px);
-      animation: fadeIn 2s ease-in-out;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
     }
 
-    header::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.65);
-      backdrop-filter: blur(4px);
-      z-index: 0;
+    header img {
+      height: 50px;
     }
 
-    .logo {
-      width: 180px;
-      padding: 30px;
-      z-index: 1;
+    .lang-buttons {
+      display: flex;
+      gap: 10px;
     }
 
-    nav {
-      position: absolute;
-      top: 30px;
-      right: 30px;
-      z-index: 1;
-    }
-
-    nav button {
-      background: #f0c040;
+    .lang-buttons button {
+      background-color: #f2c94c;
       border: none;
-      margin-left: 10px;
-      padding: 10px 18px;
-      border-radius: 30px;
+      padding: 8px 14px;
+      border-radius: 20px;
       cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
       font-weight: bold;
-      color: #111;
-      transition: all 0.3s;
-      box-shadow: 0 0 8px rgba(255, 215, 100, 0.5);
     }
 
-    nav button:hover {
-      background: #ffe98d;
+    .lang-buttons button:hover {
+      background-color: #ffe074;
+    }
+
+    section {
+      padding: 2rem;
+      background-color: rgba(0, 0, 0, 0.6);
+      margin: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
     }
 
     h1, h2 {
-      font-family: 'Anton', sans-serif;
-      margin: 0;
+      color: #f2c94c;
+      margin-top: 0;
     }
 
-    .hero-text {
-      position: relative;
-      z-index: 1;
-      color: #fff;
-      text-align: center;
-      margin-top: auto;
-      margin-bottom: 100px;
-      animation: fadeInUp 1.5s ease;
+    p {
+      line-height: 1.6;
     }
 
-    .hero-text h1 {
-      font-size: 60px;
-      text-shadow: 2px 2px 8px #000;
-    }
-
-    .section {
-      padding: 60px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .section h2 {
-      color: #f0c040;
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-
-    .grid img {
-      width: 100%;
+    .image-frame {
+      max-width: 400px;
+      margin: 1rem auto;
+      border: 4px solid #f2c94c;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.6);
       border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.4);
-      transition: transform 0.4s;
+      overflow: hidden;
     }
 
-    .grid img:hover {
-      transform: scale(1.03);
+    .image-frame img {
+      width: 100%;
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #ccc;
+      font-size: 0.9rem;
     }
 
     .map {
       width: 100%;
       height: 300px;
-      border-radius: 10px;
-      margin-top: 30px;
-      filter: grayscale(30%);
+      border: none;
+      border-radius: 12px;
+      margin-top: 2rem;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
     }
 
-    .contact {
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    .contact a {
-      color: #f0c040;
-      text-decoration: none;
-      font-size: 20px;
-    }
-
-    footer {
-      background: #000;
-      color: #888;
-      padding: 20px;
-      text-align: center;
-      font-size: 14px;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .fade-in {
+      animation: fadeIn 2s ease-in;
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <header>
-    <img class="logo" src="https://i.imgur.com/r6OggID.png" alt="JS-Romumetalli Oy logo">
-    <nav>
-      <button onclick="setLang('fi')">FI</button>
-      <button onclick="setLang('en')">EN</button>
-    </nav>
-    <div class="hero-text">
-      <h1>JS-Romumetalli Oy</h1>
-      <p>Luotettavaa romumetallin noutoa ja purkutöitä Satakunnassa</p>
+  <header class="fade-in">
+    <img src="https://i.imgur.com/r6OggID.png" alt="JS-Romumetalli Logo">
+    <div class="lang-buttons">
+      <button onclick="document.documentElement.lang='fi'">FI</button>
+      <button onclick="document.documentElement.lang='en'">EN</button>
     </div>
   </header>
 
-  <section class="section" id="info">
-    <h2>Palvelumme</h2>
-    <p id="lang-content">
-      <!-- Текст добавим через JS, поддерживая языки -->
-    </p>
-  </section>
-
-  <section class="section">
-    <h2>Kuvagalleria</h2>
-    <div class="grid">
-      <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Ajoneuvo 1">
-      <img src="https://i.imgur.com/DSfZuV3.jpeg" alt="Ajoneuvo 2">
-      <img src="https://i.imgur.com/KjFiOZO.png" alt="Ajoneuvo 3">
+  <section class="fade-in">
+    <h1>JS-Romumetalli Oy</h1>
+    <p>Olemme erikoistuneet erilaisten metalliromujen keräämiseen ja purkutöihin Satakunnan alueella. Haemme mm. autot, työkoneet, puimurit, linja-autot ja maatalousromut.</p>
+    <div class="image-frame">
+      <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Toiminta">
     </div>
   </section>
 
-  <section class="section">
-    <h2>Sijainti</h2>
-    <iframe class="map" src="https://maps.google.com/maps?q=Kokemäentie%20247b&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+  <section class="fade-in">
+    <h2>Palvelut</h2>
+    <ul>
+      <li>Romumetallien nouto</li>
+      <li>Pienet ja suuret purkutyöt</li>
+      <li>Romuautojen kierrätys</li>
+    </ul>
+    <div class="image-frame">
+      <img src="https://i.imgur.com/DSfZuV3.jpeg" alt="Auto 1">
+    </div>
+    <div class="image-frame">
+      <img src="https://i.imgur.com/KjFiOZO.png" alt="Auto 2">
+    </div>
   </section>
 
-  <div class="contact">
-    <p>📍 Köyliö, Satakunta</p>
-    <p>📞 044 338 7395</p>
-    <p>📧 <a href="mailto:jsromumetalli@gmail.com">jsromumetalli@gmail.com</a></p>
-  </div>
+  <section class="fade-in">
+    <h2>Yhteystiedot</h2>
+    <p>Sähköposti: <a href="mailto:jsromumetalli@gmail.com">jsromumetalli@gmail.com</a></p>
+    <p>Puhelin: <a href="tel:+358443387395">044 338 7395</a></p>
+    <p>Osoite: Kokemäentie 247b, Köyliö, Satakunta</p>
+    <iframe class="map" src="https://www.google.com/maps?q=Kokemäentie+247b,+Köyliö,+Finland&output=embed"></iframe>
+  </section>
 
-  <footer>
-    © 2025 JS-Romumetalli Oy — Kaikki oikeudet pidätetään
+  <footer class="fade-in">
+    &copy; 2025 JS-Romumetalli Oy. Kaikki oikeudet pidätetään.
   </footer>
-
-  <script>
-    const fiText = `
-      <strong>NOUDAMME RAUTAROMUT NURKISTA NOPEASTI</strong><br>
-      Olemme erikoistuneet metalliromujen keräämiseen ja purkutöihin. Haemme ja kierrätämme metalliromut kuparista alumiinikaapeleihin.<br><br>
-      <strong>SUURET JA PIENET PURKUTYÖT</strong><br>
-      Saat meiltä purkupalvelut avaimet käteen -periaatteella.<br><br>
-      <strong>ROMUAUTOT KIERTOON</strong><br>
-      Romutamme ajoneuvot turvallisesti ja toimitamme virallisen romutustodistuksen.
-    `;
-
-    const enText = `
-      <strong>WE QUICKLY COLLECT METAL SCRAP</strong><br>
-      We specialize in collecting various metal scraps and dismantling work. We pick up and recycle metal waste like copper, cables, and old vehicles.<br><br>
-      <strong>LARGE AND SMALL DEMOLITION PROJECTS</strong><br>
-      We provide turnkey demolition services for both metal and wooden buildings.<br><br>
-      <strong>SCRAP VEHICLES RECYCLING</strong><br>
-      We handle the entire recycling process and provide you with a destruction certificate.
-    `;
-
-    function setLang(lang) {
-      const container = document.getElementById("lang-content");
-      container.innerHTML = lang === "en" ? enText : fiText;
-    }
-
-    setLang("fi"); // default
-  </script>
 </body>
 </html>
