@@ -2,232 +2,234 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>JS-Romumetalli Oy</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
+      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #0b0b0b;
-      color: #fff;
-      line-height: 1.6;
+      background-color: #0a0a0a;
+      color: #f1f1f1;
+      overflow-x: hidden;
     }
 
     header {
-      background: #111;
+      background-color: #0a0a0a;
       padding: 20px 40px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #ffc107;
     }
 
-    header img {
-      height: 50px;
+    header h1 {
+      color: #ffc107;
+      font-size: 28px;
+      margin: 0;
+      letter-spacing: 2px;
     }
 
     nav a {
-      color: #f5c623;
-      margin-left: 20px;
+      color: #ffffffcc;
+      margin: 0 15px;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffc107;
     }
 
     .hero {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 100px 40px 80px;
-      background: linear-gradient(135deg, #0b0b0b, #1c1c1c);
-      position: relative;
-      overflow: hidden;
+      text-align: center;
+      padding: 100px 20px 60px;
+      background: linear-gradient(to bottom, #121212, #0a0a0a);
     }
 
-    .hero .text {
-      max-width: 600px;
-    }
-
-    .hero h1 {
+    .hero h2 {
       font-size: 48px;
-      color: #f5c623;
+      color: #fff;
+      margin-bottom: 20px;
     }
 
     .hero p {
-      margin: 20px 0;
       font-size: 18px;
       color: #ccc;
-    }
-
-    .hero .cta {
-      background: #f5c623;
-      color: #0b0b0b;
-      padding: 14px 28px;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 10px;
-      transition: 0.3s;
-    }
-
-    .hero .cta:hover {
-      background: #ffde3d;
+      margin-bottom: 40px;
     }
 
     .hero img {
-      width: 600px;
-      animation: slideIn 2s ease-out forwards;
-      opacity: 0;
+      max-width: 700px;
+      width: 90%;
+      animation: float 6s ease-in-out infinite;
     }
 
-    @keyframes slideIn {
-      from {
-        transform: translateX(200px);
-        opacity: 0;
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
       }
-      to {
-        transform: translateX(0);
-        opacity: 1;
+      50% {
+        transform: translateY(-10px);
       }
     }
 
-    .cars-section {
-      padding: 80px 40px;
-      background-color: #111;
+    .button {
+      background-color: #ffc107;
+      color: #0a0a0a;
+      border: none;
+      padding: 14px 28px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: background 0.3s ease;
     }
 
-    .cars-section h2 {
-      text-align: center;
-      margin-bottom: 40px;
+    .button:hover {
+      background-color: #e0a800;
+    }
+
+    .section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section h3 {
       font-size: 36px;
-      color: #f5c623;
-    }
-
-    .cars-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-
-    .car-card {
-      background: #1a1a1a;
-      border: 1px solid #333;
-      border-radius: 12px;
-      padding: 20px;
-      transition: transform 0.3s;
-    }
-
-    .car-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .car-card img {
-      width: 100%;
-      border-radius: 8px;
-    }
-
-    .car-card h3 {
-      margin-top: 15px;
-      color: #fff;
-    }
-
-    .car-card p {
-      color: #aaa;
-    }
-
-    .testimonial {
-      padding: 80px 40px;
-      background: #0b0b0b;
-    }
-
-    .testimonial h2 {
-      color: #f5c623;
-      text-align: center;
+      color: #ffc107;
       margin-bottom: 30px;
     }
 
-    .testimonial-box {
-      background: #1a1a1a;
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .feature {
+      background-color: #1a1a1a;
       padding: 30px;
       border-radius: 12px;
+      flex: 1 1 300px;
+      box-shadow: 0 0 10px rgba(255, 193, 7, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature h4 {
       color: #fff;
-      max-width: 600px;
-      margin: auto;
-      box-shadow: 0 0 20px rgba(245,198,35,0.1);
+      margin-bottom: 15px;
+    }
+
+    .feature p {
+      color: #bbb;
     }
 
     footer {
-      background: #111;
-      color: #aaa;
-      padding: 40px;
+      background-color: #0a0a0a;
+      color: #999;
+      padding: 40px 20px;
       text-align: center;
+      border-top: 2px solid #ffc107;
       font-size: 14px;
     }
 
-    footer a {
-      color: #f5c623;
-      text-decoration: none;
+    .lang-switch {
+      margin-top: 10px;
+    }
+
+    .lang-switch button {
+      background: transparent;
+      border: 1px solid #ffc107;
+      color: #ffc107;
+      padding: 6px 12px;
+      margin: 0 5px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .lang-switch button:hover {
+      background-color: #ffc107;
+      color: #000;
     }
   </style>
 </head>
 <body>
+
   <header>
-    <img src="logo.svg" alt="JS-Romumetalli Logo" />
+    <h1>JS-Romumetalli Oy</h1>
     <nav>
-      <a href="#cars">Cars</a>
       <a href="#about">About</a>
-      <a href="#testimonials">Testimonials</a>
+      <a href="#services">Services</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <section class="hero">
-    <div class="text">
-      <h1>Drive With Power and Prestige</h1>
-      <p>JS-Romumetalli Oy — premium solutions for auto recycling and transportation. Where strength meets style.</p>
-      <button class="cta">Get a Quote</button>
+    <h2>Premium Scrap Metal Logistics</h2>
+    <p>Efficient, fast, and eco-friendly metal recycling transport — across Finland and beyond.</p>
+    <img src="cleaned_truck.png" alt="Luxury Truck">
+    <div style="margin-top: 40px;">
+      <button class="button">Request Pickup</button>
     </div>
-    <img src="truck.png" alt="Truck" />
   </section>
 
-  <section class="cars-section" id="cars">
-    <h2>Our Fleet</h2>
-    <div class="cars-grid">
-      <div class="car-card">
-        <img src="junkyard.jpeg" alt="Junkyard" />
-        <h3>Auto Scrap Pickup</h3>
-        <p>We transport and recycle used vehicles from across Finland with precision and care.</p>
+  <section class="section" id="about">
+    <h3>About Us</h3>
+    <div class="features">
+      <div class="feature">
+        <h4>Fast Pickup</h4>
+        <p>Quick and responsive metal pickup with full tracking and service transparency.</p>
       </div>
-      <div class="car-card">
-        <img src="car2.jpg" alt="Recycling" />
-        <h3>Recycling Service</h3>
-        <p>High-quality dismantling and metal recovery solutions with certified systems.</p>
+      <div class="feature">
+        <h4>Eco Commitment</h4>
+        <p>We operate with environmental responsibility and modern sustainable logistics.</p>
       </div>
-      <div class="car-card">
-        <img src="car3.jpg" alt="Transport" />
-        <h3>Heavy Transport</h3>
-        <p>Modern fleet ready for long hauls and industrial logistics in every condition.</p>
+      <div class="feature">
+        <h4>Nationwide Reach</h4>
+        <p>From Helsinki to Lapland — we cover all routes with precision and speed.</p>
       </div>
     </div>
   </section>
 
-  <section class="testimonial" id="testimonials">
-    <h2>What Our Clients Say</h2>
-    <div class="testimonial-box">
-      <p>“JS-Romumetalli made our old fleet disappear in a flash and paid us right away. Great service, polite staff, and everything was fast and professional.”</p>
-      <p style="margin-top: 10px;"><strong>— Anna K., Customer</strong></p>
+  <section class="section" id="services">
+    <h3>Our Services</h3>
+    <div class="features">
+      <div class="feature">
+        <h4>Scrap Collection</h4>
+        <p>Scheduled or emergency collection of all ferrous and non-ferrous metals.</p>
+      </div>
+      <div class="feature">
+        <h4>Fleet Management</h4>
+        <p>Advanced GPS-tracked trucks with modern lift systems and secure containers.</p>
+      </div>
+      <div class="feature">
+        <h4>Contract Logistics</h4>
+        <p>For businesses, factories, and demolition operations — we offer scalable contracts.</p>
+      </div>
     </div>
   </section>
 
-  <footer id="contact">
-    <p><strong>JS-Romumetalli Oy</strong></p>
-    <p>Address: Kokemäentie 247 B, 27710 Köyliö</p>
-    <p>Phone: <a href="tel:+358443387398">+358 44 338 7398</a></p>
-    <p>Email: <a href="mailto:info@js-romumetalli.fi">info@js-romumetalli.fi</a></p>
-    <p>&copy; 2025 JS-Romumetalli Oy. All rights reserved.</p>
+  <section class="section" id="contact">
+    <h3>Contact Us</h3>
+    <p>Email: <a href="mailto:info@js-romumetalli.fi" style="color:#ffc107;">info@js-romumetalli.fi</a></p>
+    <p>Phone: +358 40 123 4567</p>
+    <p>Address: Kokemäentie 247b, Finland</p>
+    <div class="lang-switch">
+      <button onclick="alert('Switching to Finnish...')">Suomi</button>
+      <button onclick="alert('Already in English')">English</button>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 JS-Romumetalli Oy. All rights reserved.
   </footer>
+
 </body>
 </html>
