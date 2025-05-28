@@ -1,207 +1,232 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JS-Romumetalli Oy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <style>
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #111;
-      color: #fff;
+      font-family: 'Arial', sans-serif;
+      background: url('https://i.imgur.com/wLVVark.png') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(6px);
+      color: #f8f8f8;
       overflow-x: hidden;
     }
 
     header {
       background: rgba(0, 0, 0, 0.6);
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 999;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 15px 30px;
-      box-shadow: 0 0 12px #000;
+      justify-content: space-between;
+      padding: 20px 50px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
     }
 
     header img {
       height: 60px;
     }
 
-    .lang-switch {
-      display: flex;
-      gap: 10px;
-    }
-
-    .lang-switch button {
-      background-color: #222;
-      border: 2px solid #ffc400;
-      border-radius: 50px;
-      padding: 8px 14px;
-      color: #ffc400;
-      font-weight: bold;
+    nav button {
+      font-family: 'Anton', sans-serif;
+      margin-left: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 30px;
+      background: #FFD966;
+      color: #000;
+      font-size: 14px;
       cursor: pointer;
       transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
     }
 
-    .lang-switch button:hover {
-      background-color: #ffc400;
-      color: #000;
-      box-shadow: 0 0 8px #ffc400;
+    nav button:hover {
+      background: #FFC000;
+      transform: scale(1.05);
     }
 
     .hero {
-      background: url('https://i.imgur.com/wLVVark.png') center center / cover no-repeat;
-      filter: blur(0);
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(3px);
+      padding: 100px 50px 50px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.4);
+      animation: fadeIn 2s ease-in-out;
     }
 
     .hero h1 {
-      z-index: 2;
-      font-size: 3.5rem;
-      text-shadow: 2px 2px 10px #000;
-      color: #ffd700;
+      font-family: 'Anton', sans-serif;
+      font-size: 48px;
+      margin-bottom: 10px;
     }
 
-    section {
-      padding: 60px 20px;
-      max-width: 1100px;
+    .hero p {
+      font-size: 18px;
+      max-width: 800px;
       margin: auto;
     }
 
-    .block {
-      background: #1b1b1b;
-      margin: 20px 0;
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 50px;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 16px;
       padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
-      transition: transform 0.3s;
+      max-width: 400px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+      backdrop-filter: blur(4px);
     }
 
-    .block:hover {
-      transform: scale(1.01);
+    .card:hover {
+      transform: translateY(-10px);
     }
 
-    h2 {
-      color: #ffda44;
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .card h2 {
+      font-family: 'Anton', sans-serif;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 15px;
+      line-height: 1.6;
     }
 
     .contact, .map {
-      margin-top: 40px;
+      padding: 50px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.6);
     }
 
-    .map iframe {
+    .contact h2, .map h2 {
+      font-family: 'Anton', sans-serif;
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .contact p {
+      font-size: 16px;
+      margin: 5px 0;
+    }
+
+    iframe {
       width: 100%;
       height: 300px;
-      border: 0;
+      border: none;
       border-radius: 12px;
-      box-shadow: 0 0 10px #000;
+      margin-top: 20px;
     }
 
-    footer {
-      background: #000;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      color: #999;
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
     }
 
     @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2rem;
-        padding: 0 10px;
-        text-align: center;
+      header {
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+
+      .content {
+        padding: 30px 20px;
+      }
+
+      .card {
+        width: 100%;
       }
     }
   </style>
-  <script>
-    function switchLang(lang) {
-      const fi = document.querySelectorAll('[data-lang="fi"]');
-      const en = document.querySelectorAll('[data-lang="en"]');
-      fi.forEach(el => el.style.display = lang === 'fi' ? 'block' : 'none');
-      en.forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      switchLang("fi");
-    });
-  </script>
 </head>
 <body>
 
-  <header>
-    <img src="https://i.imgur.com/r6OggID.png" alt="Logo">
-    <div class="lang-switch">
-      <button onclick="switchLang('fi')">🇫🇮</button>
-      <button onclick="switchLang('en')">🇬🇧</button>
-    </div>
-  </header>
+<header>
+  <img src="https://i.imgur.com/r6OggID.png" alt="JS Romumetalli logo">
+  <nav>
+    <button onclick="setLang('fi')">FI</button>
+    <button onclick="setLang('en')">EN</button>
+  </nav>
+</header>
 
-  <div class="hero">
-    <h1>JS-Romumetalli Oy</h1>
+<section class="hero">
+  <h1>JS-Romumetalli Oy</h1>
+  <p id="tagline">Nopeat noudot, hyvät hinnat, ammattitaitoista palvelua Satakunnassa.</p>
+</section>
+
+<section class="content">
+  <div class="card">
+    <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Romuauto">
+    <h2>Romut ja noudot</h2>
+    <p>
+      Noudamme nopeasti ja tehokkaasti kaikenlaiset romut: autot, koneet, metallit. Tarjoamme hyvät hinnat ja luotettavat noudot suoraan asiakkaalta Satakunnan alueella.
+    </p>
   </div>
+  <div class="card">
+    <img src="https://i.imgur.com/DSfZuV3.jpeg" alt="Purkutyöt">
+    <h2>Purkutyöt</h2>
+    <p>
+      Suoritamme purkutöitä ammattitaidolla — rakennuksista konehalleihin. Avaimet käteen -palvelumme sisältää kaiken: purkamisen, kuljetuksen ja lajittelun.
+    </p>
+  </div>
+  <div class="card">
+    <img src="https://i.imgur.com/KjFiOZO.png" alt="Kierrätys">
+    <h2>Romuautojen kierrätys</h2>
+    <p>
+      Helppoa ja ekologista: haemme romuautosi, hoidamme paperityöt ja varmistamme, että auto päätyy turvallisesti kierrätykseen. Saat virallisen romutustodistuksen.
+    </p>
+  </div>
+</section>
 
-  <section>
-    <div class="block" data-lang="fi">
-      <h2>NOUDAMME RAUTAROMUT NURKISTA NOPEASTI</h2>
-      <p>Olemme erikoistuneet erilaisten metalliromujen keräämiseen ja purkutöiden tekemiseen Satakunnan alueella. Noudamme mm. autot, työkoneet, puimurit ja rakennusten metallipurkujätteet.</p>
-    </div>
+<section class="contact">
+  <h2>Yhteystiedot</h2>
+  <p>Puhelin: <a href="tel:+358443387395">044 338 7395</a></p>
+  <p>Sähköposti: <a href="mailto:jsromumetalli@gmail.com">jsromumetalli@gmail.com</a></p>
+</section>
 
-    <div class="block" data-lang="en">
-      <h2>WE COLLECT SCRAP METAL QUICKLY</h2>
-      <p>We specialize in collecting all types of scrap metal and demolition services across the Satakunta region. We collect cars, machinery, harvesters, and metal waste from buildings.</p>
-    </div>
+<section class="map">
+  <h2>Sijainti</h2>
+  <p>Kokemäentie 247b, Köyliö</p>
+  <iframe src="https://www.google.com/maps?q=Kokemäentie+247b,+Köyliö&output=embed"></iframe>
+</section>
 
-    <div class="block" data-lang="fi">
-      <h2>SUURET JA PIENET PURKUTYÖT</h2>
-      <p>Puurakennusten ja metallirakenteiden purut ammattitaidolla – ladot, talot, autotallit. Jätteet kuljetetaan pois ja kierrätetään lain mukaisesti.</p>
-    </div>
+<script>
+  const langTexts = {
+    fi: {
+      tagline: "Nopeat noudot, hyvät hinnat, ammattitaitoista palvelua Satakunnassa.",
+    },
+    en: {
+      tagline: "Fast pickups, fair prices, professional service in Satakunta.",
+    }
+  };
 
-    <div class="block" data-lang="en">
-      <h2>LARGE & SMALL DEMOLITIONS</h2>
-      <p>We professionally demolish wooden and metal structures – barns, houses, garages. Waste is removed and recycled properly.</p>
-    </div>
-
-    <div class="block" data-lang="fi">
-      <h2>ROMUAUTOT KIERTOON</h2>
-      <p>Romuautojen nouto ja kierrätys veloituksetta. Saat romutustodistuksen ja ajoneuvosi poistetaan rekisteristä. Soita ja kysy lisää!</p>
-    </div>
-
-    <div class="block" data-lang="en">
-      <h2>SCRAP VEHICLE RECYCLING</h2>
-      <p>Free pickup of scrap vehicles. You'll receive a certificate of destruction and vehicle deregistration. Call for details!</p>
-    </div>
-
-    <div class="block contact">
-      <h2 data-lang="fi">Yhteystiedot</h2>
-      <h2 data-lang="en">Contact Info</h2>
-      <p>Email: js.romumetalli@gmail.com<br>
-         Phone: 044 338 7395</p>
-    </div>
-
-    <div class="block map">
-      <h2 data-lang="fi">Sijainti</h2>
-      <h2 data-lang="en">Location</h2>
-      <iframe src="https://www.google.com/maps?q=Kokemäentie+247b,+Köyliö,+Finland&output=embed"></iframe>
-    </div>
-  </section>
-
-  <footer>
-    &copy; 2025 JS-Romumetalli Oy – Luotettavasti & Ammattitaidolla
-  </footer>
+  function setLang(lang) {
+    document.getElementById('tagline').innerText = langTexts[lang].tagline;
+  }
+</script>
 
 </body>
 </html>
