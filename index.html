@@ -2,130 +2,129 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JS-romumetalli ja purkutyöt Oy</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JS-Romumetalli Oy</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <!-- Language Switch -->
-  <div class="language-switcher">
-    <button onclick="setLanguage('en')">EN</button>
-    <button onclick="setLanguage('fi')">FI</button>
-  </div>
-
-  <!-- Navigation -->
-  <header class="main-header">
-    <h1 class="brand-name">JS-romumetalli ja purkutyöt Oy</h1>
+  <header class="header">
+    <div class="logo">JS-Romumetalli</div>
     <nav>
-      <ul>
+      <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <div class="lang-toggle">
+        <button id="en" class="active">EN</button>
+        <button id="fi">FI</button>
+      </div>
     </nav>
   </header>
 
-  <!-- Hero Section -->
   <section class="hero">
-    <h2>Efficient Demolition & Metal Recycling</h2>
-    <p>Your reliable partner in sustainable demolition and metal recovery.</p>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="about">
-    <div class="text-block">
-      <h3>About Us</h3>
-      <p>We are professionals in demolition and scrap metal management based in Finland. Our goal is sustainability and clean execution, backed by years of experience and heavy equipment ready for any scale.</p>
-    </div>
-    <div class="about-images">
-      <!-- AI/photo images will go here -->
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h1>Metal. Machines. Demolition.</h1>
+      <p>JS-Romumetalli ja Purkutyöt Oy – scrap metal & deconstruction.</p>
     </div>
   </section>
+    <!-- About Section -->
+  <section id="about" class="section about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>
+        At JS-Romumetalli ja Purkutyöt Oy, we specialize in scrap metal collection,
+        recycling, and large-scale demolition works. Our team has years of experience
+        handling industrial dismantling with efficiency and safety in mind.
+      </p>
+    </div>
+  </section>
 
-  <!-- Services -->
-  <section id="services" class="services">
-    <h3>Our Services</h3>
-    <div class="service-grid">
-      <div class="service-card">
-        <h4>Demolition</h4>
-        <p>Safe and precise demolition of buildings and industrial structures.</p>
+  <!-- Services Section -->
+  <section id="services" class="section services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="icon metal">
+            <img src="images/icon-scrap.svg" alt="Scrap Metal">
+          </div>
+          <h3>Scrap Metal</h3>
+          <p>We collect and sort metal for industrial recycling and export.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon metal">
+            <img src="images/icon-demolition.svg" alt="Demolition">
+          </div>
+          <h3>Demolition</h3>
+          <p>Safe and professional building & factory dismantling.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon metal">
+            <img src="images/icon-machinery.svg" alt="Machinery">
+          </div>
+          <h3>Heavy Machinery</h3>
+          <p>Efficient machine transport and on-site operation.</p>
+        </div>
       </div>
-      <div class="service-card">
-        <h4>Scrap Metal Pickup</h4>
-        <p>On-site pickup of all types of metal scrap using heavy vehicles.</p>
+    </div>
+  </section>
+    <!-- Projects Section -->
+  <section id="projects" class="section projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <img src="images/demo1.jpg" alt="Demolition Project">
+          <div class="project-info">
+            <h3>Factory Demolition</h3>
+            <p>Complete teardown of industrial site with safety-focused methods.</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="images/demo2.jpg" alt="Scrap Collection">
+          <div class="project-info">
+            <h3>Scrap Metal Transport</h3>
+            <p>Efficient metal transport with heavy-duty trucks and logistics.</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="images/demo3.jpg" alt="Machinery Work">
+          <div class="project-info">
+            <h3>Heavy Machinery Operation</h3>
+            <p>Excavator team clearing construction materials with precision.</p>
+          </div>
+        </div>
       </div>
-      <div class="service-card">
-        <h4>Recycling Consulting</h4>
-        <p>Advisory for efficient and eco-conscious recycling planning.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>Email us at <a href="mailto:info@jsromumetalli.fi">info@jsromumetalli.fi</a> or call <a href="tel:+358401234567">+358 40 123 4567</a></p>
+      <div class="map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1967.3654081210238!2d22.2885934!3d61.1345327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x468d27e5cb943ec1%3A0x8e7d9c9344a8a63e!2sKokem%C3%A4entie%20247B%2C%2029220%20Harjavalta%2C%20Finland!5e0!3m2!1sen!2sfi!4v1716900000000"
+          width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
       </div>
     </div>
   </section>
 
-  <!-- Projects -->
-  <section id="projects" class="projects">
-    <h3>Recent Projects</h3>
-    <div class="project-gallery">
-      <!-- Image and text for each project -->
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <p>&copy; 2025 JS-Romumetalli ja Purkutyöt Oy</p>
+        <div class="language-toggle">
+          <a href="#" class="lang active">EN</a> | <a href="#" class="lang">FI</a>
+        </div>
+      </div>
     </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="contact">
-    <h3>Get in Touch</h3>
-    <p>Email us, call us, or visit our headquarters.</p>
-    <div class="contact-info">
-      <p><strong>Address:</strong> Kokemäentie 247B, Finland</p>
-      <p><strong>Email:</strong> info@jsromumetalli.fi</p>
-      <p><strong>Phone:</strong> +358 50 123 4567</p>
-    </div>
-    <div class="map">
-      <iframe src="https://www.google.com/maps?q=Kokemäentie+247B&output=embed"></iframe>
-    </div>
-  </section>
-
-  <footer class="main-footer">
-    <p>&copy; 2025 JS-romumetalli ja purkutyöt Oy. All rights reserved.</p>
   </footer>
-
-  <script>
-    function setLanguage(lang) {
-      // Будет добавлена поддержка языков позже
-      alert("Language switch to " + lang + " coming soon!");
-    }
-  </script>
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JS-romumetalli ja purkutyöt Oy</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header>
-    <div class="container header-inner">
-      <h1 class="logo">JS-romumetalli ja purkutyöt Oy</h1>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div class="lang-switch">
-          <button onclick="setLanguage('en')">EN</button>
-          <button onclick="setLanguage('fi')">FI</button>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <section class="hero">
-    <div class="container">
-      <h2 class="hero-title">Efficient Demolition & Metal Recycling</h2>
-      <p class="hero-subtitle">Your reliable partner in sustainable demolition and metal recovery.</p>
-    </div>
-  </section>
