@@ -297,3 +297,53 @@ button:hover {
     align-items: center;
   }
 }
+/* Burger menu fix */
+.navbar {
+  display: none;
+  flex-direction: column;
+  background-color: #000;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 1000;
+}
+
+.navbar.open {
+  display: flex;
+}
+
+.menu-btn {
+  font-size: 30px;
+  cursor: pointer;
+  display: block;
+  z-index: 1100;
+  color: #fff;
+  padding: 10px;
+  margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .menu-btn {
+    display: none;
+  }
+
+  .navbar {
+    display: flex !important;
+    flex-direction: row;
+    position: static;
+    justify-content: flex-end;
+    background: none;
+  }
+
+  .navbar ul {
+    display: flex;
+    gap: 20px;
+  }
+
+  .navbar li {
+    margin: 0;
+  }
+}
+
