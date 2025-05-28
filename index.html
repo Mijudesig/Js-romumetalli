@@ -6,235 +6,302 @@
   <title>JS-Romumetalli Oy</title>
   <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    :root {
+      --gold: #f7c059;
+      --dark: #1a1a1a;
+      --light: #ffffff;
+      --semi-dark: #2a2a2a;
+      --shadow: rgba(0, 0, 0, 0.4);
     }
 
     body {
-      font-family: 'Arial', sans-serif;
-      background: #1a1a1a;
-      color: #fff;
-      line-height: 1.6;
-    }
-
-    h1, h2 {
-      font-family: 'Anton', sans-serif;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--dark);
+      color: var(--light);
+      overflow-x: hidden;
     }
 
     header {
-      background: #000;
+      background: url('https://i.imgur.com/wLVVark.png') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      text-align: center;
+      filter: blur(0px);
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+    }
+
+    header h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: 4rem;
+      color: var(--gold);
+      z-index: 2;
+      animation: fadeInDown 1.5s ease-out;
+    }
+
+    nav {
+      background: var(--semi-dark);
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.7);
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 999;
+      box-shadow: 0 4px 10px var(--shadow);
     }
 
-    header img {
-      height: 50px;
+    nav .logo {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.8rem;
+      color: var(--gold);
     }
 
-    .lang-switch {
+    nav .lang-switcher {
       display: flex;
-      gap: 10px;
+      gap: 1rem;
     }
 
-    .lang-switch button {
-      padding: 6px 12px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      background-color: #333;
-      color: #fff;
+    nav button {
+      background: transparent;
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      padding: 0.5rem 1rem;
       font-weight: bold;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-      transition: 0.3s;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      cursor: pointer;
     }
 
-    .lang-switch button:hover {
-      background-color: #555;
-    }
-
-    .hero-content {
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-
-    .hero-content h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-      color: #ffd369;
-    }
-
-    .hero-content p {
-      font-size: 1.2rem;
-      color: #ccc;
+    nav button:hover {
+      background: var(--gold);
+      color: var(--dark);
     }
 
     .section {
-      padding: 3rem 2rem;
-      max-width: 1200px;
-      margin: auto;
+      padding: 4rem 2rem;
+      animation: fadeIn 1.5s ease forwards;
     }
 
-    .card-photo {
-      display: flex;
-      background-color: #2a2a2a;
-      border-radius: 12px;
-      overflow: hidden;
+    .card {
+      background: var(--semi-dark);
       margin-bottom: 2rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-      transition: 0.3s ease;
+      padding: 2rem;
+      border-radius: 15px;
+      display: flex;
+      gap: 2rem;
+      box-shadow: 0 6px 20px var(--shadow);
+      animation: slideIn 1.2s ease;
     }
 
-    .card-photo img {
-      width: 40%;
-      object-fit: cover;
+    .card img {
+      width: 300px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px var(--shadow);
     }
 
-    .card-photo .info {
-      padding: 1.5rem;
-      width: 60%;
+    .card .text {
+      flex: 1;
+    }
+        .contact, footer {
+      background: var(--semi-dark);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px var(--shadow);
+      margin: 4rem 2rem;
     }
 
-    .card-photo .info h2 {
-      color: #ffd369;
+    .contact h2, footer h2 {
+      font-family: 'Anton', sans-serif;
+      color: var(--gold);
       margin-bottom: 1rem;
     }
 
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    footer {
-      background: #111;
-      padding: 2rem;
-      text-align: center;
-      font-size: 0.9rem;
-      border-top: 2px solid #333;
+    .contact p, footer p {
+      margin: 0.5rem 0;
     }
 
     iframe {
       width: 100%;
       height: 300px;
       border: none;
-      border-radius: 8px;
+      border-radius: 15px;
       margin-top: 1rem;
+      box-shadow: 0 4px 15px var(--shadow);
     }
 
-    .contact-btn {
-      display: inline-block;
-      margin-top: 1rem;
-      background: #ffd369;
-      color: #000;
-      padding: 10px 20px;
-      font-weight: bold;
-      border-radius: 8px;
-      text-decoration: none;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.4);
-      transition: background 0.3s;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .contact-btn:hover {
-      background: #ffbe33;
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-  </style>
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+  </style .services {
+  margin: 4rem 2rem;
+  background: var(--semi-dark);
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px var(--shadow);
+  text-align: center;
+}
+
+.section-title {
+  font-family: 'Anton', sans-serif;
+  font-size: 2.5rem;
+  color: var(--gold);
+  margin-bottom: 2rem;
+}
+
+.services-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.service-card {
+  background: var(--dark);
+  border-radius: 15px;
+  padding: 2rem;
+  max-width: 300px;
+  flex: 1;
+  min-width: 250px;
+  box-shadow: 0 6px 20px var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px var(--shadow);
+}
+
+.service-card img {
+  width: 60px;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 5px var(--gold));
+}
+
+.service-card h3 {
+  color: white;
+  font-family: 'Anton', sans-serif;
+  margin-bottom: 1rem;
+}
+
+.service-card p {
+  color: #eee;
+}
 </head>
 <body>
-  <header>
-    <img src="https://i.imgur.com/r6OggID.png" alt="Logo" />
-    <div class="lang-switch">
+  <nav>
+    <div class="logo">JS-Romumetalli Oy</div>
+    <div class="lang-switcher">
       <button onclick="setLang('fi')">FI</button>
       <button onclick="setLang('en')">EN</button>
     </div>
+  </nav>
+
+  <header>
+    <h1 id="hero-text">Romumetallin kierrätyksen ammattilainen</h1>
   </header>
 
-  <div class="hero-content">
-    <h1>JS-Romumetalli Oy</h1>
-    <p id="tagline">Luotettavat romunouto- ja purkutyöt Satakunnassa</p>
-  </div>
-
-  <div class="section" id="main">
-
-    <div class="card-photo">
-      <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Info">
-      <div class="info">
-        <h2>NOUDAMME RAUTAROMUT NURKISTA NOPEASTI</h2>
-        <p id="desc1">
-          Olemme erikoistuneet erilaisten metalliromujen keräämiseen ja purkutöihin. Noudamme ja kierrätämme monenlaiset romut – kupari, alumiinikaapelit, sähkömoottorit ja rakennusromut. Haemme myös autot, työkoneet, kuorma-autot ja paljon muuta. Soita ja kysy lisää: <strong>P. 044 338 7395</strong>
-        </p>
+  <section class="section">
+    <div class="card">
+      <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Romumetalli-auto">
+      <div class="text">
+        <h2 id="card1-title">Metallin nouto ja kierrätys</h2>
+        <p id="card1-text">Tarjoamme kattavat palvelut romumetallin keräykseen ja kierrätykseen. Palvelemme sekä yksityisiä että yrityksiä koko Satakunnan alueella.</p>
       </div>
     </div>
 
-    <div class="card-photo">
-      <img src="https://i.imgur.com/DSfZuV3.jpeg" alt="Car">
-      <div class="info">
-        <h2>SUURET JA PIENET PURKUTYÖT</h2>
-        <p id="desc2">
-          Saat meiltä avaimet käteen -palveluna puu- ja metallirakennusten purkutyöt: ladot, autotallit, rakennukset. Työ tehdään turvallisesti, ja jätteet lajitellaan ja kierrätetään asianmukaisesti.
-        </p>
-      </div>
-    </div>
+    <!-- Можешь вставить ещё карточки тут аналогично -->
+  </section>
 
-    <div class="card-photo">
-      <img src="https://i.imgur.com/KjFiOZO.png" alt="Recycling">
-      <div class="info">
-        <h2>ROMUAUTOT KIERTOON EKOLOGISESTI</h2>
-        <p id="desc3">
-          Soita, tilaa nouto, ja toimitamme autosi kierrätykseen. Ajoneuvo poistetaan TraFi-rekisteristä ja saat virallisen romutustodistuksen.
-        </p>
-      </div>
-    </div>
+  <section class="contact">
+    <h2 id="contact-title">Yhteystiedot</h2>
+    <p><strong>Email:</strong> jsromumetalli@gmail.com</p>
+    <p><strong>Puhelin:</strong> 044 9765 220</p>
+    <p><strong>Osoite:</strong> Kokemäentie 247b, 32800 Köyliö</p>
 
-  </div>
-
-  <div class="section">
-    <div class="card-photo">
-      <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Map">
-      <div class="info">
-        <h2>Yhteystiedot</h2>
-        <p><strong>Sähköposti:</strong> jsromumetalli@gmail.com</p>
-        <p><strong>Puhelin:</strong> 044 338 7395</p>
-        <p><strong>Osoite:</strong> Kokemäentie 247b, Köyliö</p>
-        <a href="mailto:jsromumetalli@gmail.com" class="contact-btn">Ota yhteyttä</a>
-        <iframe src="https://maps.google.com/maps?q=Kokemäentie 247b, Köyliö&output=embed"></iframe>
-      </div>
-    </div>
-  </div>
+    <iframe src="https://maps.google.com/maps?q=Kokem%C3%A4entie%20247b,%20K%C3%B6yli%C3%B6&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+  </section>
 
   <footer>
-    © 2025 JS-Romumetalli Oy | Luotettavasti & ammattitaidolla
+    <h2>JS-Romumetalli Oy</h2>
+    <p id="footer-text">Romumetallin käsittelyn luotettava kumppani.</p>
   </footer>
 
   <script>
+    const langData = {
+      fi: {
+        hero: "Romumetallin kierrätyksen ammattilainen",
+        card1: {
+          title: "Metallin nouto ja kierrätys",
+          text: "Tarjoamme kattavat palvelut romumetallin keräykseen ja kierrätykseen. Palvelemme sekä yksityisiä että yrityksiä koko Satakunnan alueella."
+        },
+        contact: "Yhteystiedot",
+        footer: "Romumetallin käsittelyn luotettava kumppani."
+      },
+      en: {
+        hero: "Scrap Metal Recycling Experts",
+        card1: {
+          title: "Metal Pickup and Recycling",
+          text: "We offer comprehensive scrap metal collection and recycling services. Serving both individuals and companies throughout the Satakunta region."
+        },
+        contact: "Contact",
+        footer: "Your trusted partner in scrap metal handling."
+      }
+    };
+
     function setLang(lang) {
-      const fi = {
-        tagline: "Luotettavat romunouto- ja purkutyöt Satakunnassa",
-        desc1: "Olemme erikoistuneet erilaisten metalliromujen keräämiseen ja purkutöihin...",
-        desc2: "Saat meiltä avaimet käteen -palveluna puu- ja metallirakennusten purkutyöt...",
-        desc3: "Soita, tilaa nouto, ja toimitamme autosi kierrätykseen..."
-      };
-      const en = {
-        tagline: "Reliable metal collection and demolition in Satakunta",
-        desc1: "We specialize in collecting various metal scraps and demolition services...",
-        desc2: "We offer turnkey demolition services for wooden and metal structures...",
-        desc3: "Call, order pickup, and we will recycle your car properly..."
-      };
-      const content = lang === 'fi' ? fi : en;
-      document.getElementById('tagline').innerText = content.tagline;
-      document.getElementById('desc1').innerText = content.desc1;
-      document.getElementById('desc2').innerText = content.desc2;
-      document.getElementById('desc3').innerText = content.desc3;
+      document.getElementById("hero-text").textContent = langData[lang].hero;
+      document.getElementById("card1-title").textContent = langData[lang].card1.title;
+      document.getElementById("card1-text").textContent = langData[lang].card1.text;
+      document.getElementById("contact-title").textContent = langData[lang].contact;
+      document.getElementById("footer-text").textContent = langData[lang].footer;
     }
   </script>
+  <section class="section services">
+  <h2 class="section-title" style="animation: fadeInDown 1s ease-out;">Our Services</h2>
+  <div class="services-grid">
+
+    <div class="service-card" style="animation: fadeIn 1s ease-out;">
+      <img src="https://img.icons8.com/ios-filled/100/FFD700/truck.png" alt="Pickup">
+      <h3>Pickup Service</h3>
+      <p>Fast and free scrap metal pickup from your location. We serve both residential and business clients.</p>
+    </div>
+
+    <div class="service-card" style="animation: fadeIn 1.2s ease-out;">
+      <img src="https://img.icons8.com/ios-filled/100/FFD700/recycle.png" alt="Recycling">
+      <h3>Eco-Friendly Recycling</h3>
+      <p>We process metals with environmental care. 100% recycled, 0% waste.</p>
+    </div>
+
+    <div class="service-card" style="animation: fadeIn 1.4s ease-out;">
+      <img src="https://img.icons8.com/ios-filled/100/FFD700/handshake.png" alt="Partnership">
+      <h3>Business Partnership</h3>
+      <p>Reliable long-term cooperation for industrial clients and large volumes.</p>
+    </div>
+
+  </div>
+</section>
 </body>
 </html>
