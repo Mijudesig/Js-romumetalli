@@ -2,151 +2,142 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>JS-Romumetalli Oy</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<body>
 
-  <header class="hero">
-    <div class="metal-gradient"></div>
-    <div class="container">
-      <h1 data-i18n="title" class="glow">JS-Romumetalli Oy</h1>
-      <p data-i18n="subtitle">Metal recycling & demolition done right</p>
-      <div class="lang-switch">
-        <button onclick="setLanguage('en')">EN</button>
-        <button onclick="setLanguage('fi')">FI</button>
-      </div>
-    </div>
+<body>
+  <header class="header">
+    <div class="logo">JS-Romumetalli</div>
+    <nav>
+      <ul class="nav-list">
+        <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="#services" data-i18n="nav.services">Services</a></li>
+        <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        <li class="language-switcher">
+          <button onclick="setLanguage('en')">EN</button> |
+          <button onclick="setLanguage('fi')">FI</button>
+        </li>
+      </ul>
+    </nav>
   </header>
 
-  <section class="section about">
-    <div class="container">
-      <h2 data-i18n="about_title">About Us</h2>
-      <p data-i18n="about_text">We specialize in industrial demolition and responsible scrap metal recycling. Precision, safety, and speed — guaranteed.</p>
+  <section class="hero">
+    <div class="hero-content">
+      <h1 data-i18n="hero.title">Metal recycling & demolition services</h1>
+      <p data-i18n="hero.subtitle">Reliable partner for scrap metal and dismantling.</p>
     </div>
   </section>
 
-  <section class="section services">
-    <div class="container">
-      <h2 data-i18n="services_title">Our Services</h2>
-      <div class="cards">
-        <div class="service-card shadow-hover">
-          <img src="icons/scrap.svg" alt="" />
-          <h3 data-i18n="service1">Scrap Collection</h3>
-          <p data-i18n="service1_desc">Fast and reliable removal of all types of metal materials.</p>
-        </div>
-        <div class="service-card shadow-hover">
-          <img src="icons/demolition.svg" alt="" />
-          <h3 data-i18n="service2">Demolition</h3>
-          <p data-i18n="service2_desc">Safe dismantling of metal buildings, frames, containers, and more.</p>
-        </div>
-        <div class="service-card shadow-hover">
-          <img src="icons/transport.svg" alt="" />
-          <h3 data-i18n="service3">Transport</h3>
-          <p data-i18n="service3_desc">Efficient logistics for transporting scrap and industrial waste.</p>
-        </div>
-      </div>
+  <section id="about" class="section about">
+    <h2 data-i18n="about.title">About Us</h2>
+    <p data-i18n="about.text">
+      JS-Romumetalli Oy is a professional and reliable company specialized in metal recycling and demolition works. We operate throughout Finland.
+    </p>
+  </section>
+
+  <section id="services" class="section services">
+    <h2 data-i18n="services.title">Services</h2>
+    <ul>
+      <li data-i18n="services.list1">Scrap metal collection</li>
+      <li data-i18n="services.list2">Demolition work</li>
+      <li data-i18n="services.list3">Machine dismantling</li>
+      <li data-i18n="services.list4">Waste management</li>
+    </ul>
+  </section>
+
+  <section id="projects" class="section projects">
+    <h2 data-i18n="projects.title">Projects</h2>
+    <div class="project-gallery">
+      <div class="project-card"><img src="img/project1.jpg" alt="Demolition project"/></div>
+      <div class="project-card"><img src="img/project2.jpg" alt="Scrap metal"/></div>
+      <div class="project-card"><img src="img/project3.jpg" alt="Industrial dismantling"/></div>
     </div>
   </section>
 
-  <section class="section projects">
-    <div class="container">
-      <h2 data-i18n="projects_title">Projects</h2>
-      <div class="project-gallery">
-        <div class="project-card">
-          <img src="img/project1.jpg" alt="Factory Dismantling" />
-          <div class="info">
-            <h3 data-i18n="proj1_title">Factory Demolition</h3>
-            <p data-i18n="proj1_desc">Dismantling of industrial sites with heavy machinery and expert crew.</p>
-          </div>
-        </div>
-        <div class="project-card">
-          <img src="img/project2.jpg" alt="Scrap Pickup" />
-          <div class="info">
-            <h3 data-i18n="proj2_title">Regional Scrap Removal</h3>
-            <p data-i18n="proj2_desc">Reliable pickup service for iron, aluminum, copper and more.</p>
-          </div>
-        </div>
-      </div>
+  <section id="contact" class="section contact">
+    <h2 data-i18n="contact.title">Contact</h2>
+    <p>
+      <span data-i18n="contact.address">Address:</span> Kokemäentie 247B, Finland<br/>
+      <span data-i18n="contact.phone">Phone:</span> +358 40 123 4567<br/>
+      <span data-i18n="contact.email">Email:</span> info@js-romumetalli.fi
+    </p>
+    <div class="map-container">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1946.243235374205!2d22.4576745!3d61.1578336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x468d7ea4c3fcbaff%3A0x24e37007e92de9c7!2sKokem%C3%A4entie%20247B!5e0!3m2!1sfi!2sfi!4v1716910170890!5m2!1sfi!2sfi"
+        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+      </iframe>
     </div>
   </section>
 
-  <section class="section contact">
-    <div class="container">
-      <h2 data-i18n="contact_title">Contact</h2>
-      <p><strong data-i18n="address_label">Address:</strong> Kokemäentie 247B, Finland</p>
-      <p><strong>Email:</strong> jsromumetalli@gmail.com</p>
-      <p><strong>Phone:</strong> +358 44 231 7560</p>
-      <div id="map"></div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 JS-Romumetalli Oy</p>
-    </div>
+  <footer class="footer">
+    <p>&copy; 2025 JS-Romumetalli Oy</p>
   </footer>
 
-  <!-- МУЛЬТИЯЗЫЧНОСТЬ -->
   <script>
     const translations = {
       en: {
-        title: "JS-Romumetalli Oy",
-        subtitle: "Metal recycling & demolition done right",
-        about_title: "About Us",
-        about_text: "We specialize in industrial demolition and responsible scrap metal recycling. Precision, safety, and speed — guaranteed.",
-        services_title: "Our Services",
-        service1: "Scrap Collection",
-        service1_desc: "Fast and reliable removal of all types of metal materials.",
-        service2: "Demolition",
-        service2_desc: "Safe dismantling of metal buildings, frames, containers, and more.",
-        service3: "Transport",
-        service3_desc: "Efficient logistics for transporting scrap and industrial waste.",
-        projects_title: "Projects",
-        proj1_title: "Factory Demolition",
-        proj1_desc: "Dismantling of industrial sites with heavy machinery and expert crew.",
-        proj2_title: "Regional Scrap Removal",
-        proj2_desc: "Reliable pickup service for iron, aluminum, copper and more.",
-        contact_title: "Contact",
-        address_label: "Address:"
+        "nav.about": "About",
+        "nav.services": "Services",
+        "nav.projects": "Projects",
+        "nav.contact": "Contact",
+        "hero.title": "Metal recycling & demolition services",
+        "hero.subtitle": "Reliable partner for scrap metal and dismantling.",
+        "about.title": "About Us",
+        "about.text": "JS-Romumetalli Oy is a professional and reliable company specialized in metal recycling and demolition works. We operate throughout Finland.",
+        "services.title": "Services",
+        "services.list1": "Scrap metal collection",
+        "services.list2": "Demolition work",
+        "services.list3": "Machine dismantling",
+        "services.list4": "Waste management",
+        "projects.title": "Projects",
+        "contact.title": "Contact",
+        "contact.address": "Address:",
+        "contact.phone": "Phone:",
+        "contact.email": "Email:"
       },
       fi: {
-        title: "JS-Romumetalli Oy",
-        subtitle: "Romumetallin kierrätystä ja purkutöitä ammattitaidolla",
-        about_title: "Meistä",
-        about_text: "Erikoistumme teollisuuden purkuihin ja vastuulliseen romumetallin kierrätykseen. Tarkkuutta, turvallisuutta ja nopeutta — taattu.",
-        services_title: "Palvelumme",
-        service1: "Romun Keräys",
-        service1_desc: "Nopea ja luotettava romumetallin nouto.",
-        service2: "Purkutyöt",
-        service2_desc: "Rakenteiden ja metallirakennusten turvallinen purku.",
-        service3: "Kuljetus",
-        service3_desc: "Romun ja jätteen tehokas logistiikka.",
-        projects_title: "Projektit",
-        proj1_title: "Tehtaan Purku",
-        proj1_desc: "Teollisuuskohteiden purku raskaalla kalustolla.",
-        proj2_title: "Romun Nouto",
-        proj2_desc: "Romumetallin noutopalvelu Satakunnan alueella.",
-        contact_title: "Yhteystiedot",
-        address_label: "Osoite:"
+        "nav.about": "Tietoa",
+        "nav.services": "Palvelut",
+        "nav.projects": "Projektit",
+        "nav.contact": "Yhteys",
+        "hero.title": "Romumetallin kierrätys ja purkutyöt",
+        "hero.subtitle": "Luotettava kumppani romumetallin ja purkutöiden saralla.",
+        "about.title": "Tietoa meistä",
+        "about.text": "JS-Romumetalli Oy on ammattitaitoinen ja luotettava yritys, joka on erikoistunut metallin kierrätykseen ja purkutöihin. Toimimme koko Suomessa.",
+        "services.title": "Palvelut",
+        "services.list1": "Romumetallin keräys",
+        "services.list2": "Purkutyöt",
+        "services.list3": "Koneiden purku",
+        "services.list4": "Jätehuolto",
+        "projects.title": "Projektit",
+        "contact.title": "Yhteystiedot",
+        "contact.address": "Osoite:",
+        "contact.phone": "Puhelin:",
+        "contact.email": "Sähköposti:"
       }
     };
 
     function setLanguage(lang) {
-      localStorage.setItem("lang", lang);
-      document.querySelectorAll("[data-i18n]").forEach(el => {
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
         const key = el.getAttribute("data-i18n");
-        if (translations[lang] && translations[lang][key]) {
-          el.innerText = translations[lang][key];
+        if (translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
         }
       });
+      localStorage.setItem("lang", lang);
     }
 
-    const savedLang = localStorage.getItem("lang") || "en";
-    setLanguage(savedLang);
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedLang = localStorage.getItem("lang") || "en";
+      setLanguage(savedLang);
+    });
   </script>
-
 </body>
 </html>
