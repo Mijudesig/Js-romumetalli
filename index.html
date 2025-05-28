@@ -14,10 +14,9 @@
 
     body {
       font-family: 'Arial', sans-serif;
-      background: #1e1e1e;
+      background: #1a1a1a;
       color: #fff;
       line-height: 1.6;
-      overflow-x: hidden;
     }
 
     h1, h2 {
@@ -25,15 +24,15 @@
     }
 
     header {
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(5px);
+      background: #000;
       padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 999;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.7);
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
     header img {
@@ -61,55 +60,59 @@
       background-color: #555;
     }
 
-    .hero {
-      background: url('https://i.imgur.com/wLVVark.png') center center/cover no-repeat;
-      filter: brightness(0.4) blur(3px);
-      height: 100vh;
-      position: relative;
-    }
-
     .hero-content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      padding: 3rem 2rem;
       text-align: center;
-      color: #fff;
-      z-index: 10;
     }
 
     .hero-content h1 {
       font-size: 3rem;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 4px #000;
+      margin-bottom: 10px;
+      color: #ffd369;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      color: #ccc;
     }
 
     .section {
-      padding: 4rem 2rem;
+      padding: 3rem 2rem;
       max-width: 1200px;
       margin: auto;
     }
 
+    .card-photo {
+      display: flex;
+      background-color: #2a2a2a;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+      transition: 0.3s ease;
+    }
+
+    .card-photo img {
+      width: 40%;
+      object-fit: cover;
+    }
+
+    .card-photo .info {
+      padding: 1.5rem;
+      width: 60%;
+    }
+
+    .card-photo .info h2 {
+      color: #ffd369;
+      margin-bottom: 1rem;
+    }
+
     .gallery {
       display: flex;
-      gap: 1rem;
       flex-wrap: wrap;
       justify-content: center;
+      gap: 1rem;
       margin-top: 2rem;
-    }
-
-    .gallery img {
-      width: 300px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.6);
-    }
-
-    .card {
-      background-color: #2c2c2c;
-      border-radius: 12px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     }
 
     footer {
@@ -155,50 +158,56 @@
     </div>
   </header>
 
-  <div class="hero"></div>
   <div class="hero-content">
     <h1>JS-Romumetalli Oy</h1>
     <p id="tagline">Luotettavat romunouto- ja purkutyöt Satakunnassa</p>
   </div>
 
   <div class="section" id="main">
-    <div class="card">
-      <h2>NOUDAMME RAUTAROMUT NURKISTA NOPEASTI</h2>
-      <p id="desc1">
-        Olemme erikoistuneet erilaisten metalliromujen keräämiseen ja purkutöihin. Noudamme ja kierrätämme monenlaiset romut – kupari, alumiinikaapelit, sähkömoottorit ja rakennusromut. Haemme myös autot, työkoneet, kuorma-autot ja paljon muuta. Soita ja kysy lisää: <strong>P. 044 338 7395</strong>
-      </p>
+
+    <div class="card-photo">
+      <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Info">
+      <div class="info">
+        <h2>NOUDAMME RAUTAROMUT NURKISTA NOPEASTI</h2>
+        <p id="desc1">
+          Olemme erikoistuneet erilaisten metalliromujen keräämiseen ja purkutöihin. Noudamme ja kierrätämme monenlaiset romut – kupari, alumiinikaapelit, sähkömoottorit ja rakennusromut. Haemme myös autot, työkoneet, kuorma-autot ja paljon muuta. Soita ja kysy lisää: <strong>P. 044 338 7395</strong>
+        </p>
+      </div>
     </div>
 
-    <div class="card">
-      <h2>SUURET JA PIENET PURKUTYÖT</h2>
-      <p id="desc2">
-        Saat meiltä avaimet käteen -palveluna puu- ja metallirakennusten purkutyöt: ladot, autotallit, rakennukset. Työ tehdään turvallisesti, ja jätteet lajitellaan ja kierrätetään asianmukaisesti.
-      </p>
+    <div class="card-photo">
+      <img src="https://i.imgur.com/DSfZuV3.jpeg" alt="Car">
+      <div class="info">
+        <h2>SUURET JA PIENET PURKUTYÖT</h2>
+        <p id="desc2">
+          Saat meiltä avaimet käteen -palveluna puu- ja metallirakennusten purkutyöt: ladot, autotallit, rakennukset. Työ tehdään turvallisesti, ja jätteet lajitellaan ja kierrätetään asianmukaisesti.
+        </p>
+      </div>
     </div>
 
-    <div class="card">
-      <h2>ROMUAUTOT KIERTOON EKOLOGISESTI</h2>
-      <p id="desc3">
-        Soita, tilaa nouto, ja toimitamme autosi kierrätykseen. Ajoneuvo poistetaan TraFi-rekisteristä ja saat virallisen romutustodistuksen.
-      </p>
+    <div class="card-photo">
+      <img src="https://i.imgur.com/KjFiOZO.png" alt="Recycling">
+      <div class="info">
+        <h2>ROMUAUTOT KIERTOON EKOLOGISESTI</h2>
+        <p id="desc3">
+          Soita, tilaa nouto, ja toimitamme autosi kierrätykseen. Ajoneuvo poistetaan TraFi-rekisteristä ja saat virallisen romutustodistuksen.
+        </p>
+      </div>
     </div>
 
-    <div class="gallery">
-      <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Photo near info">
-      <img src="https://i.imgur.com/DSfZuV3.jpeg" alt="Car 1">
-      <img src="https://i.imgur.com/KjFiOZO.png" alt="Car 2">
-      <img src="https://i.imgur.com/2gVI8tH.jpeg" alt="Truck">
-    </div>
   </div>
 
   <div class="section">
-    <div class="card">
-      <h2>Yhteystiedot</h2>
-      <p><strong>Sähköposti:</strong> jsromumetalli@gmail.com</p>
-      <p><strong>Puhelin:</strong> 044 338 7395</p>
-      <p><strong>Osoite:</strong> Kokemäentie 247b, Köyliö</p>
-      <a href="mailto:jsromumetalli@gmail.com" class="contact-btn">Ota yhteyttä</a>
-      <iframe src="https://maps.google.com/maps?q=Kokemäentie 247b, Köyliö&output=embed"></iframe>
+    <div class="card-photo">
+      <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Map">
+      <div class="info">
+        <h2>Yhteystiedot</h2>
+        <p><strong>Sähköposti:</strong> jsromumetalli@gmail.com</p>
+        <p><strong>Puhelin:</strong> 044 338 7395</p>
+        <p><strong>Osoite:</strong> Kokemäentie 247b, Köyliö</p>
+        <a href="mailto:jsromumetalli@gmail.com" class="contact-btn">Ota yhteyttä</a>
+        <iframe src="https://maps.google.com/maps?q=Kokemäentie 247b, Köyliö&output=embed"></iframe>
+      </div>
     </div>
   </div>
 
