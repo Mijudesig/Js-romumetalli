@@ -1,1 +1,84 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #ffffff;
+  color: #333333;
+}
+
+header {
+  background-color: #333333;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.logo img {
+  height: 50px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.language-switcher button {
+  margin-left: 0.5rem;
+  padding: 0.5rem;
+  background-color: #f1c40f;
+  border: none;
+  cursor: pointer;
+}
+
+.hero {
+  background-image: url('https://i.imgur.com/WwKxiE9.jpeg');
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  text-align: center;
+  padding: 5rem 1rem;
+}
+
+section {
+  padding: 2rem 1rem;
+}
+
+.gallery {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.gallery img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+.map iframe {
+  width: 100%;
+  max-width: 600px;
+  height: 450px;
+  border: 0;
+}
+
+footer {
+  background-color: #333333;
+  color: #ffffff;
+  text-align: center;
+  padding: 1rem;
+}
