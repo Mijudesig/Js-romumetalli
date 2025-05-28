@@ -174,5 +174,61 @@
       });
     });
   </script>
-</body>
+</body <script>
+  const translations = {
+    fi: {
+      "nav.about": "Meistä",
+      "nav.services": "Palvelut",
+      "nav.projects": "Projektit",
+      "nav.contact": "Yhteystiedot",
+      "hero.title": "Metalli. Koneet. Purkutyöt.",
+      "hero.subtitle": "JS-Romumetalli ja Purkutyöt Oy – romumetalli ja purkutyöt.",
+      "about.title": "Meistä",
+      "about.text": "JS-Romumetalli ja Purkutyöt Oy on erikoistunut romumetallin keräykseen, kierrätykseen ja laajoihin purkutöihin. Tiimillämme on vuosien kokemus teollisuuden purkutöistä tehokkuutta ja turvallisuutta painottaen.",
+      "services.title": "Palvelumme",
+      "services.scrap.title": "Romumetalli",
+      "services.scrap.text": "Keräämme ja lajittelemme metallin teollista kierrätystä ja vientiä varten.",
+      "services.demolition.title": "Purkutyöt",
+      "services.demolition.text": "Turvalliset ja ammattitaitoiset rakennusten ja tehtaiden purkutyöt.",
+      "services.machinery.title": "Raskaat koneet",
+      "services.machinery.text": "Tehokas konekuljetus ja käyttö työmaalla.",
+      "projects.title": "Projektit",
+      "projects.project1.title": "Tehtaan purku",
+      "projects.project1.text": "Teollisuusalueen purku turvallisin menetelmin.",
+      "projects.project2.title": "Romumetallin kuljetus",
+      "projects.project2.text": "Metallin kuljetus raskaalla kalustolla ja logistiikalla.",
+      "projects.project3.title": "Raskaiden koneiden käyttö",
+      "projects.project3.text": "Kaivinkonetiimi poistaa rakennusjätteet tarkasti.",
+      "contact.title": "Yhteystiedot",
+      "contact.text": "Lähetä sähköpostia osoitteeseen <a href='mailto:info@jsromumetalli.fi'>info@jsromumetalli.fi</a> tai soita <a href='tel:+358401234567'>+358 40 123 4567</a>"
+    }
+  };
+
+  function setLanguage(lang) {
+    const elements = document.querySelectorAll("[data-i18n]");
+    elements.forEach(el => {
+      const key = el.getAttribute("data-i18n");
+      if (translations[lang] && translations[lang][key]) {
+        el.innerHTML = translations[lang][key];
+      }
+    });
+    // Обновим активную кнопку
+    document.querySelectorAll(".lang-toggle button").forEach(btn => {
+      btn.classList.toggle("active", btn.id === lang);
+    });
+  }
+
+  // Подключение кнопок
+  document.addEventListener("DOMContentLoaded", () => {
+    // начальный язык = английский
+    setLanguage("en");
+
+    document.querySelectorAll(".lang-toggle button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const lang = btn.id;
+        setLanguage(lang);
+      });
+    });
+  });
+</script>
 </html>
