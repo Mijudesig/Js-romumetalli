@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -14,176 +14,135 @@
     }
 
     header {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 30px;
-      background-color: rgba(0, 0, 0, 0.6);
+      justify-content: space-between;
+      flex-wrap: wrap;
     }
 
     header img {
       height: 60px;
     }
 
-    nav button {
-      margin: 0 10px;
-      padding: 10px 20px;
+    .lang-toggle {
+      display: flex;
+      gap: 10px;
+    }
+
+    .lang-toggle button {
+      background: #fff;
       border: none;
-      border-radius: 20px;
-      background: #f4c542;
-      color: #000;
-      font-weight: bold;
+      color: #333;
+      padding: 10px 15px;
+      border-radius: 25px;
       cursor: pointer;
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      transition: all 0.3s ease;
+      transition: background 0.3s;
     }
 
-    nav button:hover {
-      background: #ffe07e;
+    .lang-toggle button:hover {
+      background: #ffd000;
     }
 
-    .hero {
-      text-align: center;
-      padding: 100px 20px 50px;
-      background-color: rgba(0, 0, 0, 0.5);
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
     }
 
-    .hero h1 {
-      font-size: 48px;
-      margin-bottom: 20px;
+    h1, h2 {
+      color: #ffd000;
+      text-shadow: 1px 1px 2px #000;
     }
 
-    .hero p {
-      font-size: 22px;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .about {
-      padding: 60px 20px;
-      text-align: center;
-      background-color: rgba(255, 255, 255, 0.08);
-    }
-
-    .about img {
-      width: 300px;
-      border-radius: 12px;
-      border: 5px solid #f4c542;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    .info-block {
+      background: rgba(0,0,0,0.7);
+      border-radius: 15px;
+      padding: 30px;
       margin-top: 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.5);
     }
 
-    .about h2 {
-      font-size: 32px;
-    }
-
-    .about p {
-      font-size: 18px;
-      max-width: 800px;
-      margin: 20px auto;
+    .info-image {
+      float: right;
+      max-width: 300px;
+      margin-left: 20px;
+      border: 4px solid #ffd000;
+      border-radius: 12px;
     }
 
     .contact {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 60px 20px;
+      margin-top: 40px;
       text-align: center;
-    }
-
-    .contact h2 {
-      font-size: 30px;
-      margin-bottom: 20px;
     }
 
     .contact p {
-      font-size: 18px;
-      margin: 10px 0;
+      font-size: 1.1em;
     }
 
     .contact a {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 10px 25px;
-      background: #f4c542;
-      color: #000;
-      font-weight: bold;
-      border-radius: 20px;
-      text-decoration: none;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    }
-
-    .contact a:hover {
-      background: #ffe07e;
+      color: #ffd000;
+      text-decoration: underline;
     }
 
     footer {
+      background: rgba(0,0,0,0.8);
       text-align: center;
-      padding: 30px;
-      background: rgba(0, 0, 0, 0.5);
-      font-size: 14px;
+      padding: 15px;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 768px) {
+      .info-image {
+        float: none;
+        display: block;
+        margin: 20px auto;
+      }
     }
   </style>
 </head>
 <body>
-
   <header>
-    <img src="https://i.imgur.com/r6OggID.png" alt="JS-Romumetalli Oy logo">
-    <nav>
-      <button onclick="setLanguage('en')">English</button>
-      <button onclick="setLanguage('fi')">Suomi</button>
-    </nav>
+    <img src="https://i.imgur.com/r6OggID.png" alt="Logo" />
+    <div class="lang-toggle">
+      <button onclick="setLang('fi')">Suomeksi</button>
+      <button onclick="setLang('en')">In English</button>
+    </div>
   </header>
 
-  <section class="hero">
-    <h1 id="main-title">JS-Romumetalli Oy</h1>
-    <p id="main-desc">Reliable metal recycling and scrap metal services in Satakunta.</p>
-  </section>
+  <div class="container">
+    <h1 data-fi="Tervetuloa JS-Romumetallille" data-en="Welcome to JS-Romumetalli">Tervetuloa JS-Romumetallille</h1>
 
-  <section class="about">
-    <h2 id="about-title">About Us</h2>
-    <p id="about-desc">
-      We operate across the Satakunta region, buying and collecting all types of scrap metal — from private customers and companies. We guarantee fast and flexible service. Our mission is to keep the environment clean by recycling metals efficiently.
-    </p>
-    <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Our truck">
-  </section>
+    <div class="info-block">
+      <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Company" class="info-image"/>
+      <p data-fi="JS-Romumetalli Oy tarjoaa kattavia metalliromun keräys- ja kierrätyspalveluita. Toimimme laajasti Satakunnan alueella. Meiltä saat luotettavan ja tehokkaan palvelun, olipa kyseessä yksityishenkilö tai yritys." 
+         data-en="JS-Romumetalli Oy provides comprehensive scrap metal collection and recycling services. We operate widely in the Satakunta region. Whether you are an individual or a business, we offer reliable and efficient service.">
+         JS-Romumetalli Oy tarjoaa kattavia metalliromun keräys- ja kierrätyspalveluita. Toimimme laajasti Satakunnan alueella. Meiltä saat luotettavan ja tehokkaan palvelun, olipa kyseessä yksityishenkilö tai yritys.
+      </p>
+    </div>
 
-  <section class="contact">
-    <h2 id="contact-title">Contact Us</h2>
-    <p>Email: <a href="mailto:info@js-romumetalli.fi">info@js-romumetalli.fi</a></p>
-    <p>Phone: <a href="tel:+358401234567">+358 40 123 4567</a></p>
-    <p id="contact-desc">Write us anytime. We'll get back to you quickly!</p>
-    <a href="mailto:info@js-romumetalli.fi">Send Email</a>
-  </section>
+    <div class="contact">
+      <h2 data-fi="Ota yhteyttä" data-en="Contact Us">Ota yhteyttä</h2>
+      <p data-fi="Sähköposti: " data-en="Email: ">Sähköposti:</p>
+      <a href="mailto:info@js-romumetalli.fi">info@js-romumetalli.fi</a>
+      <p data-fi="Puhelin: " data-en="Phone: ">Puhelin:</p>
+      <a href="tel:+358401234567">+358 40 123 4567</a>
+      <p data-fi="Osoite: Kokemäentie 247b, Köyliö" data-en="Address: Kokemäentie 247b, Köyliö">Osoite: Kokemäentie 247b, Köyliö</p>
+    </div>
+  </div>
 
   <footer>
-    &copy; 2025 JS-Romumetalli Oy — Köyliö, Satakunta
+    © 2025 JS-Romumetalli Oy
   </footer>
 
   <script>
-    const translations = {
-      en: {
-        'main-title': "JS-Romumetalli Oy",
-        'main-desc': "Reliable metal recycling and scrap metal services in Satakunta.",
-        'about-title': "About Us",
-        'about-desc': "We operate across the Satakunta region, buying and collecting all types of scrap metal — from private customers and companies. We guarantee fast and flexible service. Our mission is to keep the environment clean by recycling metals efficiently.",
-        'contact-title': "Contact Us",
-        'contact-desc': "Write us anytime. We'll get back to you quickly!",
-      },
-      fi: {
-        'main-title': "JS-Romumetalli Oy",
-        'main-desc': "Luotettavaa metallinkierrätystä ja romun noutoa Satakunnassa.",
-        'about-title': "Meistä",
-        'about-desc': "Toimimme koko Satakunnan alueella, ostamme ja noudamme kaikenlaista romumetallia — yksityisiltä ja yrityksiltä. Tarjoamme nopeaa ja joustavaa palvelua. Tavoitteenamme on pitää ympäristö puhtaana tehokkaan kierrätyksen avulla.",
-        'contact-title': "Ota yhteyttä",
-        'contact-desc': "Kirjoita meille milloin tahansa. Vastaamme nopeasti!",
-      }
-    };
-
-    function setLanguage(lang) {
-      for (const id in translations[lang]) {
-        document.getElementById(id).innerText = translations[lang][id];
-      }
+    function setLang(lang) {
+      document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+        el.textContent = el.getAttribute('data-' + lang);
+      });
     }
   </script>
-
 </body>
 </html>
