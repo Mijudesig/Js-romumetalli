@@ -125,6 +125,66 @@
       </div>
     </div>
   </footer>
+  <script>
+  const translations = {
+    fi: {
+      "nav.about": "Meistä",
+      "nav.services": "Palvelut",
+      "nav.projects": "Projektit",
+      "nav.contact": "Yhteystiedot",
+      "hero.title": "Metalli. Koneet. Purkutyöt.",
+      "hero.subtitle": "JS-Romumetalli ja Purkutyöt Oy – romumetalli ja purkutyöt.",
+      "about.title": "Meistä",
+      "about.text": "JS-Romumetalli ja Purkutyöt Oy on erikoistunut romumetallin keräykseen, kierrätykseen ja laajoihin purkutöihin. Tiimillämme on vuosien kokemus teollisuuden purkutöistä tehokkuutta ja turvallisuutta painottaen.",
+      "services.title": "Palvelumme",
+      "services.scrap.title": "Romumetalli",
+      "services.scrap.text": "Keräämme ja lajittelemme metallin teollista kierrätystä ja vientiä varten.",
+      "services.demolition.title": "Purkutyöt",
+      "services.demolition.text": "Turvalliset ja ammattitaitoiset rakennusten ja tehtaiden purkutyöt.",
+      "services.machinery.title": "Raskaat koneet",
+      "services.machinery.text": "Tehokas konekuljetus ja käyttö työmaalla.",
+      "projects.title": "Projektit",
+      "projects.project1.title": "Tehtaan purku",
+      "projects.project1.text": "Teollisuusalueen purku turvallisin menetelmin.",
+      "projects.project2.title": "Romumetallin kuljetus",
+      "projects.project2.text": "Metallin kuljetus raskaalla kalustolla ja logistiikalla.",
+      "projects.project3.title": "Raskaiden koneiden käyttö",
+      "projects.project3.text": "Kaivinkonetiimi poistaa rakennusjätteet tarkasti.",
+      "contact.title": "Yhteystiedot",
+      "contact.text": "Lähetä sähköpostia osoitteeseen <a href='mailto:info@jsromumetalli.fi'>info@jsromumetalli.fi</a> tai soita <a href='tel:+358401234567'>+358 40 123 4567</a>"
+    }
+  };
+
+  function setLanguage(lang) {
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const key = el.getAttribute("data-i18n");
+
+      if (lang === "en") {
+        el.innerHTML = el.dataset.original || el.innerHTML;
+      } else if (translations[lang] && translations[lang][key]) {
+        el.innerHTML = translations[lang][key];
+      }
+    });
+
+    document.querySelectorAll(".lang-toggle button").forEach(btn => {
+      btn.classList.toggle("active", btn.id === lang);
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Сохраняем оригинальные тексты (английские) в data-original
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      el.dataset.original = el.innerHTML;
+    });
+
+    // Назначаем обработчики кнопок
+    document.querySelectorAll(".lang-toggle button").forEach(btn => {
+      btn.addEventListener("click", () => setLanguage(btn.id));
+    });
+
+    setLanguage("en"); // начальный язык
+  });
+</script>
 
   <!-- Translation Script -->
   <script>
