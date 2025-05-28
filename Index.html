@@ -1,78 +1,121 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>JS-Romumetalli</title>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --cream: #f6f1eb;
+      --caramel: #d2a679;
+      --sage: #a3b18a;
+      --olive: #6b705c;
+      --text-dark: #2f2f2f;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
-      font-family: 'Share Tech Mono', monospace;
-      background-color: #111;
-      color: #f2f2f2;
+      font-family: 'Roboto Mono', monospace;
+      background-color: var(--cream);
+      color: var(--text-dark);
       scroll-behavior: smooth;
     }
+
     header {
-      background-color: #ff6600;
-      color: #111;
-      padding: 2rem;
+      background-color: var(--olive);
+      color: var(--cream);
       text-align: center;
+      padding: 3rem 1rem;
     }
+
     header h1 {
       font-size: 3rem;
-      letter-spacing: 3px;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
     nav {
-      background-color: #000;
+      background-color: var(--caramel);
       display: flex;
       justify-content: center;
       gap: 2rem;
       padding: 1rem;
     }
+
     nav a {
-      color: #ff6600;
+      color: #fff;
       text-decoration: none;
       font-weight: bold;
-      transition: 0.3s ease;
+      transition: color 0.3s ease;
     }
+
     nav a:hover {
-      color: #fff;
+      color: var(--olive);
     }
+
     section {
       padding: 4rem 2rem;
-      max-width: 1100px;
+      max-width: 1000px;
       margin: auto;
       opacity: 0;
-      transform: translateY(50px);
-      transition: all 1s ease;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
     }
+
     section.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    .orange-bg {
-      background-color: #ff6600;
-      color: #111;
-      padding: 2rem;
-      border-radius: 6px;
+
+    h2 {
+      color: var(--olive);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
+
+    .highlight-box {
+      background-color: var(--sage);
+      padding: 2rem;
+      border-left: 6px solid var(--caramel);
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      color: #fff;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
     .service-card {
-      background: #1a1a1a;
-      border-left: 4px solid #ff6600;
-      padding: 1.5rem;
+      background: #fff;
+      border-left: 4px solid var(--sage);
+      padding: 1.2rem 1.5rem;
       margin: 1rem 0;
+      border-radius: 6px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
     }
+
+    .service-card:hover {
+      transform: scale(1.02);
+    }
+
     footer {
-      background-color: #000;
-      color: #aaa;
+      background-color: var(--olive);
+      color: var(--cream);
       text-align: center;
-      padding: 2rem;
+      padding: 2rem 1rem;
       font-size: 0.9rem;
     }
   </style>
@@ -91,19 +134,19 @@
 </nav>
 
 <section id="about">
-  <div class="orange-bg">
+  <div class="highlight-box">
     <h2>About Us</h2>
-    <p>JS-Romumetalli ja Purkutyöt Oy is a Finnish company established in 2018. We specialize in scrap metal collection, demolition work, and car recycling. Based in Köyliö, we serve clients across Satakunta with professionalism and precision.</p>
+    <p>JS-Romumetalli ja Purkutyöt Oy is a Finnish company founded in 2018, based in Köyliö. We specialize in collecting and recycling scrap metal, demolition of buildings, and environmentally responsible disposal of vehicles and construction waste. Our mission is to provide reliable and sustainable metal solutions for our community.</p>
   </div>
 </section>
 
 <section id="services">
   <h2>Our Services</h2>
   <div class="service-card">• Scrap Metal Collection & Processing</div>
-  <div class="service-card">• Car Recycling</div>
-  <div class="service-card">• Demolition of Wooden & Metal Structures</div>
-  <div class="service-card">• Construction Waste Disposal</div>
-  <div class="service-card">• Plasma Cutting Services</div>
+  <div class="service-card">• Car Recycling & Deregistration</div>
+  <div class="service-card">• Demolition of Metal & Wooden Structures</div>
+  <div class="service-card">• Construction Waste Removal</div>
+  <div class="service-card">• Plasma Cutting & Metalwork Services</div>
 </section>
 
 <section id="contact">
@@ -118,7 +161,7 @@
 </footer>
 
 <script>
-  // Animate sections on scroll
+  // Плавное появление секций при прокрутке
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
