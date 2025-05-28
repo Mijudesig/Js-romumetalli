@@ -2,206 +2,197 @@
 <html lang="fi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JS-Romumetalli Oy</title>
   <style>
+    :root {
+      --dark: #1a1a1a;
+      --yellow: #f2c744;
+      --white: #fefefe;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #121212;
-      color: #f1f1f1;
-      scroll-behavior: smooth;
+      background-color: var(--dark);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
+
     header {
-      background: #1c1c1c;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      background-image: url('https://i.imgur.com/BD2AC31C-D481-4E57-8C45-AAEB8D51AF7E.jpeg');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      position: relative;
     }
-    header h1 {
-      color: #ffd700;
-      font-size: 24px;
+
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
     }
-    nav a {
-      margin: 0 15px;
-      color: #ccc;
-      text-decoration: none;
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      font-size: 28px;
+      font-weight: bold;
+      color: var(--yellow);
+      z-index: 3;
+    }
+
+    .language-switch {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      z-index: 3;
+    }
+
+    .language-switch button {
+      background: transparent;
+      border: 2px solid var(--yellow);
+      color: var(--white);
+      padding: 5px 10px;
+      margin-left: 10px;
+      cursor: pointer;
       transition: 0.3s;
     }
-    nav a:hover {
-      color: #ffd700;
+
+    .language-switch button:hover {
+      background: var(--yellow);
+      color: var(--dark);
     }
-    .lang-switch {
-      margin-left: auto;
-      display: flex;
-      gap: 10px;
-    }
-    .lang-switch button {
-      background: #ffd700;
-      border: none;
-      color: #000;
-      font-weight: bold;
-      padding: 5px 10px;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-    .hero {
-      position: relative;
-      height: 80vh;
-      background: url('/mnt/data/BD2AC31C-D481-4E57-8C45-AAEB8D51AF7E.jpeg') no-repeat center center/cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .hero-text {
-      background: rgba(0,0,0,0.7);
-      padding: 40px;
-      border-radius: 8px;
+
+    .hero-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
       text-align: center;
     }
-    .hero-text h2 {
-      font-size: 36px;
-      margin-bottom: 20px;
-      color: #ffd700;
+
+    .hero-content h1 {
+      font-size: 48px;
+      color: var(--white);
     }
-    .hero-text p {
-      font-size: 18px;
-      margin-bottom: 20px;
+
+    .hero-content p {
+      margin-top: 10px;
+      color: var(--yellow);
     }
-    .hero-text button {
-      background: #ffd700;
-      color: #000;
-      border: none;
-      padding: 12px 24px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 6px;
-      transition: 0.3s;
-    }
-    .hero-text button:hover {
-      background: #e6c200;
-    }
+
     section {
-      padding: 60px 20px;
-      max-width: 1000px;
+      padding: 60px 30px;
+    }
+
+    .about,
+    .services,
+    .contact {
+      max-width: 1100px;
       margin: auto;
     }
-    .about, .contact {
-      background: #1e1e1e;
-      border-radius: 12px;
-      padding: 40px;
-    }
-    .about h3, .contact h3 {
-      color: #ffd700;
+
+    h2 {
+      color: var(--yellow);
       margin-bottom: 20px;
-      font-size: 28px;
     }
-    .about p, .contact p {
-      line-height: 1.6;
-      font-size: 18px;
+
+    .gallery img {
+      width: 100%;
+      max-width: 400px;
+      margin: 10px;
+      border: 4px solid var(--yellow);
+      transition: transform 0.4s ease;
     }
-    .contact form {
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+
+    .gallery img:hover {
+      transform: scale(1.05);
     }
-    .contact input, .contact textarea {
-      padding: 12px;
-      border-radius: 6px;
-      border: none;
-      font-size: 16px;
+
+    .contact-info p {
+      margin: 5px 0;
     }
-    .contact button {
-      background: #ffd700;
-      color: #000;
-      border: none;
-      padding: 12px;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 6px;
-    }
+
     footer {
       background: #111;
-      padding: 30px 20px;
+      color: #aaa;
       text-align: center;
-      color: #888;
+      padding: 20px;
       font-size: 14px;
-    }
-    .fade-in {
-      animation: fadeIn 1s ease-in forwards;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>JS-Romumetalli Oy</h1>
-    <nav>
-      <a href="#about" class="nav-link">Tietoa meistä</a>
-      <a href="#contact" class="nav-link">Yhteystiedot</a>
-    </nav>
-    <div class="lang-switch">
-      <button onclick="setLang('fi')">FI</button>
-      <button onclick="setLang('en')">EN</button>
+    <div class="logo">JS-Romumetalli Oy</div>
+    <div class="language-switch">
+      <button onclick="setLanguage('fi')">FI</button>
+      <button onclick="setLanguage('en')">EN</button>
+    </div>
+    <div class="hero-content">
+      <h1 data-fi="Romumetallin asiantuntijat" data-en="Scrap Metal Experts">Romumetallin asiantuntijat</h1>
+      <p data-fi="Ostamme ja kuljetamme romua koko Satakunnan alueella." data-en="We buy and transport scrap metal across Satakunta.">Ostamme ja kuljetamme romua koko Satakunnan alueella.</p>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="hero-text fade-in">
-      <h2 data-fi="Luotettava purkutyön kumppani" data-en="Your Reliable Metal Recycling Partner">Luotettava purkutyön kumppani</h2>
-      <p data-fi="Erikoistunut romumetallin ja purkutöiden alaan Etelä-Suomessa." data-en="Specialized in scrap metal and demolition services in Southern Finland.">
-        Erikoistunut romumetallin ja purkutöiden alaan Etelä-Suomessa.
-      </p>
-      <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
-        <span data-fi="Ota yhteyttä" data-en="Contact Us">Ota yhteyttä</span>
-      </button>
+  <section class="about">
+    <h2 data-fi="Tietoa meistä" data-en="About Us">Tietoa meistä</h2>
+    <p data-fi="JS-Romumetalli Oy on ammattimainen romumetallin käsittelyyn erikoistunut yritys." data-en="JS-Romumetalli Oy is a professional company specialized in scrap metal processing.">
+      JS-Romumetalli Oy on ammattimainen romumetallin käsittelyyn erikoistunut yritys.
+    </p>
+  </section>
+
+  <section class="services">
+    <h2 data-fi="Palvelut" data-en="Services">Palvelut</h2>
+    <ul>
+      <li data-fi="Romuraudan ja metallin osto ja nouto" data-en="Buying and pickup of scrap metal">Romuraudan ja metallin osto ja nouto</li>
+      <li data-fi="Purku- ja kierrätyspalvelut" data-en="Demolition and recycling services">Purku- ja kierrätyspalvelut</li>
+      <li data-fi="Kuljetuspalvelut" data-en="Transportation services">Kuljetuspalvelut</li>
+    </ul>
+  </section>
+
+  <section class="gallery">
+    <h2 data-fi="Galleria" data-en="Gallery">Galleria</h2>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;">
+      <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Truck 1" />
+      <img src="https://i.imgur.com/wLVVark.png" alt="Truck 2" />
+      <img src="https://i.imgur.com/r6OggID.png" alt="Truck 3" />
     </div>
   </section>
 
-  <section id="about" class="about fade-in">
-    <h3 data-fi="Tietoa meistä" data-en="About Us">Tietoa meistä</h3>
-    <p data-fi="JS-Romumetalli Oy on suomalainen perheyritys, joka on erikoistunut metallinkierrätykseen, purkutöihin ja romumetallin käsittelyyn. Yli 20 vuoden kokemuksella palvelemme sekä yrityksiä että yksityishenkilöitä koko Etelä-Suomen alueella." 
-       data-en="JS-Romumetalli Oy is a Finnish family-owned company specializing in metal recycling, demolition, and scrap metal processing. With over 20 years of experience, we serve both businesses and individuals across Southern Finland.">
-      JS-Romumetalli Oy on suomalainen perheyritys, joka on erikoistunut metallinkierrätykseen, purkutöihin ja romumetallin käsittelyyn. Yli 20 vuoden kokemuksella palvelemme sekä yrityksiä että yksityishenkilöitä koko Etelä-Suomen alueella.
-    </p>
-  </section>
-
-  <section id="contact" class="contact fade-in">
-    <h3 data-fi="Yhteystiedot" data-en="Contact Us">Yhteystiedot</h3>
-    <p data-fi="Sähköposti: info@js-romumetalli.fi | Puhelin: +358 40 123 4567"
-       data-en="Email: info@js-romumetalli.fi | Phone: +358 40 123 4567">
-      Sähköposti: info@js-romumetalli.fi | Puhelin: +358 40 123 4567
-    </p>
-    <form>
-      <input type="text" placeholder="Nimi / Name" required>
-      <input type="email" placeholder="Sähköposti / Email" required>
-      <textarea rows="4" placeholder="Viesti / Message" required></textarea>
-      <button type="submit">Lähetä / Send</button>
-    </form>
+  <section class="contact">
+    <h2 data-fi="Yhteystiedot" data-en="Contact">Yhteystiedot</h2>
+    <div class="contact-info">
+      <p>Email: <a href="mailto:info@js-romumetalli.fi">info@js-romumetalli.fi</a></p>
+      <p>Puhelin / Phone: <a href="tel:+358401234567">+358 40 123 4567</a></p>
+      <p data-fi="Osoite: Kokemäentie 247b, 32800 Kokemäki" data-en="Address: Kokemäentie 247b, 32800 Kokemäki">
+        Osoite: Kokemäentie 247b, 32800 Kokemäki
+      </p>
+      <iframe src="https://www.google.com/maps?q=Kokemäentie+247b,+Kokemäki&output=embed" width="100%" height="300" style="border:0;" allowfullscreen></iframe>
+    </div>
   </section>
 
   <footer>
-    © 2025 JS-Romumetalli Oy. Kaikki oikeudet pidätetään.
+    &copy; 2025 JS-Romumetalli Oy. All rights reserved.
   </footer>
 
   <script>
-    function setLang(lang) {
+    function setLanguage(lang) {
       document.querySelectorAll('[data-fi]').forEach(el => {
-        el.textContent = el.getAttribute(`data-${lang}`);
+        el.innerText = lang === 'fi' ? el.dataset.fi : el.dataset.en;
       });
+      document.documentElement.lang = lang;
     }
   </script>
 </body>
