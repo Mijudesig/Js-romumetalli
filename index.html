@@ -1,1 +1,82 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JS-Romumetalli ja purkutyöt Oy</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="https://i.imgur.com/r6OggID.png" alt="JS-Romumetalli Logo" />
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#about" data-i18n="nav_about">Tietoa meistä</a></li>
+        <li><a href="#services" data-i18n="nav_services">Palvelut</a></li>
+        <li><a href="#gallery" data-i18n="nav_gallery">Galleria</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Yhteystiedot</a></li>
+      </ul>
+    </nav>
+    <div class="language-switcher">
+      <button onclick="setLanguage('fi')">FI</button>
+      <button onclick="setLanguage('en')">EN</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1 data-i18n="hero_title">Romumetallin kierrätys ja purkutyöt</h1>
+    <p data-i18n="hero_subtitle">Luotettava kumppanisi metallin kierrätyksessä</p>
+  </section>
+
+  <section id="about">
+    <h2 data-i18n="about_title">Tietoa meistä</h2>
+    <p data-i18n="about_text">
+      JS-Romumetalli ja purkutyöt Oy on erikoistunut metallin kierrätykseen ja purkutöihin. Tarjoamme palveluita yksityisille ja yrityksille.
+    </p>
+  </section>
+
+  <section id="services">
+    <h2 data-i18n="services_title">Palvelut</h2>
+    <ul>
+      <li data-i18n="service1">Romumetallin keräys ja osto</li>
+      <li data-i18n="service2">Ajoneuvojen romutus</li>
+      <li data-i18n="service3">Rakennusten purkutyöt</li>
+      <li data-i18n="service4">Kuparin ja alumiinin osto</li>
+    </ul>
+  </section>
+
+  <section id="gallery">
+    <h2 data-i18n="gallery_title">Galleria</h2>
+    <div class="gallery">
+      <img src="https://i.imgur.com/WwKxiE9.jpeg" alt="Gallery Image 1" />
+      <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Gallery Image 2" />
+      <img src="https://i.imgur.com/wLVVark.png" alt="Gallery Image 3" />
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 data-i18n="contact_title">Yhteystiedot</h2>
+    <p><strong data-i18n="address_label">Osoite:</strong> Kokemäentie 247 B, 27710 Köyliö</p>
+    <p><strong data-i18n="phone_label">Puhelin:</strong> <a href="tel:+358443387395">+358 44 338 7395</a></p>
+    <p><strong data-i18n="email_label">Sähköposti:</strong> <a href="mailto:info@js-romumetalli.fi">info@js-romumetalli.fi</a></p>
+    <div class="map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1996.123456789!2d22.27756!3d61.194258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x468f1b1c2d3e4f5%3A0xabcdef1234567890!2sKokemäentie%20247%20B%2C%2027710%20Köyliö%2C%20Finland!5e0!3m2!1sen!2sfi!4v1610000000000!5m2!1sen!2sfi"
+        width="600"
+        height="450"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+      ></iframe>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 JS-Romumetalli ja purkutyöt Oy</p>
+  </footer>
+</body>
+</html>
 
