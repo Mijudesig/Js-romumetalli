@@ -144,3 +144,106 @@
   </script>
 </body>
 </html>
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <h2>Our Gallery</h2>
+        <div class="gallery-grid">
+            <img src="https://i.imgur.com/7QYO7uG.jpeg" alt="Scrap Yard View" />
+            <img src="https://i.imgur.com/BZ2dQ2I.jpeg" alt="Truck Delivery" />
+            <img src="https://i.imgur.com/yTQ0m5N.jpeg" alt="Recycling Process" />
+            <img src="https://i.imgur.com/hUEkctN.jpeg" alt="Vehicle Crushing" />
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2>Our Services</h2>
+        <div class="service-list">
+            <div class="service">
+                <h3>Scrap Collection</h3>
+                <p>We provide quick and professional metal scrap collection throughout Finland.</p>
+            </div>
+            <div class="service">
+                <h3>Vehicle Recycling</h3>
+                <p>Environmentally responsible vehicle disassembly and processing with all required documentation.</p>
+            </div>
+            <div class="service">
+                <h3>On-Site Containers</h3>
+                <p>We deliver containers to your location for large-scale metal and junk collection.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Background Video Section -->
+    <section class="video-section">
+        <video autoplay muted loop id="bgVideo">
+            <source src="https://cdn.pixabay.com/video/2023/02/06/150193-799898238_large.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        <div class="video-overlay">
+            <h2>Powerful & Efficient Scrap Processing</h2>
+            <p>We turn metal into opportunity</p>
+        </div>
+    </section>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Contact Us</h2>
+            <form>
+                <input type="text" placeholder="Your Name" required />
+                <input type="email" placeholder="Your Email" required />
+                <textarea placeholder="Your Message..." required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h3>JS-Romumetalli Oy</h3>
+                <p>Scrap Metal & Vehicle Recycling</p>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <p>Email: <a href="mailto:jsromumetalli@gmail.com">jsromumetalli@gmail.com</a></p>
+                <p>Phone: <a href="tel:+358405409033">+358 40 540 9033</a></p>
+            </div>
+            <div>
+                <h4>Address</h4>
+                <p>Lahdentie 1040, 15680 Lahti, Finland</p>
+                <p>Open: Mon-Fri 9:00 - 17:00</p>
+            </div>
+        </div>
+        <p class="copyright">© 2025 JS-Romumetalli Oy. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function closeModal() {
+            document.getElementById("contactModal").style.display = "none";
+        }
+
+        function openModal() {
+            document.getElementById("contactModal").style.display = "block";
+        }
+
+        // Scroll animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            sections.forEach(section => observer.observe(section));
+        });
+    </script>
+</body>
+</html>
