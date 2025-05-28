@@ -1,244 +1,162 @@
 <!DOCTYPE html>
-<html lang="fi">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>JS-Romumetalli Oy</title>
   <style>
-    :root {
-      --gold: #d6c174;
-      --gold-light: #f3eac3;
-      --dark-bg: rgba(15, 15, 15, 0.85);
-      --text-light: #f3f3f3;
-    }
-
-    html, body {
+    body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      color: var(--text-light);
-      overflow-x: hidden;
-      background: url('https://i.imgur.com/wLVVark.png') no-repeat center center fixed;
+      background: url('https://i.imgur.com/2gVI8tH.jpeg') no-repeat center center fixed;
       background-size: cover;
-      transition: background-position 0.3s ease;
-    }
-
-    body.scrolled {
-      background-position: center calc(50% + 50px);
+      color: #f2f2f2;
+      scroll-behavior: smooth;
     }
 
     header {
-      background: var(--dark-bg);
-      padding: 20px 40px;
+      background: rgba(0,0,0,0.6);
+      padding: 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      border-bottom: 2px solid rgba(214, 193, 116, 0.2);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-      animation: fadeDown 1s ease-out forwards;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
 
     header img {
-      height: 60px;
+      height: 50px;
     }
 
-    .lang-toggle {
-      display: flex;
-      gap: 15px;
-    }
-
-    .lang-toggle button {
-      background: linear-gradient(145deg, var(--gold), var(--gold-light));
+    nav button {
+      background: #f5c842;
+      color: #111;
       border: none;
-      color: #222;
-      padding: 12px 20px;
-      border-radius: 30px;
-      cursor: pointer;
+      margin: 0 5px;
+      padding: 10px 20px;
+      border-radius: 25px;
       font-weight: bold;
-      font-size: 0.95em;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
       transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
-    .lang-toggle button:hover {
-      background: linear-gradient(145deg, #faf3d1, #e8dca2);
+    nav button:hover {
+      background: #e1b830;
       transform: translateY(-2px);
     }
 
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 60px 20px;
+    .section {
+      padding: 100px 30px;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(3px);
+      margin-bottom: 50px;
+      animation: fadeIn 2s ease forwards;
+      border-radius: 20px;
+      margin: 40px;
     }
 
-    h1, h2 {
-      color: var(--gold);
-      text-shadow: 1px 1px 3px #000;
+    .section h2 {
+      font-size: 2em;
       margin-bottom: 20px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 1s ease-out forwards;
     }
 
-    .info-block {
-      background: var(--dark-bg);
-      border-radius: 20px;
-      padding: 40px;
-      margin-top: 30px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-      position: relative;
-      opacity: 0;
-      animation: fadeIn 1.3s ease forwards;
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
     }
 
-    .info-image {
-      float: right;
-      max-width: 320px;
-      margin-left: 30px;
-      border: 5px solid var(--gold);
+    .gallery img {
+      width: 300px;
       border-radius: 15px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+      box-shadow: 0 0 20px rgba(255,255,255,0.1);
+      transition: transform 0.3s ease;
     }
 
-    .info-block p {
-      font-size: 1.2em;
-      line-height: 1.6;
+    .gallery img:hover {
+      transform: scale(1.05);
     }
 
-    .contact {
-      margin-top: 60px;
-      text-align: center;
-      background: rgba(0,0,0,0.65);
-      border: 2px solid rgba(214, 193, 116, 0.2);
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-      animation: fadeIn 1.4s ease forwards;
-      opacity: 0;
-    }
-
-    .contact p {
-      font-size: 1.1em;
-      margin: 10px 0;
-    }
-
-    .contact a {
-      color: var(--gold);
-      font-weight: bold;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .contact a:hover {
-      color: var(--gold-light);
-      text-decoration: underline;
-    }
-
-    .map-container {
-      margin: 50px auto;
-      max-width: 1000px;
-      border: 4px solid rgba(214, 193, 116, 0.3);
+    .map iframe {
+      width: 100%;
+      height: 300px;
       border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-      animation: fadeIn 1.5s ease forwards;
-      opacity: 0;
+      border: none;
     }
 
     footer {
       background: rgba(0,0,0,0.8);
+      padding: 30px;
       text-align: center;
-      padding: 20px;
-      font-size: 0.95em;
-      color: #ccc;
-      margin-top: 60px;
-      border-top: 2px solid rgba(214, 193, 116, 0.2);
-    }
-
-    @media (max-width: 768px) {
-      .info-image {
-        float: none;
-        display: block;
-        margin: 20px auto;
-      }
-    }
-
-    @keyframes fadeUp {
-      0% {opacity: 0; transform: translateY(20px);}
-      100% {opacity: 1; transform: translateY(0);}
-    }
-
-    @keyframes fadeDown {
-      0% {opacity: 0; transform: translateY(-20px);}
-      100% {opacity: 1; transform: translateY(0);}
+      font-size: 14px;
+      border-top: 1px solid #444;
     }
 
     @keyframes fadeIn {
-      0% {opacity: 0;}
-      100% {opacity: 1;}
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="https://i.imgur.com/r6OggID.png" alt="Logo" />
-    <div class="lang-toggle">
-      <button onclick="setLang('fi')">Suomeksi</button>
-      <button onclick="setLang('en')">In English</button>
-    </div>
+    <img src="https://i.imgur.com/r6OggID.png" alt="Logo">
+    <nav>
+      <button onclick="setLang('fi')">Suomi</button>
+      <button onclick="setLang('en')">English</button>
+    </nav>
   </header>
 
-  <div class="container">
-    <h1 data-fi="Tervetuloa JS-Romumetallille" data-en="Welcome to JS-Romumetalli">Tervetuloa JS-Romumetallille</h1>
+  <div class="section" id="about">
+    <h2 data-fi="Tietoa yrityksestä" data-en="About Us">Tietoa yrityksestä</h2>
+    <p data-fi="JS-Romumetalli toimii Satakunnassa ja sen ympäristössä. Tarjoamme romumetallin keräystä ja kuljetusta luotettavasti ja nopeasti." data-en="JS-Romumetalli operates across Satakunta and surrounding regions. We provide reliable and fast scrap metal collection and transport.">
+      JS-Romumetalli toimii Satakunnassa ja sen ympäristössä. Tarjoamme romumetallin keräystä ja kuljetusta luotettavasti ja nopeasti.
+    </p>
+    <img src="https://i.imgur.com/zvbBW84.jpeg" alt="About Image" style="width: 100%; border-radius: 20px; margin-top: 20px; box-shadow: 0 0 10px rgba(255,255,255,0.1);">
+  </div>
 
-    <div class="info-block">
-      <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Company" class="info-image"/>
-      <p data-fi="JS-Romumetalli Oy tarjoaa kattavia metalliromun keräys- ja kierrätyspalveluita. Toimimme laajasti Satakunnan alueella. Meiltä saat luotettavan ja tehokkaan palvelun, olipa kyseessä yksityishenkilö tai yritys." 
-         data-en="JS-Romumetalli Oy provides comprehensive scrap metal collection and recycling services. We operate throughout the Satakunta region. Whether you're an individual or a business, we deliver reliable and efficient service.">
-         JS-Romumetalli Oy tarjoaa kattavia metalliromun keräys- ja kierrätyspalveluita. Toimimme laajasti Satakunnan alueella. Meiltä saat luotettavan ja tehokkaan palvelun, olipa kyseessä yksityishenkilö tai yritys.
-      </p>
-    </div>
-
-    <div class="contact">
-      <h2 data-fi="Ota yhteyttä" data-en="Contact Us">Ota yhteyttä</h2>
-      <p data-fi="Sähköposti: " data-en="Email: ">Sähköposti:</p>
-      <a href="mailto:info@js-romumetalli.fi">info@js-romumetalli.fi</a>
-      <p data-fi="Puhelin: " data-en="Phone: ">Puhelin:</p>
-      <a href="tel:+358401234567">+358 40 123 4567</a>
-      <p data-fi="Osoite: Kokemäentie 247b, Köyliö" data-en="Address: Kokemäentie 247b, Köyliö">Osoite: Kokemäentie 247b, Köyliö</p>
-    </div>
-
-    <div class="map-container">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18407.867064067773!2d22.2689261!3d61.1190591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x468e627db9b4761f%3A0x6858f4dcbebf265e!2sK%C3%B6yli%C3%B6%2C%20Finland!5e0!3m2!1sen!2sfi!4v1716918650000!5m2!1sen!2sfi" 
-        width="100%" 
-        height="400" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
+  <div class="section" id="gallery">
+    <h2 data-fi="Galleria" data-en="Gallery">Galleria</h2>
+    <div class="gallery">
+      <img src="https://i.imgur.com/DSfZuV3.jpeg" alt="Janus car 1">
+      <img src="https://i.imgur.com/KjFiOZO.png" alt="Janus car 2">
+      <img src="https://i.imgur.com/WwKxiE9.jpeg" alt="Truck">
     </div>
   </div>
 
+  <div class="section" id="contact">
+    <h2 data-fi="Yhteystiedot" data-en="Contact Us">Yhteystiedot</h2>
+    <p><strong>Email:</strong> info@js-romumetalli.fi</p>
+    <p><strong>Phone:</strong> +358 40 1234567</p>
+    <p><strong data-fi="Osoite" data-en="Address">Osoite:</strong> Kokemäentie 247b, Köyliö</p>
+    <p data-fi="Ota yhteyttä sähköpostilla tai puhelimitse, vastaamme nopeasti!" data-en="Contact us via email or phone — we respond quickly!">
+      Ota yhteyttä sähköpostilla tai puhelimitse, vastaamme nopeasti!
+    </p>
+  </div>
+
+  <div class="section map">
+    <h2 data-fi="Kartta" data-en="Map">Kartta</h2>
+    <iframe src="https://www.google.com/maps?q=kokem%C3%A4entie%20247b%20K%C3%B6yli%C3%B6&output=embed"></iframe>
+  </div>
+
   <footer>
-    © 2025 JS-Romumetalli Oy
+    <p>&copy; 2025 JS-Romumetalli Oy. All rights reserved.</p>
   </footer>
 
   <script>
     function setLang(lang) {
-      document.querySelectorAll('[data-' + lang + ']').forEach(el => {
-        el.textContent = el.getAttribute('data-' + lang);
+      document.querySelectorAll('[data-fi]').forEach(el => {
+        el.innerText = el.getAttribute(`data-${lang}`);
       });
     }
 
-    window.addEventListener('scroll', () => {
-      document.body.classList.add('scrolled');
-      clearTimeout(window.scrollTimeout);
-      window.scrollTimeout = setTimeout(() => {
-        document.body.classList.remove('scrolled');
-      }, 200);
-    });
+    window.onload = () => {
+      setLang('fi');
+    };
   </script>
 </body>
 </html>
