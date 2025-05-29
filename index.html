@@ -1,207 +1,217 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JS-Romumetalli Oy</title>
   <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --yellow: #ffec99;
-      --dark: #1a1a1a;
-      --light-dark: #2a2a2a;
-      --semi-transparent: rgba(255, 255, 255, 0.05);
-    }
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
-    html, body {
+
+    body {
       font-family: 'Anton', sans-serif;
-      background: var(--dark);
-      color: white;
-      scroll-behavior: smooth;
+      background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.85)), url('https://i.imgur.com/wLVVark.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #f6f6f6;
+      overflow-x: hidden;
     }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: url('https://i.imgur.com/wLVVark.png') no-repeat center center/cover;
-      filter: blur(10px) brightness(0.4);
-      z-index: -2;
-    }
+
     header {
-      background-color: var(--light-dark);
-      padding: 20px;
-      text-align: center;
-      position: relative;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     }
+
     header img {
       height: 60px;
     }
-    nav {
-      margin-top: 15px;
-    }
+
     nav button {
-      background: var(--yellow);
-      color: black;
-      padding: 10px 20px;
-      margin: 0 10px;
+      background: #f7e97b;
       border: none;
-      font-weight: bold;
+      padding: 0.5rem 1rem;
+      margin-left: 0.5rem;
       border-radius: 8px;
       cursor: pointer;
-      box-shadow: 0 2px 10px rgba(255, 255, 0, 0.3);
-      transition: all 0.3s ease;
+      font-weight: bold;
+      box-shadow: 0 0 10px #f7e97b99;
+      transition: background 0.3s, box-shadow 0.3s;
     }
+
     nav button:hover {
-      background: white;
-      color: black;
+      background: #fff3a0;
+      box-shadow: 0 0 20px #fff7a999;
     }
+
     .section {
-      padding: 50px 20px;
-      max-width: 1000px;
-      margin: auto;
-      background-color: var(--semi-transparent);
+      padding: 3rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.07);
       border-radius: 15px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-      margin-top: 30px;
+      padding: 2rem;
+      margin: 2rem 0;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      backdrop-filter: blur(8px);
+      transition: all 0.3s;
     }
+
+    .card:hover {
+      box-shadow: 0 0 25px rgba(255, 255, 150, 0.3);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #f7e97b;
+      text-shadow: 0 0 10px #f7e97b99;
+      margin-bottom: 1rem;
+    }
+
     h2 {
-      color: var(--yellow);
-      margin-bottom: 20px;
+      color: #ffffff;
+      font-size: 1.5rem;
+      margin-top: 1rem;
     }
+
+    p {
+      margin-top: 0.5rem;
+      line-height: 1.5;
+    }
+
     .gallery {
       display: none;
-      margin-top: 30px;
-      display: none;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 2rem;
     }
+
     .gallery img {
-      width: 100%;
-      max-width: 300px;
-      margin: 10px;
+      width: 250px;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(255,255,255,0.2);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
-    .gallery-container {
+
+    .btn-center {
       text-align: center;
+      margin-top: 2rem;
     }
-    .language-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: var(--yellow);
+
+    .btn-toggle {
+      background: #f7e97b;
       color: black;
-      border: none;
-      border-radius: 8px;
-      padding: 8px 14px;
+      padding: 0.75rem 1.5rem;
       font-weight: bold;
-      cursor: pointer;
-      z-index: 10;
-      box-shadow: 0 2px 10px rgba(255, 255, 0, 0.3);
-    }
-    iframe {
-      width: 100%;
-      height: 300px;
-      border: 0;
+      border: none;
       border-radius: 12px;
-      margin-top: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #f7e97b99;
     }
-    .figure {
+
+    .map {
+      margin-top: 3rem;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    .language-switcher {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 2rem;
+      color: #aaa;
+      margin-top: 3rem;
+    }
+
+    .decor {
       position: absolute;
-      width: 80px;
-      height: 80px;
-      background: var(--yellow);
-      opacity: 0.1;
+      top: 100px;
+      left: -100px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(#f7e97b33, transparent 70%);
+      transform: rotate(30deg);
       z-index: -1;
-      border-radius: 50%;
-      animation: float 6s ease-in-out infinite;
-    }
-    .figure:nth-child(1) {
-      top: 10%;
-      left: 5%;
-    }
-    .figure:nth-child(2) {
-      top: 30%;
-      right: 10%;
-    }
-    .figure:nth-child(3) {
-      bottom: 20%;
-      left: 20%;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
     }
   </style>
 </head>
 <body>
-  <button class="language-toggle" onclick="toggleLanguage()">EN</button>
+  <div class="decor"></div>
+
   <header>
     <img src="https://i.imgur.com/r6OggID.png" alt="Logo">
     <nav>
-      <button onclick="scrollToSection('services')">Palvelut</button>
+      <div class="language-switcher">
+        <button onclick="switchLang('fi')">FI</button>
+        <button onclick="switchLang('en')">EN</button>
+      </div>
       <button onclick="toggleGallery()">Kuvat</button>
     </nav>
   </header>
 
-  <div class="figure"></div>
-  <div class="figure"></div>
-  <div class="figure"></div>
+  <main class="section">
+    <h1>ROMUMETALLIT POIS NURKISTA NOPEASTI JA EDULLISESTI</h1>
+    <p>Myös pienet ja suuret purkutyöt ammattitaidolla!</p>
 
-  <section class="section" id="services">
-    <h2 id="title">ROMUMETALLIT POIS NURKISTA NOPEASTI JA EDULLISESTI</h2>
-    <p id="desc1">Olemme erikoistuneet metalliromujen keräämiseen ja purkutöihin. Noudamme kuparit, kaapelit, sähkömoottorit ja rakennusten metallit. Hyvä hinta, nopea nouto – myös autot, työkoneet, puimurit, bussit ja kuorma-autot.</p>
-    <p id="desc2">Purkutyöt avaimet käteen: puramme talot, ladot, autotallit. Käytämme kaivinkonetta tai kouraa ja toimitamme jätteet pois. Lajittelu ja kierrätys hoidetaan lain mukaan.</p>
-    <p id="desc3">Romuauton nouto on maksuton. Auto kierrätetään ja poistetaan TraFi-rekisteristä. Saat romutustodistuksen. Tarvitset vain valtakirjan.</p>
-    <p style="margin-top:20px;">Soita ja kysy lisää! <strong>P. 044 338 7395</strong></p>
-  </section>
-
-  <div class="gallery-container">
-    <div class="gallery" id="gallery">
-      <img src="https://i.imgur.com/wLVVark.png" alt="Gruzovik">
-      <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Svalka">
-      <img src="https://i.imgur.com/DSfZuV3.jpeg" alt="Mashina 1">
-      <img src="https://i.imgur.com/KjFiOZO.png" alt="Mashina 2">
+    <div class="card">
+      <h2>PALVELUT</h2>
+      <p>Olemme erikoistuneet erilaisten metalliromujen keräämiseen ja purkutöiden tekemiseen...</p>
     </div>
-  </div>
 
-  <section class="section">
-    <h2>Sijainti</h2>
-    <p>Kokemäentie 247b, Köyliö</p>
-    <iframe src="https://www.google.com/maps?q=Kokemäentie+247b,+Köyliö&output=embed"></iframe>
-  </section>
+    <div class="card">
+      <h2>SUURET JA PIENET PURKUTYÖT AMMATTITAIDOLLA</h2>
+      <p>Saat meiltä Avaimet käteen -palveluna sekä puu- että metallirakennusten purkutyöt...</p>
+    </div>
+
+    <div class="card">
+      <h2>ROMUAUTOT KIERTOON EKOLOGISESTI</h2>
+      <p>Romuautot kierrättäminen on sinulle vaivatonta...</p>
+    </div>
+
+    <div class="btn-center">
+      <button class="btn-toggle" onclick="toggleGallery()">Näytä kuvat</button>
+    </div>
+
+    <div class="gallery" id="gallery">
+      <img src="https://i.imgur.com/wLVVark.png" alt="Truck">
+      <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Svalka">
+      <img src="https://i.imgur.com/DSfZuV3.jpeg" alt="Auto1">
+      <img src="https://i.imgur.com/KjFiOZO.png" alt="Auto2">
+    </div>
+
+    <div class="map">
+      <iframe src="https://www.google.com/maps?q=Kokem%C3%A4entie+247b,+K%C3%B6yli%C3%B6,+Finland&output=embed" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 JS-Romumetalli Oy — Kaikki oikeudet pidätetään</p>
+    <p>Soita: 044 338 7395</p>
+  </footer>
 
   <script>
     function toggleGallery() {
-      const gallery = document.getElementById('gallery');
-      gallery.style.display = gallery.style.display === 'flex' ? 'none' : 'flex';
-      gallery.style.flexWrap = 'wrap';
-      gallery.style.justifyContent = 'center';
+      const g = document.getElementById('gallery');
+      g.style.display = g.style.display === 'flex' ? 'none' : 'flex';
     }
 
-    function toggleLanguage() {
-      const btn = document.querySelector('.language-toggle');
-      const isFi = btn.textContent === 'EN';
-
-      document.getElementById('title').textContent = isFi ?
-        'SCRAP METALS GONE QUICKLY AND AFFORDABLY' :
-        'ROMUMETALLIT POIS NURKISTA NOPEASTI JA EDULLISESTI';
-
-      document.getElementById('desc1').textContent = isFi ?
-        'We specialize in collecting various scrap metals and demolition work. We pick up copper, cables, motors, and demolition waste. Good price, fast pickup – cars, machines, buses, harvesters too.' :
-        'Olemme erikoistuneet metalliromujen keräämiseen ja purkutöihin. Noudamme kuparit, kaapelit, sähkömoottorit ja rakennusten metallit. Hyvä hinta, nopea nouto – myös autot, työkoneet, puimurit, bussit ja kuorma-autot.';
-
-      document.getElementById('desc2').textContent = isFi ?
-        'Turnkey demolition: we dismantle houses, barns, garages. We use excavators and remove waste. Sorting and recycling is done lawfully.' :
-        'Purkutyöt avaimet käteen: puramme talot, ladot, autotallit. Käytämme kaivinkonetta tai kouraa ja toimitamme jätteet pois. Lajittelu ja kierrätys hoidetaan lain mukaan.';
-
-      document.getElementById('desc3').textContent = isFi ?
-        'Free scrap car pickup. Car is deregistered from TraFi. You get an official certificate. Just provide an authorization form.' :
-        'Romuauton nouto on maksuton. Auto kierrätetään ja poistetaan TraFi-rekisteristä. Saat romutustodistuksen. Tarvitset vain valtakirjan.';
-
-      btn.textContent = isFi ? 'FI' : 'EN';
+    function switchLang(lang) {
+      alert('Monikielinen tuki tulossa pian: ' + lang);
     }
   </script>
 </body>
