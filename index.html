@@ -2,22 +2,33 @@
 <html lang="fi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JS-Romumetalli ja Purkutyöt Oy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <style>
     :root {
-      --dark: #1a1a1a;
+      --dark: #1b1b1b;
       --light: #f6e27a;
-      --semi-dark: #2e2e2e;
-      --transparent-dark: rgba(255, 255, 255, 0.05);
-      --card-bg: rgba(255, 255, 255, 0.08);
+      --accent: #fff799;
+      --semi-dark: #2a2a2a;
+      --card-bg: rgba(255, 255, 255, 0.06);
+      --shadow: 0 0 12px rgba(255, 255, 100, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      font-family: 'Arial Black', sans-serif;
+      font-family: 'Arial', sans-serif;
       background: var(--dark);
       color: white;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Anton', sans-serif;
+      letter-spacing: 0.5px;
     }
 
     header {
@@ -26,6 +37,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 20px 30px;
+      box-shadow: var(--shadow);
     }
 
     header img {
@@ -35,30 +47,31 @@
     .lang-toggle {
       background: var(--light);
       color: black;
-      border: none;
-      font-weight: bold;
       padding: 8px 16px;
-      cursor: pointer;
+      border: none;
       border-radius: 6px;
-      box-shadow: 0 0 10px rgba(255, 255, 0, 0.3);
-      transition: background 0.3s;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: var(--shadow);
     }
 
     .lang-toggle:hover {
-      background: #fff299;
+      background: var(--accent);
     }
 
     .hero {
-      background: url('https://i.imgur.com/wLVVark.png') no-repeat center center/cover;
-      padding: 120px 30px 80px;
+      background: url('https://i.imgur.com/wLVVark.png') center/cover no-repeat;
       text-align: center;
+      padding: 130px 30px 90px;
       backdrop-filter: blur(3px);
     }
 
     .hero h1 {
-      font-size: 2.5em;
       color: var(--light);
-      margin-bottom: 20px;
+      font-size: 2.8em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 5px black;
     }
 
     .hero p {
@@ -66,16 +79,16 @@
     }
 
     .section {
-      padding: 60px 20px;
       max-width: 1200px;
       margin: auto;
+      padding: 60px 20px;
     }
 
     .section h2 {
+      text-align: center;
       font-size: 2em;
       color: var(--light);
-      margin-bottom: 30px;
-      text-align: center;
+      margin-bottom: 40px;
     }
 
     .card-grid {
@@ -87,32 +100,49 @@
 
     .card {
       background: var(--card-bg);
-      padding: 30px;
+      backdrop-filter: blur(6px);
       border-radius: 12px;
+      padding: 25px;
       width: 300px;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(4px);
+      box-shadow: var(--shadow);
+      transition: transform 0.3s, background 0.3s;
       cursor: pointer;
-      transition: all 0.4s;
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-6px);
+      background: rgba(255, 255, 255, 0.09);
     }
 
     .card h3 {
       color: var(--light);
-      margin-top: 0;
     }
 
     .card p {
       display: none;
-      margin-top: 15px;
+      margin-top: 10px;
     }
 
     .card.active p {
       display: block;
+    }
+
+    .gallery-button {
+      display: block;
+      margin: 0 auto 30px;
+      background: var(--light);
+      color: black;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: background 0.3s;
+    }
+
+    .gallery-button:hover {
+      background: var(--accent);
     }
 
     .gallery {
@@ -120,7 +150,6 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 15px;
-      margin-top: 30px;
     }
 
     .gallery.show {
@@ -128,37 +157,28 @@
     }
 
     .gallery img {
-      width: 200px;
+      width: 220px;
       border-radius: 10px;
       box-shadow: 0 0 10px black;
     }
 
-    .gallery-button {
-      margin: 20px auto;
-      display: block;
-      background: var(--light);
-      color: black;
-      font-weight: bold;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      box-shadow: 0 0 10px rgba(255,255,0,0.3);
-    }
-
     .yhteystiedot {
       background: var(--semi-dark);
-      color: white;
-      padding: 40px 20px;
+      padding: 50px 20px;
       text-align: center;
+    }
+
+    .yhteystiedot a {
+      color: var(--light);
+      text-decoration: underline;
     }
 
     .footer {
       text-align: center;
       padding: 20px;
-      font-size: 0.9em;
       background: #111;
-      color: #ccc;
+      color: #aaa;
+      font-size: 0.9em;
     }
 
     .floating-button {
@@ -167,29 +187,26 @@
       right: 20px;
       background: var(--light);
       color: black;
-      padding: 12px 20px;
+      font-weight: bold;
+      padding: 12px 24px;
       border-radius: 30px;
       cursor: pointer;
-      box-shadow: 0 0 12px yellow;
-      font-weight: bold;
+      box-shadow: var(--shadow);
     }
 
     .modal {
       display: none;
       position: fixed;
-      z-index: 1000;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.7);
+      z-index: 999;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.75);
       justify-content: center;
       align-items: center;
     }
 
     .modal-content {
       background: #222;
-      color: white;
       padding: 30px;
       border-radius: 12px;
       width: 90%;
@@ -198,29 +215,46 @@
     }
 
     .modal-content input,
-    .modal-content textarea,
-    .modal-content button {
-      display: block;
+    .modal-content textarea {
       width: 100%;
-      margin: 10px 0;
       padding: 10px;
-      border-radius: 6px;
+      margin-top: 10px;
       border: none;
+      border-radius: 6px;
     }
 
     .modal-content button {
+      margin-top: 15px;
       background: var(--light);
       color: black;
+      padding: 10px;
+      border-radius: 8px;
       font-weight: bold;
       cursor: pointer;
+      border: none;
     }
 
     .close-btn {
       position: absolute;
-      top: 10px;
-      right: 20px;
+      top: 15px;
+      right: 25px;
       font-size: 28px;
       cursor: pointer;
+    }
+
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: none;
+      background: var(--light);
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: var(--shadow);
     }
 
     @media (max-width: 600px) {
@@ -244,7 +278,7 @@
 
   <section class="hero">
     <h1>JS-Romumetalli ja Purkutyöt Oy</h1>
-    <p>Romun nouto, purkutyöt ja metalliromun kierrätys Köyliössä ja ympäristössä.</p>
+    <p>Romun nouto, purkutyöt ja metalliromun kierrätys Köyliössä ja lähialueilla.</p>
   </section>
 
   <section class="section" id="services">
@@ -252,15 +286,15 @@
     <div class="card-grid">
       <div class="card" onclick="toggleCard(this)">
         <h3>Romun nouto</h3>
-        <p>Tarjoamme ilmaisen romuraudan ja metalliromun noudon sovitusta paikasta.</p>
+        <p>Ilmainen metalliromun nouto sovitusta osoitteesta.</p>
       </div>
       <div class="card" onclick="toggleCard(this)">
         <h3>Purkutyöt</h3>
-        <p>Hoidamme rakennusten, teollisuushallien ja varastojen purkutyöt ammattitaidolla.</p>
+        <p>Rakennusten ja hallien purku turvallisesti ja tehokkaasti.</p>
       </div>
       <div class="card" onclick="toggleCard(this)">
-        <h3>Metallin kierrätys</h3>
-        <p>Vastaanotamme, lajittelemme ja kierrätämme kaikenlaista metalliromua vastuullisesti.</p>
+        <h3>Kierrätys</h3>
+        <p>Metalliromun lajittelu ja vastuullinen kierrätys.</p>
       </div>
     </div>
   </section>
@@ -279,96 +313,53 @@
     <h2>Miksi valita meidät?</h2>
     <div class="card-grid">
       <div class="card" onclick="toggleCard(this)">
-        <h3>Luotettava palvelu</h3>
-        <p>Olemme palvelleet asiakkaita vuosien ajan ja tunnetaan täsmällisyydestä ja laadusta.</p>
+        <h3>Luotettava</h3>
+        <p>Vuosien kokemus ja laadukas palvelu takaavat tyytyväisyyden.</p>
       </div>
       <div class="card" onclick="toggleCard(this)">
-        <h3>Nopea reagointi</h3>
-        <p>Vastaamme nopeasti ja hoidamme työn aikataulussa — ilman viiveitä.</p>
+        <h3>Nopea</h3>
+        <p>Reagoimme nopeasti ja pidämme sovituista aikatauluista kiinni.</p>
       </div>
       <div class="card" onclick="toggleCard(this)">
-        <h3>Ystävällinen asiakaspalvelu</h3>
-        <p>Meille tärkeintä on tyytyväinen asiakas — meillä asiointi on helppoa ja vaivatonta.</p>
+        <h3>Helppo asiointi</h3>
+        <p>Meille asiakkaan vaivattomuus on tärkeintä.</p>
       </div>
     </div>
   </section>
 
   <section class="yhteystiedot" id="contact">
     <h2>Yhteystiedot</h2>
-    <p><strong>JS-Romumetalli ja purkutyöt Oy</strong></p>
+    <p><strong>JS-Romumetalli ja Purkutyöt Oy</strong></p>
     <p>Kokemäentie 247 B, 27710 Köyliö</p>
     <p>Y-tunnus: 2955012-9</p>
     <p>Jaanus Seer – 044 338 7395</p>
-    <p>Sähköposti: <a href="mailto:jaanus.seer@js-romumetalli.fi" style="color: var(--light);">jaanus.seer@js-romumetalli.fi</a></p>
-    <p><a href="https://www.google.com/maps?q=Kokemäentie+247B,+Köyliö" target="_blank" style="color: var(--light); text-decoration: underline;">Näytä kartalla</a></p>
+    <p><a href="mailto:jaanus.seer@js-romumetalli.fi">jaanus.seer@js-romumetalli.fi</a></p>
+    <p><a href="https://www.google.com/maps?q=Kokemäentie+247B,+Köyliö" target="_blank">Näytä kartalla</a></p>
   </section>
 
   <div class="footer">
-    &copy; 2025 JS-Romumetalli ja Purkutyöt Oy — Kaikki oikeudet pidätetään.
+    &copy; 2025 JS-Romumetalli ja Purkutyöt Oy
   </div>
 
-  <button onclick="scrollToTop()" id="scrollTopBtn" style="
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: none;
-    background: var(--light);
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 0 10px yellow;
-  ">↑</button>
+  <button onclick="scrollToTop()" id="scrollTopBtn">↑</button>
 
-  <div class="floating-button" onclick="openModal()">💬 Request a Quote</div>
+  <div class="floating-button" onclick="openModal()">💬 Pyydä tarjous</div>
 
   <div class="modal" id="contactModal">
     <div class="modal-content">
       <span class="close-btn" onclick="closeModal()">&times;</span>
-      <h2>Leave a Request</h2>
+      <h2>Jätä yhteydenottopyyntö</h2>
       <form id="contactForm">
-        <input type="text" placeholder="Your name" required>
-        <input type="email" placeholder="Your email" required>
-        <textarea placeholder="Describe your needs" required></textarea>
-        <button type="submit">Send</button>
+        <input type="text" placeholder="Nimesi" required>
+        <input type="email" placeholder="Sähköpostiosoite" required>
+        <textarea placeholder="Kuvaile tarpeesi" required></textarea>
+        <button type="submit">Lähetä</button>
       </form>
-      <p class="thanks" style="display:none;">Thank you! We'll contact you soon.</p>
+      <p class="thanks" style="display:none;">Kiitos! Otamme sinuun pian yhteyttä.</p>
     </div>
   </div>
 
   <script>
-    function toggleLanguage() {
-      const currentLang = document.documentElement.lang || "fi";
-      if (currentLang === "fi") {
-        document.documentElement.lang = "en";
-        document.querySelector(".hero h1").textContent = "JS-Romumetalli and Demolition Works Ltd";
-        document.querySelector(".hero p").textContent = "Scrap collection, demolition work and metal recycling in Köyliö and surrounding areas.";
-
-        document.querySelector("#services h2").textContent = "Services";
-        document.querySelectorAll(".card h3")[0].textContent = "Scrap Pickup";
-        document.querySelectorAll(".card p")[0].textContent = "We offer free pickup of iron and metal scrap from the agreed location.";
-        document.querySelectorAll(".card h3")[1].textContent = "Demolition Works";
-        document.querySelectorAll(".card p")[1].textContent = "We professionally handle demolition of buildings, halls, and warehouses.";
-        document.querySelectorAll(".card h3")[2].textContent = "Metal Recycling";
-        document.querySelectorAll(".card p")[2].textContent = "We receive, sort and recycle all kinds of metal scrap responsibly.";
-
-        document.querySelector("#why-us h2").textContent = "Why Choose Us?";
-        document.querySelectorAll("#why-us .card h3")[0].textContent = "Reliable Service";
-        document.querySelectorAll("#why-us .card p")[0].textContent = "We’re known for punctuality and quality — trusted by many clients.";
-        document.querySelectorAll("#why-us .card h3")[1].textContent = "Fast Response";
-        document.querySelectorAll("#why-us .card p")[1].textContent = "Quick response and on-time execution — no delays.";
-        document.querySelectorAll("#why-us .card h3")[2].textContent = "Friendly Customer Service";
-        document.querySelectorAll("#why-us .card p")[2].textContent = "We make it easy and smooth for our customers — satisfaction first.";
-
-        document.querySelector("#contact h2").textContent = "Contact";
-        document.querySelector(".gallery-button").textContent = "Show Images";
-      } else {
-        location.reload();
-      }
-    }
-
     function toggleCard(card) {
       card.classList.toggle("active");
     }
@@ -377,14 +368,14 @@
       document.getElementById("gallery").classList.toggle("show");
     }
 
-    const scrollBtn = document.getElementById("scrollTopBtn");
-    window.onscroll = function () {
-      scrollBtn.style.display = (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) ? "block" : "none";
-    };
-
     function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    window.onscroll = () => {
+      const btn = document.getElementById("scrollTopBtn");
+      btn.style.display = window.scrollY > 300 ? "block" : "none";
+    };
 
     function openModal() {
       document.getElementById("contactModal").style.display = "flex";
@@ -394,12 +385,9 @@
       document.getElementById("contactModal").style.display = "none";
     }
 
-    document.getElementById("contactForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      this.style.display = "none";
-      document.querySelector(".thanks").style.display = "block";
-      setTimeout(closeModal, 3000);
-    });
+    function toggleLanguage() {
+      alert("Käännös toimii täällä tulevaisuudessa (demo).");
+    }
   </script>
 
 </body>
