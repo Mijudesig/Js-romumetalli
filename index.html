@@ -1,209 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JS-Romumetalli Oy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JS-Romumetalli ja purkutyöt Oy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --dark-bg: #1a1a1a;
-      --accent-yellow: #f5c842;
-      --soft-white: #f0f0f0;
-      --shadow: rgba(0, 0, 0, 0.4);
-    }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
-      font-family: 'Anton', sans-serif;
-      background-color: var(--dark-bg);
-      color: var(--soft-white);
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #111, #222);
+      color: #fff;
       overflow-x: hidden;
     }
-
     header {
       position: relative;
       height: 100vh;
-      background: url('https://i.imgur.com/wLVVark.png') center/cover no-repeat;
+      background: url('https://i.imgur.com/wLVVark.png') center center / cover no-repeat;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65); /* тёмный блюр */
+      backdrop-filter: blur(6px);
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
+      padding: 2rem;
     }
-
-    header::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(4px);
+    h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: 3rem;
+      color: #ffcc00;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
     }
-
-    header h1 {
-      position: relative;
-      font-size: 3.5rem;
-      color: var(--accent-yellow);
-      text-shadow: 0 2px 10px var(--shadow);
-      z-index: 1;
-    }
-
-    header p {
-      position: relative;
+    p {
       font-size: 1.2rem;
-      margin-top: 10px;
-      z-index: 1;
+      color: #ddd;
+      max-width: 700px;
+      margin-bottom: 2rem;
     }
-
-    nav {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      z-index: 2;
-    }
-
-    nav button {
-      background-color: var(--accent-yellow);
-      color: #000;
-      border: none;
-      padding: 8px 15px;
-      font-weight: bold;
-      font-size: 0.9rem;
-      cursor: pointer;
+    .btn {
+      padding: 1rem 2rem;
+      border: 2px solid #ffcc00;
+      background-color: transparent;
+      color: #ffcc00;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: 0.3s ease;
       border-radius: 8px;
-      box-shadow: 0 4px 10px var(--shadow);
-      transition: all 0.3s ease;
-      margin-left: 10px;
     }
-
-    nav button:hover {
-      background-color: #ffe26b;
+    .btn:hover {
+      background-color: #ffcc00;
+      color: #000;
+      box-shadow: 0 0 20px #ffcc00;
     }
-
     section {
-      padding: 60px 20px;
-      max-width: 1100px;
-      margin: auto;
+      padding: 4rem 2rem;
+      background: #1b1b1b;
     }
-
-    .about, .services, .contact {
-      text-align: center;
+    .info {
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
     }
-
-    h2 {
-      color: var(--accent-yellow);
-      font-size: 2.2rem;
-      margin-bottom: 20px;
+    .info h2 {
+      font-family: 'Anton', sans-serif;
+      font-size: 2rem;
+      color: #ffcc00;
+      margin-bottom: 1rem;
     }
-
-    .gallery {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
+    .info p {
+      color: #ccc;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
     }
-
-    .gallery img {
-      max-width: 300px;
-      width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 6px 20px var(--shadow);
-    }
-
     footer {
       text-align: center;
-      padding: 30px;
-      background-color: #111;
-      color: #ccc;
+      padding: 2rem;
+      background: #111;
       font-size: 0.9rem;
-    }
-
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2.2rem;
-      }
-
-      .gallery {
-        flex-direction: column;
-        align-items: center;
-      }
+      color: #666;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <nav>
-      <button onclick="switchLang('en')">EN</button>
-      <button onclick="switchLang('fi')">FI</button>
-    </nav>
-    <h1 id="hero-title">JS-Romumetalli Oy</h1>
-    <p id="hero-sub">Reliable Scrap Metal Services in Köyliö</p>
-  </header>
+<header>
+  <div class="content">
+    <h1>JS-Romumetalli Oy</h1>
+    <p>Romumetallin osto ja purkutyöt – luotettavasti ja nopeasti. Toimimme Köyliössä ja lähialueilla.</p>
+    <a href="#info" class="btn">Ota yhteyttä</a>
+  </div>
+</header>
 
-  <section class="about">
-    <h2 id="about-title">About Us</h2>
-    <p id="about-text">
-      JS-Romumetalli Oy is your trusted partner in metal recycling. We operate efficiently with modern equipment and professional staff.
-    </p>
-  </section>
+<section id="info">
+  <div class="info">
+    <h2>Yhteystiedot</h2>
+    <p><strong>Yritys:</strong> JS-Romumetalli ja purkutyöt Oy</p>
+    <p><strong>Y-tunnus:</strong> 2955012-9</p>
+    <p><strong>Osoite:</strong> Kokemäentie 247 B, 27710 Köyliö</p>
+    <p><strong>Puhelin:</strong> 044 338 7395</p>
+    <p><strong>Sähköposti:</strong> <a href="mailto:jaanus.seer@js-romumetalli.fi" style="color: #ffcc00;">jaanus.seer@js-romumetalli.fi</a></p>
+    <p><strong>Yhteyshenkilö:</strong> Jaanus Seer</p>
+  </div>
+</section>
 
-  <section class="services">
-    <h2 id="services-title">Services</h2>
-    <p id="services-text">
-      We collect, sort, and recycle all types of scrap metal. Whether you need transport or drop-off services, we’re here to help.
-    </p>
-  </section>
+<footer>
+  © 2025 JS-Romumetalli ja purkutyöt Oy — Suunnittelu: Nina
+</footer>
 
-  <section class="gallery">
-    <img src="https://i.imgur.com/8732EFC2-BB01-40D5-A27C-306168D6DD62.jpeg" alt="Truck">
-    <img src="https://i.imgur.com/FD7C2E6E-CFE1-44DB-93C7-E9C74CA5E670.jpeg" alt="Car 1">
-    <img src="https://i.imgur.com/5DC535F6-B52A-450F-9E65-C0916A1D0B42.jpeg" alt="Car 2">
-  </section>
-
-  <section class="contact">
-    <h2 id="contact-title">Contact</h2>
-    <p><strong>Email:</strong> jsromumetalli@gmail.com</p>
-    <p><strong>Phone:</strong> +358 40 1234567</p>
-    <p><strong>Location:</strong> Kokemäentie 247b, Köyliö</p>
-  </section>
-
-  <footer>
-    &copy; 2025 JS-Romumetalli Oy. All rights reserved.
-  </footer>
-
-  <script>
-    const translations = {
-      en: {
-        "hero-title": "JS-Romumetalli Oy",
-        "hero-sub": "Reliable Scrap Metal Services in Köyliö",
-        "about-title": "About Us",
-        "about-text": "JS-Romumetalli Oy is your trusted partner in metal recycling. We operate efficiently with modern equipment and professional staff.",
-        "services-title": "Services",
-        "services-text": "We collect, sort, and recycle all types of scrap metal. Whether you need transport or drop-off services, we’re here to help.",
-        "contact-title": "Contact"
-      },
-      fi: {
-        "hero-title": "JS-Romumetalli Oy",
-        "hero-sub": "Luotettavat romupalvelut Köyliössä",
-        "about-title": "Tietoa meistä",
-        "about-text": "JS-Romumetalli Oy on luotettava kumppanisi metallinkierrätyksessä. Toimimme tehokkaasti nykyaikaisella kalustolla ja ammattitaitoisella henkilöstöllä.",
-        "services-title": "Palvelut",
-        "services-text": "Keräämme, lajittelemme ja kierrätämme kaikenlaista romumetallia. Tarjoamme kuljetus- ja vastaanottopalvelut tarpeen mukaan.",
-        "contact-title": "Yhteystiedot"
-      }
-    };
-
-    function switchLang(lang) {
-      for (const id in translations[lang]) {
-        document.getElementById(id).innerText = translations[lang][id];
-      }
-    }
-  </script>
 </body>
 </html>
