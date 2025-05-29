@@ -1,431 +1,221 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JS-Romumetalli Oy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --dark-bg: #1e1e1e;
-      --light-yellow: #f8e49c;
-      --semi-transparent: rgba(255, 255, 255, 0.08);
-      --text-light: #ffffff;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
       font-family: 'Anton', sans-serif;
-      background-color: var(--dark-bg);
-      color: var(--text-light);
-      background-image: url('https://i.imgur.com/wLVVark.png');
+      background: #1c1c1c url('https://i.imgur.com/wLVVark.png') no-repeat center center fixed;
       background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
+      color: #f9f9f9;
+      overflow-x: hidden;
     }
 
     body::before {
       content: "";
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      backdrop-filter: blur(7px);
-      z-index: -1;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(6px);
+      z-index: 0;
     }
 
     header {
-      background-color: rgba(0,0,0,0.7);
-      padding: 1em 2em;
+      position: relative;
+      z-index: 1;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 2px solid #f5d76e;
     }
 
     header img {
-      height: 50px;
+      height: 60px;
     }
 
-    .language-toggle {
-      background: var(--light-yellow);
-      border: none;
-      padding: 0.5em 1em;
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav button {
+      background: transparent;
+      border: 2px solid #f5d76e;
+      color: #f5d76e;
+      padding: 10px 16px;
+      border-radius: 5px;
       cursor: pointer;
-      font-weight: bold;
-      color: black;
-      border-radius: 6px;
-      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+      font-size: 14px;
+      transition: all 0.3s ease;
     }
 
-    .section {
-      padding: 2em;
-      margin: 2em auto;
-      max-width: 1000px;
-      background-color: var(--semi-transparent);
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.1);
-      transition: 0.4s ease;
-    }
-
-    .section:hover {
-      box-shadow: 0 0 30px rgba(255,255,255,0.3);
-    }
-
-    h1, h2 {
-      color: var(--light-yellow);
-    }
-
-    button {
-      background-color: var(--light-yellow);
+    nav button:hover {
+      background: #f5d76e;
       color: #000;
-      border: none;
-      padding: 0.8em 1.2em;
-      margin: 1em 0.5em;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+      box-shadow: 0 0 15px #f5d76e;
     }
 
-    button:hover {
-      background-color: #fff7c2;
-      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    .container {
+      position: relative;
+      z-index: 1;
+      padding: 4rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
     }
 
     .card {
-      background-color: rgba(255,255,255,0.05);
-      padding: 1.5em;
-      margin: 1em 0;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 2rem;
       border-radius: 12px;
+      width: calc(50% - 2rem);
       cursor: pointer;
-      position: relative;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: scale(1.02);
+      box-shadow: 0 0 16px #f5d76e;
     }
 
     .card-content {
       display: none;
-      margin-top: 1em;
-      font-size: 0.9em;
+      margin-top: 1rem;
+      font-size: 0.9rem;
     }
 
-    .gallery {
+    .card.open .card-content {
+      display: block;
+    }
+
+    #gallery {
       display: none;
-      margin-top: 2em;
-      text-align: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 2rem;
     }
 
-    .gallery img {
-      width: 300px;
-      max-width: 100%;
-      margin: 1em;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    #gallery img {
+      width: calc(33% - 1rem);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    .contact {
+      padding: 3rem 2rem;
+      background: rgba(0, 0, 0, 0.75);
+      text-align: center;
+      border-top: 2px solid #f5d76e;
+    }
+
+    .contact h2 {
+      margin-bottom: 1rem;
+      color: #f5d76e;
     }
 
     iframe {
-      border: none;
       width: 100%;
       height: 300px;
-      margin-top: 2em;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.1);
+      margin-top: 1rem;
+      border: none;
+      border-radius: 8px;
+    }
+
+    .highlight {
+      color: #f5d76e;
+    }
+
+    .language-toggle {
+      margin-left: auto;
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="https://i.imgur.com/r6OggID.png" alt="JS-Romumetalli Logo"/>
-    <button class="language-toggle" onclick="toggleLanguage()">FI / EN</button>
+    <img src="https://i.imgur.com/r6OggID.png" alt="JS-Romumetalli logo">
+    <nav>
+      <button onclick="toggleLanguage()">FI/EN</button>
+      <button onclick="toggleGallery()">Kuvat</button>
+    </nav>
   </header>
 
-  <main>
-    <section class="section">
-      <h1>ROMUMETALLIT POIS NURKISTA NOPEASTI JA EDULLISESTI</h1>
-      <h2>Myös pienet ja suuret purkutyöt ammattitaidolla!</h2>
-
-      <div class="card" onclick="toggleCard(this)">
-        <h3>NOUDAMME RAUTAROMUT NURKISTA NOPEASTI</h3>
-        <div class="card-content">
-          <p>
-            Olemme erikoistuneet erilaisten metalliromujen keräämiseen ja purkutöiden tekemiseen.
-            Noudamme ja kierrätämme monenlaiset metalliromut kuparista alumiinikaapeleihin ja sähkömoottoreista rakennusten metallipurkujätteeseen.
-            Kaikki romumetalli ostetaan hyvää hintaan ja noudetaan sopimuksen mukaisesti asiakkaalta.
-            Haemme mm. autot, työkoneet, puimurit, linja-autot, kuorma-autoja ja maatalousromut.
-            Meillä on romumetallille kilpailukykyiset hinnat. Soita ja kysy lisää! P. 044 338 7395
-          </p>
-        </div>
+  <section class="container">
+    <div class="card" onclick="toggleCard(this)">
+      <h2>ROMUMETALLIT POIS NURKISTA</h2>
+      <div class="card-content">
+        <p>Olemme erikoistuneet erilaisten metalliromujen keräämiseen ja purkutöiden tekemiseen.</p>
+        <p>Haemme mm. autot, työkoneet, puimurit, linja-autot, kuorma-autoja.</p>
+        <p>Meillä on romumetallille kilpailukykyiset hinnat. Soita ja kysy lisää! <span class="highlight">P. 044 338 7395</span></p>
       </div>
+    </div>
 
-      <div class="card" onclick="toggleCard(this)">
-        <h3>SUURET JA PIENET PURKUTYÖT</h3>
-        <div class="card-content">
-          <p>
-            Saat meiltä Avaimet käteen -palveluna sekä puu- että metallirakennusten purkutyöt.
-            Puramme mm. talot, ladot, autotallit ja muut rakennukset. Työmaasta riippuen käytämme kaivinkonetta tai kahmaria.
-            Huolehdimme myös jätteiden lajittelusta ja poisviennistä lakien mukaisesti. Tee tilaus jo tänään!
-          </p>
-        </div>
+    <div class="card" onclick="toggleCard(this)">
+      <h2>PURKUTYÖT AMMATTITAIDOLLA</h2>
+      <div class="card-content">
+        <p>Puu- ja metallirakennusten purkutyöt avaimet käteen -palveluna.</p>
+        <p>Puramme mm. talot, ladot, autotallit, jne. ja lajittelemme jätteet lakien mukaisesti.</p>
       </div>
+    </div>
 
-      <div class="card" onclick="toggleCard(this)">
-        <h3>ROMUAUTOT KIERTOON EKOLOGISESTI</h3>
-        <div class="card-content">
-          <p>
-            Romuautojen kierrätys on helppoa. Tilaa meiltä maksuton nouto, ja toimitamme auton kierrätykseen sekä poistamme sen rekisteristä.
-            Saat romutustodistuksen, joka vapauttaa sinut ajoneuvon vastuista. Tarvitsemme vain valtakirjan.
-            Ammattitaitoinen henkilökuntamme hoitaa kaiken luotettavasti. Soita! P. 044 338 739
-          </p>
-        </div>
+    <div class="card" onclick="toggleCard(this)">
+      <h2>ROMUAUTOT KIERTOON</h2>
+      <div class="card-content">
+        <p>Tilaa maksuton nouto! Auto poistetaan TraFi-rekisteristä ja saat romutustodistuksen.</p>
+        <p>Tarvitsemme ajoneuvon omistajalta valtakirjan.</p>
       </div>
+    </div>
 
-      <button onclick="toggleGallery()">Näytä kuvat</button>
-
-      <div class="gallery" id="gallery">
-        <img src="https://i.imgur.com/wLVVark.png" alt="Gruzovik">
-        <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Svalka">
-        <img src="https://i.imgur.com/DSfZuV3.jpeg" alt="Auto1">
-        <img src="https://i.imgur.com/KjFiOZO.png" alt="Auto2">
+    <div class="card" onclick="toggleCard(this)">
+      <h2>YMPÄRISTÖ & LUOTETTAVUUS</h2>
+      <div class="card-content">
+        <p>Ammattitaitoinen henkilökuntamme hoitaa kaikki työt sovitusti ja luotettavasti.</p>
+        <p>Kaikki toiminta tapahtuu lakien ja määräysten mukaisesti.</p>
       </div>
+    </div>
+  </section>
 
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194.3873766178723!2d22.3428464!3d61.1003959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x468d195d2fbc6d1d%3A0x4040a6821f12710!2sKokem%C3%A4entie%20247b%2C%2031900%20K%C3%B6yli%C3%B6!5e0!3m2!1sfi!2sfi!4v1701010101010"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </section>
-  </main>
+  <section id="gallery" class="container">
+    <img src="https://i.imgur.com/wLVVark.png" alt="Pääkuorma-auto">
+    <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Sälä">
+    <img src="https://i.imgur.com/DSfZuV3.jpeg" alt="Auto1">
+    <img src="https://i.imgur.com/KjFiOZO.png" alt="Auto2">
+  </section>
+
+  <section class="contact">
+    <h2>Yhteystiedot</h2>
+    <p><strong>Puhelin:</strong> 044 338 7395</p>
+    <p><strong>Sähköposti:</strong> jsromumetalli@gmail.com</p>
+    <p><strong>Osoite:</strong> Kokemäentie 247b, Köyliö</p>
+    <iframe src="https://www.google.com/maps?q=Kokemäentie+247b,+Köyliö&output=embed"></iframe>
+  </section>
 
   <script>
-    function toggleGallery() {
-      const gallery = document.getElementById("gallery");
-      gallery.style.display = gallery.style.display === "block" ? "none" : "block";
+    function toggleCard(card) {
+      card.classList.toggle('open');
     }
 
-    function toggleCard(card) {
-      const content = card.querySelector('.card-content');
-      content.style.display = content.style.display === "block" ? "none" : "block";
+    function toggleGallery() {
+      const gallery = document.getElementById("gallery");
+      gallery.style.display = gallery.style.display === "flex" ? "none" : "flex";
     }
 
     function toggleLanguage() {
-      alert("Käännös FI/EN ei ole vielä käytössä tässä demossa.");
-    }
-  </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="fi">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JS-Romumetalli Oy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet"/>
-  <style>
-    :root {
-      --dark-bg: #1e1e1e;
-      --light-yellow: #f8e49c;
-      --semi-transparent: rgba(255, 255, 255, 0.08);
-      --text-light: #ffffff;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Anton', sans-serif;
-      background-color: var(--dark-bg);
-      color: var(--text-light);
-      background-image: url('https://i.imgur.com/wLVVark.png');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      backdrop-filter: blur(7px);
-      z-index: -1;
-    }
-
-    header {
-      background-color: rgba(0,0,0,0.7);
-      padding: 1em 2em;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    header img {
-      height: 50px;
-    }
-
-    .language-toggle {
-      background: var(--light-yellow);
-      border: none;
-      padding: 0.5em 1em;
-      cursor: pointer;
-      font-weight: bold;
-      color: black;
-      border-radius: 6px;
-      box-shadow: 0 0 10px rgba(255,255,255,0.2);
-    }
-
-    .section {
-      padding: 2em;
-      margin: 2em auto;
-      max-width: 1000px;
-      background-color: var(--semi-transparent);
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.1);
-      transition: 0.4s ease;
-    }
-
-    .section:hover {
-      box-shadow: 0 0 30px rgba(255,255,255,0.3);
-    }
-
-    h1, h2 {
-      color: var(--light-yellow);
-    }
-
-    button {
-      background-color: var(--light-yellow);
-      color: #000;
-      border: none;
-      padding: 0.8em 1.2em;
-      margin: 1em 0.5em;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 0 10px rgba(255,255,255,0.2);
-    }
-
-    button:hover {
-      background-color: #fff7c2;
-      box-shadow: 0 0 20px rgba(255,255,255,0.3);
-    }
-
-    .card {
-      background-color: rgba(255,255,255,0.05);
-      padding: 1.5em;
-      margin: 1em 0;
-      border-radius: 12px;
-      cursor: pointer;
-      position: relative;
-    }
-
-    .card-content {
-      display: none;
-      margin-top: 1em;
-      font-size: 0.9em;
-    }
-
-    .gallery {
-      display: none;
-      margin-top: 2em;
-      text-align: center;
-    }
-
-    .gallery img {
-      width: 300px;
-      max-width: 100%;
-      margin: 1em;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(255,255,255,0.2);
-    }
-
-    iframe {
-      border: none;
-      width: 100%;
-      height: 300px;
-      margin-top: 2em;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.1);
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <img src="https://i.imgur.com/r6OggID.png" alt="JS-Romumetalli Logo"/>
-    <button class="language-toggle" onclick="toggleLanguage()">FI / EN</button>
-  </header>
-
-  <main>
-    <section class="section">
-      <h1>ROMUMETALLIT POIS NURKISTA NOPEASTI JA EDULLISESTI</h1>
-      <h2>Myös pienet ja suuret purkutyöt ammattitaidolla!</h2>
-
-      <div class="card" onclick="toggleCard(this)">
-        <h3>NOUDAMME RAUTAROMUT NURKISTA NOPEASTI</h3>
-        <div class="card-content">
-          <p>
-            Olemme erikoistuneet erilaisten metalliromujen keräämiseen ja purkutöiden tekemiseen.
-            Noudamme ja kierrätämme monenlaiset metalliromut kuparista alumiinikaapeleihin ja sähkömoottoreista rakennusten metallipurkujätteeseen.
-            Kaikki romumetalli ostetaan hyvää hintaan ja noudetaan sopimuksen mukaisesti asiakkaalta.
-            Haemme mm. autot, työkoneet, puimurit, linja-autot, kuorma-autoja ja maatalousromut.
-            Meillä on romumetallille kilpailukykyiset hinnat. Soita ja kysy lisää! P. 044 338 7395
-          </p>
-        </div>
-      </div>
-
-      <div class="card" onclick="toggleCard(this)">
-        <h3>SUURET JA PIENET PURKUTYÖT</h3>
-        <div class="card-content">
-          <p>
-            Saat meiltä Avaimet käteen -palveluna sekä puu- että metallirakennusten purkutyöt.
-            Puramme mm. talot, ladot, autotallit ja muut rakennukset. Työmaasta riippuen käytämme kaivinkonetta tai kahmaria.
-            Huolehdimme myös jätteiden lajittelusta ja poisviennistä lakien mukaisesti. Tee tilaus jo tänään!
-          </p>
-        </div>
-      </div>
-
-      <div class="card" onclick="toggleCard(this)">
-        <h3>ROMUAUTOT KIERTOON EKOLOGISESTI</h3>
-        <div class="card-content">
-          <p>
-            Romuautojen kierrätys on helppoa. Tilaa meiltä maksuton nouto, ja toimitamme auton kierrätykseen sekä poistamme sen rekisteristä.
-            Saat romutustodistuksen, joka vapauttaa sinut ajoneuvon vastuista. Tarvitsemme vain valtakirjan.
-            Ammattitaitoinen henkilökuntamme hoitaa kaiken luotettavasti. Soita! P. 044 338 739
-          </p>
-        </div>
-      </div>
-
-      <button onclick="toggleGallery()">Näytä kuvat</button>
-
-      <div class="gallery" id="gallery">
-        <img src="https://i.imgur.com/wLVVark.png" alt="Gruzovik">
-        <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Svalka">
-        <img src="https://i.imgur.com/DSfZuV3.jpeg" alt="Auto1">
-        <img src="https://i.imgur.com/KjFiOZO.png" alt="Auto2">
-      </div>
-
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194.3873766178723!2d22.3428464!3d61.1003959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x468d195d2fbc6d1d%3A0x4040a6821f12710!2sKokem%C3%A4entie%20247b%2C%2031900%20K%C3%B6yli%C3%B6!5e0!3m2!1sfi!2sfi!4v1701010101010"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </section>
-  </main>
-
-  <script>
-    function toggleGallery() {
-      const gallery = document.getElementById("gallery");
-      gallery.style.display = gallery.style.display === "block" ? "none" : "block";
-    }
-
-    function toggleCard(card) {
-      const content = card.querySelector('.card-content');
-      content.style.display = content.style.display === "block" ? "none" : "block";
-    }
-
-    function toggleLanguage() {
-      alert("Käännös FI/EN ei ole vielä käytössä tässä demossa.");
+      alert("Toimiva kielenvaihto tulossa! / Language switch coming soon!");
     }
   </script>
 </body>
