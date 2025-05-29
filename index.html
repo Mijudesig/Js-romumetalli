@@ -8,12 +8,13 @@
   <style>
     * {
       box-sizing: border-box;
+      transition: all 0.3s ease;
     }
 
     body {
       margin: 0;
       font-family: 'Anton', sans-serif;
-      color: #f5f5dc;
+      color: #f5f5f5;
       background-color: #111;
       overflow-x: hidden;
     }
@@ -29,7 +30,7 @@
       background-image: url('https://i.imgur.com/wLVVark.png');
       background-size: cover;
       background-position: center;
-      filter: blur(8px);
+      filter: blur(10px);
       z-index: -2;
     }
 
@@ -40,7 +41,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
+      background-color: rgba(0, 0, 0, 0.6);
       z-index: -1;
     }
 
@@ -56,85 +57,87 @@
 
     header h1 {
       font-size: 46px;
-      color: #ffe066;
+      color: #fff275;
       margin: 0;
+      text-shadow: 0 0 10px #fff275;
     }
 
     nav {
       display: flex;
       justify-content: center;
       gap: 30px;
-      padding: 10px 0;
+      padding: 12px 0;
       background-color: rgba(0, 0, 0, 0.5);
       position: sticky;
       top: 0;
       z-index: 100;
       backdrop-filter: blur(6px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     }
 
     nav a {
-      color: #ffd700;
+      color: #fff275;
       text-decoration: none;
       font-size: 18px;
-      transition: 0.3s;
+      position: relative;
     }
 
     nav a:hover {
-      text-shadow: 0 0 10px #ffd700;
+      text-shadow: 0 0 10px #fff275;
     }
 
     .content {
       max-width: 1000px;
       margin: 40px auto;
       padding: 0 20px;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
     }
 
     section {
-      margin-bottom: 50px;
+      margin-bottom: 60px;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(255, 242, 117, 0.08);
+      border: 1px solid rgba(255, 242, 117, 0.2);
+      backdrop-filter: blur(8px);
     }
 
     h2 {
       font-size: 30px;
-      color: #ffd700;
+      color: #fff275;
       margin-bottom: 20px;
       text-align: center;
+      text-shadow: 0 0 5px #fff275;
     }
 
     p {
       font-size: 18px;
       line-height: 1.6;
       color: #f9f9f9;
-    }
-
-    .gallery {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-
-    .gallery img {
-      max-width: 300px;
-      border-radius: 10px;
-      border: 3px solid #ffe066;
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+      text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
     }
 
     footer {
       text-align: center;
       padding: 20px;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.7);
       font-size: 14px;
       color: #ccc;
       margin-top: 60px;
+      border-top: 1px solid #333;
     }
 
     a {
-      color: #ffd700;
+      color: #fff275;
+    }
+
+    iframe {
+      width: 100%;
+      height: 350px;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 242, 117, 0.15);
+      margin-top: 20px;
     }
   </style>
 </head>
@@ -150,7 +153,6 @@
     <a href="#palvelut">Palvelut</a>
     <a href="#purku">Purkutyöt</a>
     <a href="#romuautot">Romuautot</a>
-    <a href="#kuvat">Kuvat</a>
     <a href="#yhteys">Yhteystiedot</a>
   </nav>
 
@@ -171,20 +173,18 @@
       <p>Tilaa maksuton nouto, ja toimitamme romuautosi turvallisesti kierrätykseen. Ajoneuvo poistetaan TraFi-rekisteristä, ja saat virallisen romutustodistuksen. Tarvitsemme valtakirjan, jonka voit tulostaa valmiiksi.</p>
     </section>
 
-    <section id="kuvat">
-      <h2>Kuvat</h2>
-      <div class="gallery">
-        <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Svalka">
-        <img src="https://i.imgur.com/DSfZuV3.jpeg" alt="Auto 1">
-        <img src="https://i.imgur.com/KjFiOZO.png" alt="Auto 2">
-      </div>
-    </section>
-
     <section id="yhteys">
       <h2>Yhteystiedot</h2>
       <p><strong>Osoite:</strong> Kokemäentie 247 B, 27710 Köyliö</p>
       <p><strong>Puhelin:</strong> 044 338 7395</p>
       <p><strong>Sivusto:</strong> <a href="https://js-romumetalli.fi" target="_blank">js-romumetalli.fi</a></p>
+
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2028.661221248352!2d22.33066561575699!3d61.10843408218292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x468cd0d6efaeef6b%3A0xf5c16ac4385a91f3!2sKokem%C3%A4entie%20247B%2C%2027710%20S%C3%A4kyl%C3%A4!5e0!3m2!1sfi!2sfi!4v1717000000000"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
     </section>
   </div>
 
