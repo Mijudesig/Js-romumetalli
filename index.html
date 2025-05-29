@@ -1,221 +1,233 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JS-Romumetalli Oy</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JS-Romumetalli ja purkutyöt Oy</title>
   <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
+      margin: 0;
       font-family: 'Anton', sans-serif;
-      background: #1c1c1c url('https://i.imgur.com/wLVVark.png') no-repeat center center fixed;
-      background-size: cover;
-      color: #f9f9f9;
+      background: #1c1c1c url('https://i.imgur.com/wLVVark.png') no-repeat center center/cover;
+      color: #fff;
       overflow-x: hidden;
     }
 
-    body::before {
-      content: "";
+    .overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(6px);
-      z-index: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(5px);
+      z-index: -1;
     }
 
     header {
-      position: relative;
-      z-index: 1;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 1.5rem;
+      background: #000000bb;
+      padding: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 2px solid #f5d76e;
+      flex-wrap: wrap;
     }
 
     header img {
       height: 60px;
     }
 
-    nav {
-      display: flex;
-      gap: 1rem;
-    }
-
-    nav button {
-      background: transparent;
-      border: 2px solid #f5d76e;
-      color: #f5d76e;
-      padding: 10px 16px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 14px;
-      transition: all 0.3s ease;
-    }
-
-    nav button:hover {
-      background: #f5d76e;
+    .lang-toggle {
+      background: #fdd835;
+      border: none;
       color: #000;
-      box-shadow: 0 0 15px #f5d76e;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
     }
 
-    .container {
-      position: relative;
-      z-index: 1;
-      padding: 4rem 2rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 2rem;
+    .lang-toggle:hover {
+      background: #fff176;
+    }
+
+    main {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .hero h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      margin-bottom: 40px;
+      color: #ddd;
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 2rem;
-      border-radius: 12px;
-      width: calc(50% - 2rem);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      background: #2a2a2a;
+      margin-bottom: 30px;
+      padding: 25px;
+      border-radius: 10px;
+      transition: 0.3s;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
     }
 
     .card:hover {
-      background: rgba(255, 255, 255, 0.08);
-      transform: scale(1.02);
-      box-shadow: 0 0 16px #f5d76e;
+      background: #333;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
     }
 
-    .card-content {
+    .gallery {
       display: none;
-      margin-top: 1rem;
-      font-size: 0.9rem;
-    }
-
-    .card.open .card-content {
-      display: block;
-    }
-
-    #gallery {
-      display: none;
+      margin-top: 30px;
+      gap: 20px;
       flex-wrap: wrap;
-      gap: 1rem;
-      padding: 2rem;
     }
 
-    #gallery img {
-      width: calc(33% - 1rem);
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    .gallery img {
+      width: calc(33% - 20px);
+      border-radius: 10px;
+      box-shadow: 0 0 8px #000;
     }
 
-    .contact {
-      padding: 3rem 2rem;
-      background: rgba(0, 0, 0, 0.75);
-      text-align: center;
-      border-top: 2px solid #f5d76e;
-    }
-
-    .contact h2 {
-      margin-bottom: 1rem;
-      color: #f5d76e;
-    }
-
-    iframe {
-      width: 100%;
-      height: 300px;
-      margin-top: 1rem;
+    .button-yellow {
+      background: #fdd835;
+      color: #000;
+      padding: 12px 25px;
       border: none;
-      border-radius: 8px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      margin-top: 20px;
     }
 
-    .highlight {
-      color: #f5d76e;
+    .button-yellow:hover {
+      background: #fff176;
     }
 
-    .language-toggle {
-      margin-left: auto;
+    footer {
+      background: #111;
+      padding: 40px 20px;
+      color: #ccc;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .map {
+      margin: 40px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px #000;
+    }
+
+    @media (max-width: 768px) {
+      .gallery img {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="overlay"></div>
   <header>
-    <img src="https://i.imgur.com/r6OggID.png" alt="JS-Romumetalli logo">
-    <nav>
-      <button onclick="toggleLanguage()">FI/EN</button>
-      <button onclick="toggleGallery()">Kuvat</button>
-    </nav>
+    <img src="https://i.imgur.com/r6OggID.png" alt="Logo" />
+    <button class="lang-toggle" onclick="toggleLang()">EN</button>
   </header>
 
-  <section class="container">
-    <div class="card" onclick="toggleCard(this)">
-      <h2>ROMUMETALLIT POIS NURKISTA</h2>
-      <div class="card-content">
-        <p>Olemme erikoistuneet erilaisten metalliromujen keräämiseen ja purkutöiden tekemiseen.</p>
-        <p>Haemme mm. autot, työkoneet, puimurit, linja-autot, kuorma-autoja.</p>
-        <p>Meillä on romumetallille kilpailukykyiset hinnat. Soita ja kysy lisää! <span class="highlight">P. 044 338 7395</span></p>
+  <main>
+    <section class="hero">
+      <h1 id="hero-title">ROMUMETALLIT POIS NURKISTA NOPEASTI JA EDULLISESTI</h1>
+      <p id="hero-sub">Myös pienet ja suuret purkutyöt ammattitaidolla!</p>
+    </section>
+
+    <section class="services">
+      <div class="card">
+        <h2 id="card1-title">NOUDAMME RAUTAROMUT</h2>
+        <p id="card1-desc">Keräämme ja käsittelemme metalliromua: kaapelit, kupari, sähkömoottorit ym.</p>
       </div>
+      <div class="card">
+        <h2 id="card2-title">PURKUTYÖT AMMATTITAIDOLLA</h2>
+        <p id="card2-desc">Purkutyöt, kuten rakennusten ja metallirakenteiden purku ja jätteiden kierrätys.</p>
+      </div>
+      <div class="card">
+        <h2 id="card3-title">ROMUAUTOT KIERTOON</h2>
+        <p id="card3-desc">Otamme vastaan romuautot ja hoidamme paperityöt puolestasi.</p>
+      </div>
+    </section>
+
+    <button class="button-yellow" onclick="toggleGallery()">KUVAT</button>
+    <div class="gallery" id="gallery">
+      <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Romu 1" />
+      <img src="https://i.imgur.com/DSfZuV3.jpeg" alt="Romu 2" />
+      <img src="https://i.imgur.com/KjFiOZO.png" alt="Romu 3" />
     </div>
 
-    <div class="card" onclick="toggleCard(this)">
-      <h2>PURKUTYÖT AMMATTITAIDOLLA</h2>
-      <div class="card-content">
-        <p>Puu- ja metallirakennusten purkutyöt avaimet käteen -palveluna.</p>
-        <p>Puramme mm. talot, ladot, autotallit, jne. ja lajittelemme jätteet lakien mukaisesti.</p>
-      </div>
+    <div class="map">
+      <iframe src="https://www.google.com/maps?q=Kokemäentie+247B,+27710+Köyliö,+Finland&output=embed"
+        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
+  </main>
 
-    <div class="card" onclick="toggleCard(this)">
-      <h2>ROMUAUTOT KIERTOON</h2>
-      <div class="card-content">
-        <p>Tilaa maksuton nouto! Auto poistetaan TraFi-rekisteristä ja saat romutustodistuksen.</p>
-        <p>Tarvitsemme ajoneuvon omistajalta valtakirjan.</p>
-      </div>
-    </div>
-
-    <div class="card" onclick="toggleCard(this)">
-      <h2>YMPÄRISTÖ & LUOTETTAVUUS</h2>
-      <div class="card-content">
-        <p>Ammattitaitoinen henkilökuntamme hoitaa kaikki työt sovitusti ja luotettavasti.</p>
-        <p>Kaikki toiminta tapahtuu lakien ja määräysten mukaisesti.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="gallery" class="container">
-    <img src="https://i.imgur.com/wLVVark.png" alt="Pääkuorma-auto">
-    <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Sälä">
-    <img src="https://i.imgur.com/DSfZuV3.jpeg" alt="Auto1">
-    <img src="https://i.imgur.com/KjFiOZO.png" alt="Auto2">
-  </section>
-
-  <section class="contact">
-    <h2>Yhteystiedot</h2>
-    <p><strong>Puhelin:</strong> 044 338 7395</p>
-    <p><strong>Sähköposti:</strong> jsromumetalli@gmail.com</p>
-    <p><strong>Osoite:</strong> Kokemäentie 247b, Köyliö</p>
-    <iframe src="https://www.google.com/maps?q=Kokemäentie+247b,+Köyliö&output=embed"></iframe>
-  </section>
+  <footer>
+    <p><strong>JS-Romumetalli ja purkutyöt Oy</strong><br/>
+      Kokemäentie 247 B, 27710 Köyliö<br/>
+      Y-tunnus: 2955012-9<br/>
+      Jaanus Seer — 044 338 7395<br/>
+      <a href="mailto:jaanus.seer@js-romumetalli.fi" style="color: #fdd835;">jaanus.seer@js-romumetalli.fi</a>
+    </p>
+  </footer>
 
   <script>
-    function toggleCard(card) {
-      card.classList.toggle('open');
+    let currentLang = 'fi';
+    const texts = {
+      fi: {
+        heroTitle: 'ROMUMETALLIT POIS NURKISTA NOPEASTI JA EDULLISESTI',
+        heroSub: 'Myös pienet ja suuret purkutyöt ammattitaidolla!',
+        card1Title: 'NOUDAMME RAUTAROMUT',
+        card1Desc: 'Keräämme ja käsittelemme metalliromua: kaapelit, kupari, sähkömoottorit ym.',
+        card2Title: 'PURKUTYÖT AMMATTITAIDOLLA',
+        card2Desc: 'Purkutyöt, kuten rakennusten ja metallirakenteiden purku ja jätteiden kierrätys.',
+        card3Title: 'ROMUAUTOT KIERTOON',
+        card3Desc: 'Otamme vastaan romuautot ja hoidamme paperityöt puolestasi.',
+        galleryBtn: 'KUVAT'
+      },
+      en: {
+        heroTitle: 'SCRAP METAL REMOVAL QUICKLY AND AFFORDABLY',
+        heroSub: 'Also small and large demolition work professionally!',
+        card1Title: 'WE COLLECT SCRAP METAL',
+        card1Desc: 'We collect and process metal scrap: cables, copper, electric motors etc.',
+        card2Title: 'DEMOLITION WORK',
+        card2Desc: 'Demolition of buildings and metal structures, waste recycling included.',
+        card3Title: 'SCRAP CARS ECOLOGICALLY',
+        card3Desc: 'We take in scrap cars and handle all paperwork for you.',
+        galleryBtn: 'GALLERY'
+      }
+    };
+
+    function toggleLang() {
+      currentLang = currentLang === 'fi' ? 'en' : 'fi';
+      document.documentElement.lang = currentLang;
+      document.getElementById('hero-title').innerText = texts[currentLang].heroTitle;
+      document.getElementById('hero-sub').innerText = texts[currentLang].heroSub;
+      document.getElementById('card1-title').innerText = texts[currentLang].card1Title;
+      document.getElementById('card1-desc').innerText = texts[currentLang].card1Desc;
+      document.getElementById('card2-title').innerText = texts[currentLang].card2Title;
+      document.getElementById('card2-desc').innerText = texts[currentLang].card2Desc;
+      document.getElementById('card3-title').innerText = texts[currentLang].card3Title;
+      document.getElementById('card3-desc').innerText = texts[currentLang].card3Desc;
+      document.querySelector('.button-yellow').innerText = texts[currentLang].galleryBtn;
+      document.querySelector('.lang-toggle').innerText = currentLang === 'fi' ? 'EN' : 'FI';
     }
 
     function toggleGallery() {
-      const gallery = document.getElementById("gallery");
-      gallery.style.display = gallery.style.display === "flex" ? "none" : "flex";
-    }
-
-    function toggleLanguage() {
-      alert("Toimiva kielenvaihto tulossa! / Language switch coming soon!");
+      const gallery = document.getElementById('gallery');
+      gallery.style.display = gallery.style.display === 'flex' ? 'none' : 'flex';
+      gallery.style.display === 'flex' ? gallery.scrollIntoView({ behavior: 'smooth' }) : null;
     }
   </script>
 </body>
