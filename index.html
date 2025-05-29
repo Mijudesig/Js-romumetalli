@@ -2,20 +2,23 @@
 <html lang="fi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>JS-Romumetalli Oy</title>
   <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Anton', sans-serif;
       color: #f5f5dc;
-      background: url('https://i.imgur.com/wLVVark.png') no-repeat center center fixed;
-      background-size: cover;
-      position: relative;
+      background-color: #111;
+      overflow-x: hidden;
     }
 
-    /* затемняющий оверлей */
+    /* Фоновое изображение с блюром */
     body::before {
       content: "";
       position: fixed;
@@ -23,43 +26,57 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(10, 10, 10, 0.85);
+      background-image: url('https://i.imgur.com/wLVVark.png');
+      background-size: cover;
+      background-position: center;
+      filter: blur(8px);
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
       z-index: -1;
     }
 
     header {
       text-align: center;
-      padding: 100px 20px 60px;
+      padding: 80px 20px 40px;
     }
 
     header img {
-      max-width: 200px;
+      max-width: 180px;
       margin-bottom: 20px;
     }
 
     header h1 {
-      font-size: 48px;
+      font-size: 46px;
+      color: #ffe066;
       margin: 0;
-      color: #ffd700;
     }
 
     nav {
-      background-color: rgba(20, 20, 20, 0.9);
       display: flex;
       justify-content: center;
-      padding: 10px;
+      gap: 30px;
+      padding: 10px 0;
+      background-color: rgba(0, 0, 0, 0.5);
       position: sticky;
       top: 0;
-      z-index: 10;
-      backdrop-filter: blur(8px);
+      z-index: 100;
+      backdrop-filter: blur(6px);
     }
 
     nav a {
       color: #ffd700;
       text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
       font-size: 18px;
+      transition: 0.3s;
     }
 
     nav a:hover {
@@ -67,92 +84,96 @@
     }
 
     .content {
-      max-width: 1200px;
+      max-width: 1000px;
       margin: 40px auto;
       padding: 0 20px;
-      background-color: rgba(0, 0, 0, 0.7);
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
     }
 
     section {
-      margin-bottom: 60px;
+      margin-bottom: 50px;
     }
 
     h2 {
-      font-size: 32px;
+      font-size: 30px;
       color: #ffd700;
       margin-bottom: 20px;
+      text-align: center;
     }
 
     p {
       font-size: 18px;
       line-height: 1.6;
+      color: #f9f9f9;
     }
 
-    .images {
+    .gallery {
       display: flex;
-      flex-wrap: wrap;
+      justify-content: center;
       gap: 20px;
+      flex-wrap: wrap;
       margin-top: 20px;
     }
 
-    .images img {
-      max-width: 100%;
-      border: 3px solid #ffd700;
+    .gallery img {
+      max-width: 300px;
       border-radius: 10px;
-      flex: 1 1 calc(50% - 20px);
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      border: 3px solid #ffe066;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
     }
 
     footer {
-      background-color: rgba(15, 15, 15, 0.9);
       text-align: center;
       padding: 20px;
-      font-size: 16px;
-      color: #999;
+      background: rgba(0, 0, 0, 0.8);
+      font-size: 14px;
+      color: #ccc;
       margin-top: 60px;
+    }
+
+    a {
+      color: #ffd700;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <img src="https://i.imgur.com/r6OggID.png" alt="JS-Romumetalli Logo">
+    <img src="https://i.imgur.com/r6OggID.png" alt="JS-Romumetalli logo">
     <h1>ROMUMETALLIT POIS NURKISTA</h1>
-    <p style="color: #eee;">NOPEASTI JA EDULLISESTI – Myös purkutyöt ammattitaidolla</p>
+    <p style="color: #eee;">Nopeasti ja edullisesti – myös purkutyöt ammattitaidolla!</p>
   </header>
 
   <nav>
     <a href="#palvelut">Palvelut</a>
-    <a href="#purkutyot">Purkutyöt</a>
+    <a href="#purku">Purkutyöt</a>
     <a href="#romuautot">Romuautot</a>
-    <a href="#kuvat">Kuvagalleria</a>
+    <a href="#kuvat">Kuvat</a>
     <a href="#yhteys">Yhteystiedot</a>
   </nav>
 
   <div class="content">
     <section id="palvelut">
-      <h2>PALVELUT</h2>
-      <p>Olemme erikoistuneet metalliromujen keräämiseen ja purkutöihin. Noudamme ja kierrätämme metallit, kuten kupari, alumiinikaapelit, sähkömoottorit ja rakennusjätteet. Ostamme romua hyvällä hinnalla ja haemme sopimuksen mukaan.</p>
-      <p>Haemme: autot, työkoneet, puimurit, linja-autot, kuorma-autot ja maatalousromut.</p>
-      <p>Meillä on romumetallille kilpailukykyiset hinnat. Soita ja kysy lisää! P. 044 338 7395</p>
+      <h2>Palvelut</h2>
+      <p>Olemme erikoistuneet metalliromujen keräämiseen ja purkutöiden tekemiseen. Noudamme ja kierrätämme kuparia, alumiinikaapeleita, sähkömoottoreita ja rakennusten metallijätettä. Ostamme romut hyvään hintaan ja noudamme sopimuksen mukaan.</p>
+      <p>Haemme mm. autot, työkoneet, puimurit, linja-autot, kuorma-autot ja maatalousromut.</p>
     </section>
 
-    <section id="purkutyot">
-      <h2>SUURET JA PIENET PURKUTYÖT</h2>
-      <p>Tarjoamme purkutyöt avaimet käteen -palveluna, myös puu- ja metallirakennukset. Puramme talot, ladot, autotallit ym. Käytämme kahmaria tai kaivinkonetta. Huolehdimme jätteiden poiskuljetuksesta ja kierrätyksestä lain mukaan. Turvallisuus ja laatu ovat etusijalla.</p>
+    <section id="purku">
+      <h2>Purkutyöt</h2>
+      <p>Tarjoamme avaimet käteen -purkupalvelua: puu- ja metallirakennusten purku taloista latoihin ja autotalleihin. Käytämme kahmaria tai kaivinkonetta. Poistamme purkujätteen ja hoidamme lajittelun ja kierrätyksen lakien mukaisesti.</p>
     </section>
 
     <section id="romuautot">
-      <h2>ROMUAUTOT KIERTOON</h2>
-      <p>Romuautojen kierrättäminen on helppoa. Tilaa maksuton nouto, me haemme autosi ja toimitamme sen turvallisesti kierrätykseen. Auto poistetaan TraFi-rekisteristä, ja saat virallisen romutustodistuksen. Tarvitsemme valtakirjan, jonka voi täyttää ja tulostaa valmiiksi.</p>
+      <h2>Romuautot</h2>
+      <p>Tilaa maksuton nouto, ja toimitamme romuautosi turvallisesti kierrätykseen. Ajoneuvo poistetaan TraFi-rekisteristä, ja saat virallisen romutustodistuksen. Tarvitsemme valtakirjan, jonka voit tulostaa valmiiksi.</p>
     </section>
 
     <section id="kuvat">
-      <h2>KUVAGALLERIA</h2>
-      <div class="images">
-        <img src="https://i.imgur.com/wLVVark.png" alt="Gruzovik">
+      <h2>Kuvat</h2>
+      <div class="gallery">
         <img src="https://i.imgur.com/zvbBW84.jpeg" alt="Svalka">
         <img src="https://i.imgur.com/DSfZuV3.jpeg" alt="Auto 1">
         <img src="https://i.imgur.com/KjFiOZO.png" alt="Auto 2">
@@ -160,15 +181,15 @@
     </section>
 
     <section id="yhteys">
-      <h2>YHTEYSTIEDOT</h2>
+      <h2>Yhteystiedot</h2>
       <p><strong>Osoite:</strong> Kokemäentie 247 B, 27710 Köyliö</p>
       <p><strong>Puhelin:</strong> 044 338 7395</p>
-      <p><strong>Verkkosivut:</strong> <a href="https://js-romumetalli.fi" target="_blank" style="color:#ffd700;">js-romumetalli.fi</a></p>
+      <p><strong>Sivusto:</strong> <a href="https://js-romumetalli.fi" target="_blank">js-romumetalli.fi</a></p>
     </section>
   </div>
 
   <footer>
-    © 2025 JS-Romumetalli ja purkutyöt Oy. Kaikki oikeudet pidätetään.
+    © 2025 JS-Romumetalli Oy. Kaikki oikeudet pidätetään.
   </footer>
 
 </body>
